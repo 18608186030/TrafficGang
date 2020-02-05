@@ -39,4 +39,6 @@ ext {
     //arouter
     arouter_api = '1.5.0'
     arouter_compiler = '1.2.2'
+    //utilcode
+    utilcode = '1.24.7'
 }

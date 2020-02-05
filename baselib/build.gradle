@@ -41,4 +41,6 @@ dependencies {
     //ARouter
     api "com.alibaba:arouter-api:$arouter_api"
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    //android工具集合 https://github.com/Blankj/AndroidUtilCode/blob/master/utilcode/README-CN.md
+    api "com.blankj:utilcode:1.26.0"
 }
