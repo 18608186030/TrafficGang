@@ -3,14 +3,14 @@
     <item>
         <shape>
             <!--边框颜色-->
-            <solid android:color="#e2e2e2" />
+            <solid android:color="@color/colorPrimary" />
         </shape>
     </item>
     <item
         android:bottom="1dp">
         <shape>
             <!--边框里面的颜色-->
-            <solid android:color="#F6F6F8" />
+            <solid android:color="@color/colorPrimary" />
         </shape>
     </item>
 </layer-list>
