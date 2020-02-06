@@ -38,8 +38,20 @@ interface ARouterHub {
         private const val MAILLIST = "/maillist/"
 
         /**
-         * 工作模块界面
+         * 通讯录模块界面
          */
         const val MAILLIST_FRAGMENT = MAILLIST + "MailListFragment"
+
+         /**
+         * 个人中心模块
+         */
+        private const val PERSON = "/person/"
+
+        /**
+         * 个人中心模块界面
+         */
+        const val PERSON_FRAGMENT = PERSON + "PersonFragment"
+
+
     }
 }

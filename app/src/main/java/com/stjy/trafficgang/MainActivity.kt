@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
     override fun initView() {
         fragments.add(ARouter.getInstance().build(ARouterHub.WORK_FRAGMENT).navigation() as Fragment)
         fragments.add(ARouter.getInstance().build(ARouterHub.MAILLIST_FRAGMENT).navigation() as Fragment)
-        fragments.add(Fragment())
+        fragments.add(ARouter.getInstance().build(ARouterHub.PERSON_FRAGMENT).navigation() as Fragment)
         itemIcon.add(BotBean("工作 ", R.mipmap.ic_home_normal, R.mipmap.ic_home_pressed))
         itemIcon.add(BotBean("通讯录", R.mipmap.ic_home_normal, R.mipmap.ic_home_pressed))
         itemIcon.add(BotBean("个人中心", R.mipmap.ic_home_normal, R.mipmap.ic_home_pressed))

@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':work', ':maillist'
+include ':app', ':baselib', ':work', ':maillist', ':person'
