@@ -126,4 +126,7 @@ dependencies {
     api "android.arch.lifecycle:extensions:$lifecycle_version"
     api "android.arch.lifecycle:common-java8:$lifecycle_version"
 
+    // 刷新控件
+    api "com.scwang.smartrefresh:SmartRefreshLayout:$smartRefreshLayoutVersion"
+
 }
