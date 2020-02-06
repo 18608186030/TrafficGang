@@ -122,4 +122,9 @@ dependencies {
     api "com.android.support:multidex:$multidex_version"
     api "com.android.support:multidex-instrumentation:$multidex_version"
 
+    // ViewModel and LiveData
+    api "com.jeremyliao:live-event-bus:$livebus_version"
+    api "android.arch.lifecycle:extensions:$lifecycle_version"
+    api "android.arch.lifecycle:common-java8:$lifecycle_version"
+
 }
