@@ -12,7 +12,7 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
         //是否debug
         buildConfigField "boolean", "IS_DEBUG", IS_DEBUG
     }
@@ -26,6 +26,16 @@ android {
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 }
 
@@ -104,5 +114,12 @@ dependencies {
 
     //qmui
     api "com.qmuiteam:qmui:$qmui_version"
+
+    //阿里云OSS上传
+    api "com.aliyun.dpa:oss-android-sdk:$aliyun_oss_version"
+
+    //dex 分包
+    api "com.android.support:multidex:$multidex_version"
+    api "com.android.support:multidex-instrumentation:$multidex_version"
 
 }
