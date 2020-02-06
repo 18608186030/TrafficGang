@@ -31,5 +31,15 @@ interface ARouterHub {
          * 工作模块界面
          */
         const val WORK_FRAGMENT = WORK + "WorkFragment"
+
+        /**
+         * 通讯录模块
+         */
+        private const val MAILLIST = "/maillist/"
+
+        /**
+         * 工作模块界面
+         */
+        const val MAILLIST_FRAGMENT = MAILLIST + "MailListFragment"
     }
 }
