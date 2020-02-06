@@ -23,6 +23,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.stjy.baselib.R;
+import com.stjy.baselib.listener.PermissionListener;
 import com.stjy.baselib.utils.ActivityManager;
 import com.stjy.baselib.utils.EventBusUtils;
 import com.stjy.baselib.utils.RxLifecycleUtils;
@@ -382,9 +383,5 @@ public abstract class BaseActivity extends SupportActivity implements CustomAdap
                 .setIconType(ICON_TYPE_LOADING)
                 .setTipWord("加载中")
                 .create(false);
-    }
-
-    public interface PermissionListener {
-        void onGranted();
     }
 }

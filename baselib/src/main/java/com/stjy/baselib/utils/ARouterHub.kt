@@ -10,16 +10,26 @@ package com.stjy.baselib.utils
 </ARouter跳转路由地址> */
 interface ARouterHub {
     companion object {
-
         /**
          * The constant APP.
          * 宿主APP组件
          */
-        const val APP = "/app/"
+        private const val APP = "/app/"
 
         /**
          * 主界面
          */
-        const val APP_MainActivity = APP + "MainActivity"
+        const val APP_MAIN_ACTIVITY = APP + "MainActivity"
+
+
+        /**
+         * 工作模块
+         */
+        private const val WORK = "/work/"
+
+        /**
+         * 工作模块界面
+         */
+        const val WORK_FRAGMENT = WORK + "WorkFragment"
     }
 }
