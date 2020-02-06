@@ -103,7 +103,6 @@ dependencies {
     api 'jp.wasabeef:glide-transformations:4.0.1'
 
     // 图片处理相关
-    //noinspection GradleDependency
     api "com.contrarywind:Android-PickerView:$pickerView_version"
     api "com.github.chrisbanes:PhotoView:$photoViewVersion"
     api "com.zhihu.android:matisse:$matisse_version"
