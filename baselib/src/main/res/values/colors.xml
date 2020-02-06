@@ -3,27 +3,29 @@
     <color name="colorPrimary">@color/white</color>
     <color name="colorPrimaryDark">@color/white</color>
     <color name="colorAccent">@color/blue</color>
-    <color name="mainBackground">@color/white</color>
+    <color name="mainBackground">@color/gray5</color>
 
     <!--蓝色-->
-    <color name="blue">#339BFD</color>
-    <!--重要信息说明文字-->
-    <color name="blue1">#43689B</color>
+    <color name="blue">#339BFD</color><!--主色-->
+    <color name="blue1">#43689B</color><!--重要提示文字-->
     <!--灰色-->
-    <color name="gray">#666666</color>
-    <color name="gray1">#9698B3</color>
-    <color name="gray2">#999999</color>
-    <color name="gray3">#CCCCCC</color>
-    <color name="gray4">#F6F6F8</color>
-    <color name="gray5">#F8F8F8</color>
+    <color name="gray">#666666</color><!--文字主色-->
+    <color name="gray1">#9698B3</color><!--信息说明文字-->
+    <color name="gray2">#333333</color><!--文字辅色-->
+    <color name="gray3">#999999</color><!--段落文字辅色-->
+    <color name="gray4">#CCCCCC</color><!--非重要文字提示色-->
+    <color name="gray5">#F6F6F8</color><!--背景色-->
+    <color name="gray6">#F8F8F8</color><!--信息块背景色-->
+
     <!--黄色-->
-    <color name="yellow">#FFC000</color>
+    <color name="yellow">#FFC000</color><!--辅助色-->
+
     <!--黄色-->
-    <color name="red">#E95456</color>
+    <color name="red">#E95456</color><!--警示色-->
+
     <!--黑色-->
-    <color name="black">#FF000000</color>
+    <color name="black">#FF000000</color><!--主色-->
     <color name="black1">#cc000000</color> <!--黑色，透明80%色-->
-    <color name="black2">#333333</color>
     <!--白色-->
     <color name="white">#FFFFFF</color>
 </resources>
