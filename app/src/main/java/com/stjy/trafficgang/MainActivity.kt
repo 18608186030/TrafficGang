@@ -4,18 +4,22 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.app.AppCompatActivity
+import com.stjy.baselib.base.BaseActivity
 import com.stjy.baselib.wigiet.bottomview.BotBean
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
     private val fragments = ArrayList<Fragment>()
     private val itemIcon = ArrayList<BotBean>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+    }
 
+    override fun initView() {
         fragments.add( Fragment())
         fragments.add(Fragment())
         fragments.add(Fragment())
@@ -27,6 +31,14 @@ class MainActivity : AppCompatActivity() {
         bottom.setViewPager(vp_content, itemIcon) {
 
         }
+    }
+
+    override fun initData() {
+
+    }
+
+    override fun initListener() {
+
     }
 
     internal inner class FragmentAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
