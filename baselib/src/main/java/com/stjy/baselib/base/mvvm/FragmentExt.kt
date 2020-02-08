@@ -5,6 +5,6 @@ import com.stjy.baselib.base.MyAppliction
 import com.stjy360.basicres.ViewModelFactory
 
 fun <T : ViewModel> Fragment.obtainViewModel(viewModelClass: Class<T>) =
-        ViewModelProviders.of(this, ViewModelFactory.newInstance(MyAppliction.getApplication())).get(viewModelClass)
+        ViewModelProviders.of(this, ViewModelFactory.newInstance(MyAppliction.application)).get(viewModelClass)
 
-fun Fragment.getApplication() = MyAppliction.getApplication()
+fun Fragment.getApplication() = MyAppliction.application
