@@ -24,7 +24,7 @@
         <item name="qmui_topbar_title_margin_horizontal_when_no_btn_aside">8dp</item>
         <item name="qmui_topbar_separator_height">1dp</item>
         <item name="qmui_topbar_separator_color">@color/gray4</item>
-        <item name="qmui_topbar_left_back_drawable_id">@mipmap/go_back_black</item>
+        <item name="qmui_topbar_left_back_drawable_id">@mipmap/ic_black</item>
         <item name="qmui_topbar_text_btn_color_state_list">@color/black1</item>
         <item name="qmui_topbar_text_btn_text_size">18dp</item>
     </style>

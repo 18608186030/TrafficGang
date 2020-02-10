@@ -7,7 +7,7 @@
     android:layout_height="?attr/actionBarSize"
     android:background="@drawable/shap_toolbar_bg"
     android:theme="@style/ToolBarTheme"
-    tools:navigationIcon="@mipmap/go_back_black">
+    tools:navigationIcon="@mipmap/ic_black">
 
     <TextView
         android:id="@+id/bar_title"

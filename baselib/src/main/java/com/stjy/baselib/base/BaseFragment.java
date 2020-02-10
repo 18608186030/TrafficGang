@@ -131,7 +131,7 @@ public abstract class BaseFragment extends SupportFragment implements View.OnCli
         mBarRight = mView.findViewById(R.id.bar_right);
         //判断是否有Toolbar,并默认显示返回按钮
         if (null != getToolbar() && isShowBacking()) {
-            setNavigationIcon(R.mipmap.go_back_black);
+            setNavigationIcon(R.mipmap.ic_black);
             getToolbar().setNavigationOnClickListener(v -> {
                 setNavigationOnClickListener();
             });
