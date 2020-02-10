@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MailListFragment">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
-
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="工作模块界面" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <include layout="@layout/toolbar" />
+
+        <EditText
+            android:id="@+id/et_filter"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shap_editext_input1"
+            android:drawableLeft="@mipmap/ic_search"
+            android:drawablePadding="8dp"
+            android:hint="搜索"
+            android:maxLines="1"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textColor="@color/gray3"
+            android:textSize="15sp"
+            android:visibility="visible" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

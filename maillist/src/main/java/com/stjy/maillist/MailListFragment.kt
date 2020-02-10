@@ -12,7 +12,7 @@ class MailListFragment : BaseFragment() {
     }
 
     override fun initView(contentView: View?) {
-
+        setBarTitle("通讯录")
     }
 
     override fun initData() {
@@ -21,6 +21,10 @@ class MailListFragment : BaseFragment() {
 
     override fun initListener() {
 
+    }
+
+    override fun isShowBacking(): Boolean {
+        return false
     }
 
 }
