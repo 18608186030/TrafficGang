@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvvm.BaseVMFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.login.model.LoginViewModel
+import kotlinx.android.synthetic.main.fragment_login.*
 
 @Route(path = ARouterHub.LOGIN_FRAGMENT, name = "工作模块界面")
 class LoginFragment  : BaseVMFragment<LoginViewModel>(){
@@ -32,7 +33,8 @@ class LoginFragment  : BaseVMFragment<LoginViewModel>(){
     }
 
     override fun initListener() {
+        forgetPassWord.setOnClickListener {
+            start(FindPasswordFristFragment.newInstance())
+        }
     }
-
-
 }

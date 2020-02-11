@@ -37,6 +37,20 @@ interface ARouterHub {
         const val LOGIN_FRAGMENT = LOGIN + "LoginFragment"
 
         /**
+         * 找回密码第一级界面
+         */
+        const val LOGIN_FINDPASSWORDFRIST_FRAGMENT = LOGIN + "FindPasswordFristFragment"
+
+        /**
+         * 找回密码第二级界面
+         */
+        const val LOGIN_FINDPASSWORDSECOND_FRAGMENT = LOGIN + "FindPasswordSecondFragment"
+        /**
+         * 找回密码第三级界面
+         */
+        const val LOGIN_FINDPASSWORDThird_FRAGMENT = LOGIN + "FindPasswordThirdFragment"
+
+        /**
          * 工作模块
          */
         private const val WORK = "/work/"
