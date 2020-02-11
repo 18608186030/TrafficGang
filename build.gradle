@@ -36,6 +36,7 @@ ext {
     versionCode = 1
     versionName = "1.0.0"
 
+    supportLibraryVersion = '28.0.0'
     //arouter
     arouter_api = '1.5.0'
     arouter_compiler = '1.2.2'
@@ -86,4 +87,5 @@ ext {
     smartRefreshLayoutVersion = '1.1.0-alpha-28'
     //适配器
     baserecyclerviewadapterhelper_version = '2.9.45'
+    superTextViewVersion = 'v3.1.1'
 }

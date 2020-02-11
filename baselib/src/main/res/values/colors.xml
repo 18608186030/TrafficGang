@@ -16,6 +16,7 @@
     <color name="gray4">#CCCCCC</color><!--非重要文字提示色-->
     <color name="gray5">#F6F6F8</color><!--背景色-->
     <color name="gray6">#F8F8F8</color><!--信息块背景色-->
+    <color name="gray7">#EEEEEE</color><!--信息块背景色-->
 
     <!--黄色-->
     <color name="yellow">#FFC000</color><!--辅助色-->
