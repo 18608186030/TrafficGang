@@ -49,6 +49,10 @@ interface ARouterHub {
          * 找回密码第三级界面
          */
         const val LOGIN_FINDPASSWORDThird_FRAGMENT = LOGIN + "FindPasswordThirdFragment"
+        /**
+         * 找回密码第三级界面
+         */
+        const val LOGIN_REGISTER_FRAGMENT = LOGIN + "RegisterFragment"
 
         /**
          * 工作模块

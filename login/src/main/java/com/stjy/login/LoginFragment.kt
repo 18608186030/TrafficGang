@@ -36,5 +36,9 @@ class LoginFragment  : BaseVMFragment<LoginViewModel>(){
         forgetPassWord.setOnClickListener {
             start(FindPasswordFristFragment.newInstance())
         }
+
+        register.setOnClickListener {
+            start(RegisterFragment.newInstance())
+        }
     }
 }

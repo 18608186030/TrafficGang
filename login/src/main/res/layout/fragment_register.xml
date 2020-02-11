@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".LoginFragment">
+
+    <include layout="@layout/toolbar" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="姓名：" />
+
+            <EditText
+                style="@style/TextViewStyle"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="请输入姓名" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="身份证号：" />
+
+            <EditText
+                style="@style/TextViewStyle"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="请输入您的身份证号" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="手机号：" />
+
+            <EditText
+                style="@style/TextViewStyle"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="请输入要绑定的手机号" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="验证码：" />
+
+            <EditText
+                style="@style/TextViewStyle"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="请输入验证码" />
+
+            <com.coorchice.library.SuperTextView
+                style="@style/TextViewStyle"
+                android:layout_marginStart="20dp"
+                android:padding="8dp"
+                android:text="获取验证码"
+                android:textColor="@color/white"
+                app:stv_corner="6dp"
+                app:stv_solid="@color/gray1" />
+
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+    </LinearLayout>
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:stv_corner="6dp"
+        app:stv_solid="@color/blue" />
+</LinearLayout>
