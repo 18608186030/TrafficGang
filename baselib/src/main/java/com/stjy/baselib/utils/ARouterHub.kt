@@ -21,6 +21,20 @@ interface ARouterHub {
          */
         const val APP_MAIN_ACTIVITY = APP + "MainActivity"
 
+        /**
+         * The constant APP.
+         * 宿主APP组件
+         */
+        private const val LOGIN = "/login/"
+
+        /**
+         * 主界面
+         */
+        const val LOGIN_ACTIVITY = LOGIN + "LoginActivity"
+        /**
+         * 工作模块界面
+         */
+        const val LOGIN_FRAGMENT = LOGIN + "LoginFragment"
 
         /**
          * 工作模块

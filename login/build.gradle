@@ -1,20 +1,16 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
-
     defaultConfig {
-        applicationId "com.stjy.trafficgang"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode  rootProject.ext.versionCode
+        versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        renderscriptTargetApi rootProject.ext.minSdkVersion
-        renderscriptSupportModeEnabled true
         multiDexEnabled true
     }
 
@@ -60,12 +56,4 @@ dependencies {
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
     //依赖baselib
     implementation project(':baselib')
-    //work 依赖工作模块
-    implementation project(':work')
-    //maillist 依赖通讯录模块
-    implementation project(':maillist')
-    //person 依赖个人中心模块
-    implementation project(':person')
-    //login 登陆模块
-    implementation project(':login')
 }
