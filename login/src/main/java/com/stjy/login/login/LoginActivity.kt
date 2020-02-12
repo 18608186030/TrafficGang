@@ -1,9 +1,10 @@
-package com.stjy.login
+package com.stjy.login.login
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.stjy.baselib.base.mvvm.BaseVMActivity
 import com.stjy.baselib.utils.ARouterHub
+import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
 
 @Route(path = ARouterHub.LOGIN_ACTIVITY, name = "登陆模块")

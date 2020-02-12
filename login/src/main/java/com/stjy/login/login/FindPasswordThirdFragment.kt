@@ -1,28 +1,29 @@
-package com.stjy.login
+package com.stjy.login.login
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvvm.BaseVMFragment
 import com.stjy.baselib.utils.ARouterHub
+import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
-import kotlinx.android.synthetic.main.fragment_findpasswordfrist.*
+import kotlinx.android.synthetic.main.fragment_findpasswordthird.*
 
-@Route(path = ARouterHub.LOGIN_FINDPASSWORDSECOND_FRAGMENT, name = "找回密码第一级界面")
-class FindPasswordSecondFragment : BaseVMFragment<LoginViewModel>() {
+@Route(path = ARouterHub.LOGIN_FINDPASSWORDThird_FRAGMENT, name = "找回密码第一级界面")
+class FindPasswordThirdFragment : BaseVMFragment<LoginViewModel>() {
 
     companion object {
         @JvmStatic
-        fun newInstance(): FindPasswordSecondFragment {
+        fun newInstance(): FindPasswordThirdFragment {
             return ARouter.getInstance()
-                    .build(ARouterHub.LOGIN_FINDPASSWORDSECOND_FRAGMENT)
-                    .navigation() as FindPasswordSecondFragment
+                    .build(ARouterHub.LOGIN_FINDPASSWORDThird_FRAGMENT)
+                    .navigation() as FindPasswordThirdFragment
         }
     }
 
     override fun viewModelClass() = LoginViewModel::class.java
 
-    override fun getLayoutID() = R.layout.fragment_findpasswordsecond
+    override fun getLayoutID() = R.layout.fragment_findpasswordthird
 
     override fun initView(contentView: View?) {
 
@@ -32,14 +33,13 @@ class FindPasswordSecondFragment : BaseVMFragment<LoginViewModel>() {
     }
 
     override fun initListener() {
-        next.setOnClickListener {
-            start(FindPasswordThirdFragment.newInstance())
+        ok.setOnClickListener {
+            popTo(LoginFragment::class.java,false)
         }
     }
 
     override fun isShowBacking() = true
 
     override fun setNavigationOnClickListener() {
-        pop()
     }
 }
