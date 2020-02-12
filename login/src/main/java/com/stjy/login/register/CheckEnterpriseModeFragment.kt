@@ -38,7 +38,7 @@ class CheckEnterpriseModeFragment : BaseVMFragment<LoginViewModel>() {
         }
 
         rvCreateenterprise.setOnClickListener {
-
+            start(RegisterEnterpriseFragment.newInstance())
         }
     }
 

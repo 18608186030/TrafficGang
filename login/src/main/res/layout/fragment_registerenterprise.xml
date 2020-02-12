@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".login.LoginFragment">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:gravity="left"
+                android:text="企业信息"
+                android:textColor="@color/blue1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="企业名称：" />
+
+                <EditText
+                    style="@style/TextViewStyle"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="请输入企业名称" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="三证合一代码：" />
+
+                <EditText
+                    style="@style/TextViewStyle"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="请输入代码" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="企业地址：" />
+
+                <EditText
+                    style="@style/TextViewStyle"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="请输入企业地址" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="所在行业：" />
+
+                <EditText
+                    style="@style/TextViewStyle"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="请输入所在行业" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:gravity="left"
+                android:padding="15dp"
+                android:text="营业执照" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/ic_black" />
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:gravity="left"
+                android:text="法人信息"
+                android:textColor="@color/blue1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="法人姓名：" />
+
+                <EditText
+                    style="@style/TextViewStyle"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="请输入法人姓名" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="法人身份证：" />
+
+                <EditText
+                    style="@style/TextViewStyle"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="请输入法人身份证" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="95dp"
+                        android:src="@mipmap/ic_black" />
+
+                    <TextView
+                        style="@style/TextViewStyle"
+                        android:layout_width="match_parent"
+                        android:text="法人身份证正面"
+                        android:textColor="@color/gray3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="95dp"
+                        android:src="@mipmap/ic_into" />
+
+                    <TextView
+                        style="@style/TextViewStyle"
+                        android:layout_width="match_parent"
+                        android:text="法人身份证反面"
+                        android:textColor="@color/gray3" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:gravity="left"
+                android:text="联系人信息"
+                android:textColor="@color/blue1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="联系人：" />
+
+                <EditText
+                    style="@style/TextViewStyle"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="请输入联系人姓名" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="联系人身份证号码：" />
+
+                <EditText
+                    style="@style/TextViewStyle"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="请输入联系人身份证号码" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:stv_corner="6dp"
+        app:stv_solid="@color/blue" />
+</LinearLayout>
