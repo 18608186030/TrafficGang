@@ -11,27 +11,80 @@
     <include layout="@layout/toolbar" />
 
     <RelativeLayout
+        android:id="@+id/rvSelectenterprise"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
-        
+        android:padding="20dp">
+
         <ImageView
-            android:src="@mipmap/login_selectenterprise"
+            android:id="@+id/ivSelectenterprise"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@mipmap/login_selectenterprise" />
+
+        <TextView
+            android:id="@+id/tvSelectenterpriseTtitle"
+            style="@style/TextViewStyle"
+            android:layout_marginStart="15dp"
+            android:layout_toRightOf="@+id/ivSelectenterprise"
+            android:text="选择企业"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_below="@+id/tvSelectenterpriseTtitle"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/ivSelectenterprise"
+            android:text="选择您要加入的企业"
+            android:textColor="@color/gray3" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_into" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rvCreateenterprise"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:padding="20dp">
 
         <ImageView
-            android:src="@mipmap/login_createenterprise"
+            android:id="@+id/ivCreateenterprise"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@mipmap/login_createenterprise"/>
+
+        <TextView
+            android:id="@+id/tvCreateenterpriseTtitle"
+            style="@style/TextViewStyle"
+            android:layout_marginStart="15dp"
+            android:layout_toRightOf="@+id/ivCreateenterprise"
+            android:text="注册企业"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_below="@+id/tvCreateenterpriseTtitle"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/ivCreateenterprise"
+            android:text="未入驻的企业请先注册"
+            android:textColor="@color/gray3" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_into" />
 
     </RelativeLayout>
-
 </LinearLayout>

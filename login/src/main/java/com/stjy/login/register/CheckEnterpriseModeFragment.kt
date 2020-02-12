@@ -7,6 +7,7 @@ import com.stjy.baselib.base.mvvm.BaseVMFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
+import kotlinx.android.synthetic.main.fragment_checkenterprisemode.*
 
 @Route(path = ARouterHub.LOGIN_CHECKENTERPRISEMODE_FRAGMENT, name = "选择或创建企业")
 class CheckEnterpriseModeFragment : BaseVMFragment<LoginViewModel>() {
@@ -32,7 +33,13 @@ class CheckEnterpriseModeFragment : BaseVMFragment<LoginViewModel>() {
     }
 
     override fun initListener() {
+        rvSelectenterprise.setOnClickListener {
+            start(SearchEnterpriseFragment.newInstance())
+        }
 
+        rvCreateenterprise.setOnClickListener {
+
+        }
     }
 
     override fun isShowBacking() = true

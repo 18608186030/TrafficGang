@@ -7,6 +7,7 @@ import com.stjy.baselib.base.mvvm.BaseVMFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
+import kotlinx.android.synthetic.main.fragment_register.*
 
 @Route(path = ARouterHub.LOGIN_REGISTER_FRAGMENT, name = "找回密码第一级界面")
 class RegisterFragment : BaseVMFragment<LoginViewModel>() {
@@ -32,7 +33,9 @@ class RegisterFragment : BaseVMFragment<LoginViewModel>() {
     }
 
     override fun initListener() {
-        start(CheckEnterpriseModeFragment.newInstance())
+        next.setOnClickListener() {
+            start(CheckEnterpriseModeFragment.newInstance())
+        }
     }
 
     override fun isShowBacking() = true
