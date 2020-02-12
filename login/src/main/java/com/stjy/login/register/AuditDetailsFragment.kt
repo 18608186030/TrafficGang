@@ -7,36 +7,33 @@ import com.stjy.baselib.base.mvvm.BaseVMFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
-import kotlinx.android.synthetic.main.fragment_registerenterprise.*
 
-@Route(path = ARouterHub.LOGIN_REGISTERENTERPRISE_FRAGMENT, name = "注册企业")
-class RegisterEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
+@Route(path = ARouterHub.LOGIN_AUDITDETAILS_FRAGMENT, name = "企业注册信息审核详情")
+class AuditDetailsFragment : BaseVMFragment<LoginViewModel>() {
 
     companion object {
         @JvmStatic
-        fun newInstance(): RegisterEnterpriseFragment {
+        fun newInstance(): AuditDetailsFragment {
             return ARouter.getInstance()
-                    .build(ARouterHub.LOGIN_REGISTERENTERPRISE_FRAGMENT)
-                    .navigation() as RegisterEnterpriseFragment
+                    .build(ARouterHub.LOGIN_AUDITDETAILS_FRAGMENT)
+                    .navigation() as AuditDetailsFragment
         }
     }
 
     override fun viewModelClass() = LoginViewModel::class.java
 
-    override fun getLayoutID() = R.layout.fragment_registerenterprise
+    override fun getLayoutID() = R.layout.fragment_auditdetails
 
     override fun initView(contentView: View?) {
-        setBarTitle("注册企业")
-        setBarRightText("保存")
+        setBarTitle("企业注册信息审核详情")
     }
 
     override fun initData() {
+
     }
 
     override fun initListener() {
-        submit.setOnClickListener() {
-            start(SubmitEnterpriseListFragment.newInstance())
-        }
+
     }
 
     override fun isShowBacking() = true

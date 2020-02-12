@@ -20,6 +20,7 @@
 
     <!--黄色-->
     <color name="yellow">#FFC000</color><!--辅助色-->
+    <color name="yellow1">#F3A53B</color><!--辅助色-->
 
     <!--黄色-->
     <color name="red">#E95456</color><!--警示色-->

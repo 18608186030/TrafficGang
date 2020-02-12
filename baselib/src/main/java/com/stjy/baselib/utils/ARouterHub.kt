@@ -68,6 +68,14 @@ interface ARouterHub {
          * 选择或创建企业界面
          */
         const val LOGIN_SEARCHENTERPRISE_FRAGMENT = LOGIN + "SearchEnterpriseFragment"
+        /**
+         * 提交信息列表
+         */
+        const val LOGIN_SUBMITENTERPRISELIST_FRAGMENT = LOGIN + "SubmitEnterpriseListFragment"
+        /**
+         * 企业注册信息审核详情
+         */
+        const val LOGIN_AUDITDETAILS_FRAGMENT = LOGIN + "AuditDetailsFragment"
 
         /**
          * 工作模块
