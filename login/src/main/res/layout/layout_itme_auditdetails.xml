@@ -66,6 +66,12 @@
             android:textColor="#18C289"
             android:textSize="12sp" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
         <View
             android:id="@+id/v_bottom_line"
             android:layout_width="match_parent"

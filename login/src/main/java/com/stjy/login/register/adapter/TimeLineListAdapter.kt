@@ -1,6 +1,8 @@
 package com.stjy.login.register.adapter
 
 import android.annotation.SuppressLint
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.stjy.baselib.base.MyAppliction.Companion.context
@@ -34,5 +36,11 @@ class TimeLineListAdapter(data: List<String>) : BaseQuickAdapter<String, BaseVie
                 .setText(R.id.tv_info, item)
                 //物流时间
                 .setText(R.id.tv_date, item)
+        var recyclerview=helper.getView<RecyclerView>(R.id.recyclerview)
+        recyclerview.layoutManager = LinearLayoutManager(mContext)
+        var mVideoCourseAdapter = TimeLineItmeListAdapter(ArrayList())
+        recyclerview.adapter = mVideoCourseAdapter
+        var datas = arrayListOf("就解决方法", "黄花鱼", "反反复复", "ttjtjtjtjtsgga哥哥哥哥")
+        mVideoCourseAdapter.setNewData(datas)
     }
 }
