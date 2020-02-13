@@ -52,15 +52,14 @@
 
         <TextView
             android:id="@+id/tv_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#18C289"
+            style="@style/TextViewStyle"
+            android:gravity="left"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewStyle"
+            android:gravity="left"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="15dp"
             android:textColor="#18C289"
