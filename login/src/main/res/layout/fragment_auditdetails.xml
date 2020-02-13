@@ -10,17 +10,12 @@
 
     <include layout="@layout/toolbar" />
 
-    <com.coorchice.library.SuperTextView
-        android:id="@+id/select"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:padding="15dp"
-        android:text="企业注册信息审核详情"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:stv_corner="6dp"
-        app:stv_solid="@color/yellow1" />
+        android:layout_height="0dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1" />
+
 </LinearLayout>
