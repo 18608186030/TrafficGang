@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,26 +12,28 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+
         <View
             android:id="@+id/v_short_line"
             android:layout_width="1dp"
             android:layout_height="15dp"
             android:background="#E5E5E5" />
 
-        <ImageView
-            android:id="@+id/iv_new"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_into" />
 
-        <ImageView
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/iv_new"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:stv_corner="10dp"
+            app:stv_solid="@color/blue" />
+
+        <com.coorchice.library.SuperTextView
             android:id="@+id/iv_old"
-            android:layout_width="11dp"
-            android:layout_height="11dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_into"
-            android:visibility="gone" />
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:visibility="gone"
+            app:stv_corner="10dp"
+            app:stv_solid="@color/blue" />
 
         <View
             android:id="@+id/v_long_line"
@@ -58,8 +61,8 @@
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:layout_marginTop="12dp"
+            android:layout_marginBottom="15dp"
             android:textColor="#18C289"
             android:textSize="12sp" />
 
