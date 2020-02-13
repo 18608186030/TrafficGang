@@ -41,5 +41,6 @@ class RegisterFragment : BaseVMFragment<LoginViewModel>() {
     override fun isShowBacking() = true
 
     override fun setNavigationOnClickListener() {
+        pop()
     }
 }
