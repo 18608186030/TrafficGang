@@ -20,13 +20,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
 
         <com.coorchice.library.SuperTextView
             android:id="@+id/select"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            style="@style/TextViewStyle"
+            android:layout_marginRight="2.5dp"
             android:layout_weight="1"
             android:gravity="center"
             android:padding="15dp"
@@ -39,14 +40,13 @@
         <com.coorchice.library.SuperTextView
             android:id="@+id/register"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            style="@style/TextViewStyle"
+            android:layout_marginLeft="2.5dp"
             android:layout_weight="1"
             android:gravity="center"
             android:padding="15dp"
             android:text="注册企业"
             android:textColor="@color/white"
-            android:textSize="18sp"
             app:stv_corner="6dp"
             app:stv_solid="@color/blue" />
     </LinearLayout>
