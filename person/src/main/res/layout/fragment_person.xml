@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,17 +8,67 @@
     android:orientation="vertical"
     tools:context=".PersonFragment">
 
+    <TextView
+        style="@style/TextViewStyle"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:paddingLeft="15dp"
+        android:text="个人中心"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/person_changeorganize" />
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:text="hahahahh" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical">
 
         <TextView
             style="@style/itemStyle"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
             android:drawableLeft="@mipmap/person_changeorganize"
             android:drawableRight="@null"
             android:drawablePadding="10dp"
             android:text="我的档案" />
+
+        <com.coorchice.library.SuperTextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="切换组织"
+            android:textColor="@color/gray3"
+            app:stv_corner="20dp"
+            app:stv_solid="@color/white"
+            app:stv_stroke_color="@color/gray4"
+            app:stv_stroke_width="1dp" />
     </LinearLayout>
 
     <TextView
