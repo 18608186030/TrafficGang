@@ -20,7 +20,6 @@ import com.stjy.baselib.wigiet.refreshheader.material.MaterialHeader
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.model.HttpHeaders
 import me.jessyan.autosize.AutoSizeConfig
-import me.jessyan.autosize.unit.Subunits
 import me.yokeyword.fragmentation.Fragmentation
 
 /**
@@ -111,12 +110,12 @@ class MyAppliction : Application() {
                 .debug(AppConstants.isDebug)
                 .install()
         //屏幕适配
-        //AutoSizeConfig.getInstance().isExcludeFontScale = true
-        AutoSizeConfig.getInstance()
-                .unitsManager
-                .setSupportDP(true)
-                .setSupportSP(true)
-                .supportSubunits = Subunits.MM
+        AutoSizeConfig.getInstance().isExcludeFontScale = true
+//        AutoSizeConfig.getInstance()
+//                .unitsManager
+//                .setSupportDP(true)
+//                .setSupportSP(true)
+//                .supportSubunits = Subunits.MM
         LiveEventBus.get()
                 .config()
                 .supportBroadcast(application)
