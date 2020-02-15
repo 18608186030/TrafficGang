@@ -10,6 +10,7 @@ package com.stjy.baselib.utils
 </ARouter跳转路由地址> */
 interface ARouterHub {
     companion object {
+        //********************************app模块***************************************************
         /**
          * The constant APP.
          * 宿主APP组件
@@ -27,6 +28,7 @@ interface ARouterHub {
          */
         private const val LOGIN = "/login/"
 
+        //********************************工作模块***************************************************
         /**
          * 主界面
          */
@@ -77,6 +79,7 @@ interface ARouterHub {
          */
         const val LOGIN_AUDITDETAILS_FRAGMENT = LOGIN + "AuditDetailsFragment"
 
+        //********************************工作模块模块***************************************************
         /**
          * 工作模块
          */
@@ -87,6 +90,7 @@ interface ARouterHub {
          */
         const val WORK_FRAGMENT = WORK + "WorkFragment"
 
+        //********************************通讯录模块***************************************************
         /**
          * 通讯录模块
          */
@@ -97,7 +101,13 @@ interface ARouterHub {
          */
         const val MAILLIST_FRAGMENT = MAILLIST + "MailListFragment"
 
-         /**
+        /**
+         * 搜索通讯录二级界面
+         */
+        const val MAILLIST_SEARCHMAILLIST_ACTIVITY = MAILLIST + "SearchMailListActivity"
+
+        //********************************个人中心模块***************************************************
+        /**
          * 个人中心模块
          */
         private const val PERSON = "/person/"

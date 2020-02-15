@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.stjy.maillist" />
+    package="com.stjy.maillist" >
+
+    <application>
+        <activity android:name=".SearchMailListActivity"></activity>
+    </application>
+</manifest>

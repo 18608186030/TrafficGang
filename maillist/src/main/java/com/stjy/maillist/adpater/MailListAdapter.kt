@@ -1,12 +1,12 @@
 package com.stjy.maillist.adpater
 
 import android.annotation.SuppressLint
-
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.stjy.maillist.R
-import com.stjy.maillist.modle.MailListResp
+import com.stjy.maillist.modle.FirstListBean
+import com.stjy.maillist.modle.SecondListBean
 
 /**
  * @author acb
@@ -19,24 +19,28 @@ class MailListAdapter internal constructor(data: List<MultiItemEntity>) : BaseMu
     init {
         addItemType(0, R.layout.layout_itme_maillist_type1)
         addItemType(1, R.layout.layout_itme_maillist_type2)
-        addItemType(2, R.layout.layout_itme_maillist_type3)
     }
 
     @SuppressLint("SetTextI18n", "ResourceAsColor", "NewApi")
     override fun convert(helper: BaseViewHolder, item: MultiItemEntity) {
         when (helper.itemViewType) {
             0 -> {
-                item as MailListResp.ListBeanXX
+                item as FirstListBean
                 helper.setText(R.id.title, item.title)
+                helper.itemView.setOnClickListener {
+                    if (item.isExpanded) {
+                        collapse(helper.adapterPosition)
+                    } else {
+                        expand(helper.adapterPosition)
+                    }
+                }
             }
+
             1 -> {
-                item as MailListResp.ListBeanXX.ListBeanX
+                item as SecondListBean
                 helper.setText(R.id.title, item.title)
             }
-            2 -> {
-                item as MailListResp.ListBeanXX.ListBeanX.ListBean
-                helper.setText(R.id.title, item.title)
-            }
+
             else -> {
             }
         }
