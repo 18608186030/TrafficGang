@@ -4,6 +4,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.stjy.baselib.base.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
+import com.stjy.baselib.utils.StatusBarUtils
 
 @Route(path = ARouterHub.PERSON_FRAGMENT, name = "个人中心块界面")
 class PersonFragment : BaseFragment() {
@@ -12,7 +13,8 @@ class PersonFragment : BaseFragment() {
     }
 
     override fun initView(contentView: View?) {
-
+        setBarTitle("个人中心")
+        StatusBarUtils.setStatusBarColor(fakeStatusBar)
     }
 
     override fun initData() {
@@ -23,4 +25,7 @@ class PersonFragment : BaseFragment() {
 
     }
 
+    override fun isShowBacking(): Boolean {
+        return false
+    }
 }
