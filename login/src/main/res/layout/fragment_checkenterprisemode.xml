@@ -8,12 +8,14 @@
     android:orientation="vertical"
     tools:context=".login.LoginFragment">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar_wihte" />
 
     <RelativeLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/rvSelectenterprise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -50,9 +52,11 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_margin="10dp"
         android:id="@+id/rvCreateenterprise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -60,7 +64,7 @@
             android:id="@+id/ivCreateenterprise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/login_createenterprise"/>
+            android:src="@mipmap/login_createenterprise" />
 
         <TextView
             android:id="@+id/tvCreateenterpriseTtitle"

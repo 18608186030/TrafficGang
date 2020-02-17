@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.GsonUtils
 import com.stjy.baselib.base.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
+import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.maillist.adpater.MailListAdapter
 import com.stjy.maillist.modle.MailListResp
 import com.stjy.maillist.modle.SecondListBean
@@ -20,7 +21,7 @@ class MailListFragment : BaseFragment() {
 
     override fun initView(contentView: View?) {
         setBarTitle("通讯录")
-
+        StatusBarUtils.setStatusBarColor(fakeStatusBar)
         recyclerview.layoutManager = LinearLayoutManager(mContext)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
         var adapter = MailListAdapter(ArrayList())
@@ -78,4 +79,5 @@ class MailListFragment : BaseFragment() {
     override fun isShowBacking(): Boolean {
         return false
     }
+
 }

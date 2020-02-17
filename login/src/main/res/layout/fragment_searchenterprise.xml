@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".login.LoginFragment">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar_wihte" />
 
     <LinearLayout
         android:layout_width="match_parent"
