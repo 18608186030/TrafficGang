@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvvm.BaseVMFragment
 import com.stjy.baselib.utils.ARouterHub
+import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
 import com.stjy.login.register.adapter.TimeLineListAdapter
@@ -29,7 +30,7 @@ class AuditDetailsFragment : BaseVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("企业注册信息审核详情")
-
+        StatusBarUtils.setStatusBarColor(fakeStatusBar)
         recyclerview.layoutManager = LinearLayoutManager(mContext)
         var mVideoCourseAdapter = TimeLineListAdapter(ArrayList())
         recyclerview.adapter = mVideoCourseAdapter

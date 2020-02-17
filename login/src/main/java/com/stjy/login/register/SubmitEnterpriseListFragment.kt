@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.SizeUtils
 import com.stjy.baselib.base.mvvm.BaseVMFragment
 import com.stjy.baselib.utils.ARouterHub
+import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.baselib.wigiet.divider.HorizontalDividerItemDecoration
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
@@ -31,6 +32,7 @@ class SubmitEnterpriseListFragment : BaseVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("提交信息列表")
+        StatusBarUtils.setStatusBarColor(fakeStatusBar)
         recyclerview.layoutManager = LinearLayoutManager(mContext)
         recyclerview.addItemDecoration(HorizontalDividerItemDecoration.Builder(mContext)
                 .colorResId(R.color.colorPrimary)

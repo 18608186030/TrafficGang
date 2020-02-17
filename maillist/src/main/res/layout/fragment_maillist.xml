@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MailListFragment">
 
-    <include layout="@layout/fake_status_bar_view" />
+    <include layout="@layout/fake_status_bar_view_wihte" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

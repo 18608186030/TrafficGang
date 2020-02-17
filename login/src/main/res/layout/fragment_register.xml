@@ -8,12 +8,14 @@
     android:orientation="vertical"
     tools:context=".login.LoginFragment">
 
-    <include layout="@layout/toolbar_wihte" />
+    <include layout="@layout/fake_status_bar_view_wihte" />
 
+    <include layout="@layout/toolbar_wihte" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:orientation="vertical"
         android:paddingLeft="15dp"

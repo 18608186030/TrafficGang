@@ -5,6 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvvm.BaseVMFragment
 import com.stjy.baselib.utils.ARouterHub
+import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -27,6 +28,7 @@ class RegisterFragment : BaseVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("注册")
+        StatusBarUtils.setStatusBarColor(fakeStatusBar)
     }
 
     override fun initData() {
