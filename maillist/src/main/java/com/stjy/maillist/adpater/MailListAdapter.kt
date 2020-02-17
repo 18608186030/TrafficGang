@@ -45,4 +45,21 @@ class MailListAdapter internal constructor(data: List<MultiItemEntity>) : BaseMu
             }
         }
     }
+
+    /**
+     * 处理课程数据
+     *
+     * @param outlineList
+     * @return
+     */
+    fun generateData(mailList: List<FirstListBean>?): List<MultiItemEntity> {
+        val res = ArrayList<MultiItemEntity>()
+        mailList?.forEach { firstListBean ->
+            res.add(firstListBean)
+            firstListBean.list?.forEach {
+                firstListBean.addSubItem(it)
+            }
+        }
+        return res
+    }
 }

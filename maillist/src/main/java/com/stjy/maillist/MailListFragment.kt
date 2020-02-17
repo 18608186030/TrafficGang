@@ -5,11 +5,9 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.GsonUtils
-import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.stjy.baselib.base.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.maillist.adpater.MailListAdapter
-import com.stjy.maillist.modle.FirstListBean
 import com.stjy.maillist.modle.MailListResp
 import com.stjy.maillist.modle.SecondListBean
 import kotlinx.android.synthetic.main.fragment_maillist.*
@@ -25,8 +23,8 @@ class MailListFragment : BaseFragment() {
 
         recyclerview.layoutManager = LinearLayoutManager(mContext)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
-        var mVideoCourseAdapter = MailListAdapter(ArrayList())
-        recyclerview.adapter = mVideoCourseAdapter
+        var adapter = MailListAdapter(ArrayList())
+        recyclerview.adapter = adapter
         var a = """
             {
                 "list":[
@@ -57,9 +55,8 @@ class MailListFragment : BaseFragment() {
         """
 
         var mailListRes = GsonUtils.fromJson<MailListResp>(a, MailListResp::class.java)
-        //数据分组
-        mVideoCourseAdapter.setNewData(generateData((mailListRes.list)))
-        mVideoCourseAdapter.setOnItemClickListener { adapter, view, position ->
+        adapter.setNewData(adapter.generateData((mailListRes.list)))
+        adapter.setOnItemClickListener { adapter, view, position ->
             run {
                 var itme = adapter.data[position] as SecondListBean
                 ARouter.getInstance()
@@ -69,24 +66,6 @@ class MailListFragment : BaseFragment() {
             }
         }
     }
-
-    /**
-     * 处理课程数据
-     *
-     * @param outlineList
-     * @return
-     */
-    private fun generateData(mailList: List<FirstListBean>?): List<MultiItemEntity> {
-        val res = ArrayList<MultiItemEntity>()
-        mailList?.forEach { firstListBean ->
-            res.add(firstListBean)
-            firstListBean.list?.forEach {
-                firstListBean.addSubItem(it)
-            }
-        }
-        return res
-    }
-
 
     override fun initData() {
 
