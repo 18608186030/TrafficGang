@@ -117,6 +117,19 @@ interface ARouterHub {
          */
         const val PERSON_FRAGMENT = PERSON + "PersonFragment"
 
+        /**
+         * 我的档案主页
+         */
+        const val ARCHIVE_ACTIVITY = PERSON + "ArchiveActivity"
 
+        /**
+         * 我的档案主页
+         */
+        const val ARCHIVE_FRAGMENT = PERSON + "ArchiveFragment"
+
+        /**
+         * 个人信息界面
+         */
+        const val PERSON_INFO_FRAGMENT = PERSON + "PersonInfoFragment"
     }
 }

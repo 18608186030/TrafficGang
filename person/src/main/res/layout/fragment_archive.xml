@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/llt_padding_10dp"
+    android:background="@color/gray5"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/llt_padding_10dp"
+        android:layout_marginRight="@dimen/llt_padding_10dp"
+        android:background="@drawable/radius10_bg_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/llt_padding_10dp"
+        android:paddingTop="@dimen/llt_padding_15dp"
+        android:paddingRight="@dimen/llt_padding_10dp"
+        android:paddingBottom="@dimen/llt_padding_15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基本信息"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_person_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:gravity="center"
+                android:text="个人信息" />
+
+            <TextView
+                android:id="@+id/tv_work_experience"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_work_experience"
+                android:gravity="center"
+                android:text="从业经历" />
+
+            <TextView
+                android:id="@+id/tv_identity_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_identity_card"
+                android:gravity="center"
+                android:text="身份证" />
+
+            <TextView
+                android:id="@+id/tv_drive_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_drive_card"
+                android:gravity="center"
+                android:text="驾驶证" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_industry_certificate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/llt_padding_10dp"
+            android:drawableTop="@mipmap/archive_drive_card"
+            android:text="从业资格证" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/llt_padding_10dp"
+        android:layout_marginRight="@dimen/llt_padding_10dp"
+        android:background="@drawable/radius10_bg_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/llt_padding_10dp"
+        android:paddingTop="@dimen/llt_padding_15dp"
+        android:paddingRight="@dimen/llt_padding_10dp"
+        android:paddingBottom="@dimen/llt_padding_15dp"
+        android:layout_marginTop="@dimen/llt_padding_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="教育记录"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv__train"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:gravity="center"
+                android:text="岗前培训" />
+
+            <TextView
+                android:id="@+id/tv_safe_education"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:gravity="center"
+                android:text="安全教育" />
+
+            <TextView
+                android:id="@+id/tv_continue_education"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:gravity="center"
+                android:text="继续教育" />
+
+            <TextView
+                android:id="@+id/tv_record_education"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:gravity="center"
+                android:text="记分教育" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/llt_padding_10dp"
+        android:layout_marginRight="@dimen/llt_padding_10dp"
+        android:background="@drawable/radius10_bg_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/llt_padding_10dp"
+        android:paddingTop="@dimen/llt_padding_15dp"
+        android:paddingRight="@dimen/llt_padding_10dp"
+        android:paddingBottom="@dimen/llt_padding_15dp"
+        android:layout_marginTop="@dimen/llt_padding_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安全驾驶"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_unrule_record"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:gravity="center"
+                android:text="违规记录" />
+
+            <TextView
+                android:id="@+id/tv_accident_record"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:gravity="center"
+                android:text="事故记录" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:text=""
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/archive_person_info"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
