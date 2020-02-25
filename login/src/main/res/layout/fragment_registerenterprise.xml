@@ -9,6 +9,7 @@
     tools:context=".login.LoginFragment">
 
     <include layout="@layout/fake_status_bar_view_wihte" />
+
     <include layout="@layout/toolbar_wihte" />
 
     <ScrollView
@@ -123,19 +124,29 @@
                 android:padding="15dp"
                 android:text="营业执照" />
 
-            <LinearLayout
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="15dp">
 
                 <ImageView
+                    android:id="@+id/ivBusinessLicense"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_height="145dp"
                     android:scaleType="centerCrop"
                     android:src="@mipmap/yingyezhizhao" />
-            </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivBusinessLicenseDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/ivBusinessLicense"
+                    android:layout_alignEnd="@+id/ivBusinessLicense"
+                    android:src="@mipmap/ic_delete"
+                    android:visibility="gone" />
+            </RelativeLayout>
 
             <TextView
                 style="@style/TextViewStyle"
