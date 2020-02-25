@@ -1,4 +1,4 @@
-package com.stjy.person
+package com.stjy.person.archive
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -6,16 +6,26 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
-import kotlinx.android.synthetic.main.fragment_person.*
+import com.stjy.person.R
 
-@Route(path = ARouterHub.PERSON_FRAGMENT, name = "个人中心块界面")
-class PersonFragment : BaseFragment() {
+@Route(path = ARouterHub.PERSON_INFO_FRAGMENT, name = "个人信息界面")
+class PersonInfoFragment : BaseFragment() {
+
+    companion object {
+        @JvmStatic
+        fun newInstance(): PersonInfoFragment {
+            return ARouter.getInstance()
+                    .build(ARouterHub.PERSON_INFO_FRAGMENT)
+                    .navigation() as PersonInfoFragment
+        }
+    }
+
     override fun getLayoutID(): Int {
-        return R.layout.fragment_person
+        return R.layout.fragment_person_info
     }
 
     override fun initView(contentView: View?) {
-        setBarTitle("个人中心")
+        setBarTitle("个人信息")
         StatusBarUtils.setStatusBarColor(fakeStatusBar)
     }
 
@@ -24,11 +34,7 @@ class PersonFragment : BaseFragment() {
     }
 
     override fun initListener() {
-        tv_my_archive.setOnClickListener {
-            ARouter.getInstance()
-                .build(ARouterHub.ARCHIVE_ACTIVITY)
-                .navigation(mContext)
-        }
+
     }
 
     override fun isShowBacking(): Boolean {

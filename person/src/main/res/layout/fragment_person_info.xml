@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".PersonFragment">
+
+    <include layout="@layout/fake_status_bar_view_wihte" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="姓名" />
+
+                <TextView
+                    android:id="@+id/person_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="张三"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="年龄" />
+
+                <TextView
+                    android:id="@+id/person_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="38"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="性别" />
+
+                <TextView
+                    android:id="@+id/person_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="男"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="生日" />
+
+                <TextView
+                    android:id="@+id/person_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint=""
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="手机号码" />
+
+                <TextView
+                    android:id="@+id/person_phone_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint=""
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="民族" />
+
+                <TextView
+                    android:id="@+id/person_minzu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="汉"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="政治面貌" />
+
+                <TextView
+                    android:id="@+id/person_zhengzhimm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="群众"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="所在区域" />
+
+                <TextView
+                    android:id="@+id/person_live_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="成都市"
+                    android:textColor="@color/gray"
+                    style="@style/person_info_item_style"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="详细地址" />
+
+                <TextView
+                    android:id="@+id/person_detailed_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="高新区"
+                    android:textColor="@color/gray"
+                    style="@style/person_info_item_style"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorPrimary"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="教育程度" />
+
+                <TextView
+                    style="@style/person_info_item_style"
+                    android:id="@+id/person_education"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint=""
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="紧急联系人" />
+
+                <TextView
+                    android:id="@+id/person_emergency_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint=""
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/llt_padding_10dp"
+                android:layout_marginTop="1dp">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="紧急联系人电话" />
+
+                <TextView
+                    android:id="@+id/person_emergency_contact_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint=""
+                    android:textColor="@color/gray"
+                    android:layout_marginTop="1dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
