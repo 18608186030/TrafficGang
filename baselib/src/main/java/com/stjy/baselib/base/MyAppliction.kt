@@ -15,7 +15,6 @@ import com.stjy.baselib.common.LoginUser
 import com.stjy.baselib.net.HttpConstant
 import com.stjy.baselib.net.interceptor.TokenInterceptor
 import com.stjy.baselib.utils.OSSUploadUtils
-import com.stjy.baselib.utils.VODUploadUtils
 import com.stjy.baselib.wigiet.refreshheader.material.MaterialHeader
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.model.HttpHeaders
@@ -102,7 +101,6 @@ class MyAppliction : Application() {
     private fun initOther() {
         //初始化阿里云OSS上传
         OSSUploadUtils.init(this)
-        VODUploadUtils.init(this)
 
         //Fragmentation 初始化
         Fragmentation.builder()

@@ -41,6 +41,7 @@ public class OSSUploadUtils {
     private static Context mContext;
 
     private OSSUploadUtils() {
+
     }
 
     public static void init(Context context) {

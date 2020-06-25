@@ -55,10 +55,8 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
                 mDivider.setBounds(left, child.getTop(), right, bottom);
                 mDivider.draw(c);
             }
-
         }
     }
-
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {

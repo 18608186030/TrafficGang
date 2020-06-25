@@ -156,5 +156,4 @@ public class ActivityManager {
             e.printStackTrace();
         }
     }
-
 }

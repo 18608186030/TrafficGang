@@ -15,8 +15,6 @@ import com.stjy.baselib.wigiet.photopreview.fragment.PhotoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 /**
  * @author acb
  */
