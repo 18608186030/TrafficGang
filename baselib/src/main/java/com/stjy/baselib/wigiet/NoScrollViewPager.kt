@@ -11,22 +11,16 @@ import android.view.MotionEvent
  */
 class NoScrollViewPager : ViewPager {
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
-    override fun onTouchEvent(arg0: MotionEvent): Boolean {
-        return false
-    }
+    override fun onTouchEvent(arg0: MotionEvent): Boolean =false
 
     /**
      * 不拦截事件
      */
-    override fun onInterceptTouchEvent(arg0: MotionEvent): Boolean {
-        return false
-    }
+    override fun onInterceptTouchEvent(arg0: MotionEvent): Boolean =false
 
-    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        return super.dispatchTouchEvent(ev)
-    }
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean =super.dispatchTouchEvent(ev)
 }

@@ -252,41 +252,4 @@ public class LoginUser {
     public String getLastLoginAccount() {
         return SPUtils.getInstance(USER_LOGIN).getString("user_lastloginaccount", "");
     }
-
-    /**
-     * 获取选择城市名称
-     *
-     * @return 城市名称
-     */
-    public String getCityName() {
-        return SPUtils.getInstance(USER_LOCATION).getString(AppConstants.CITY_NAME, "全部");
-    }
-
-    /**
-     * 获取选择城市id
-     *
-     * @return 城市id
-     */
-    public int getCityId() {
-        return SPUtils.getInstance(USER_LOCATION).getInt(AppConstants.CITY_ID, 0);
-    }
-
-    /**
-     * 设置选择城市名称
-     *
-     * @return 城市名称
-     */
-    public void setCityName(String cityName) {
-        SPUtils.getInstance(USER_LOCATION).put(AppConstants.CITY_NAME, cityName);
-    }
-
-    /**
-     * 设置选择城市id
-     *
-     * @return 城市id
-     */
-    public void setCityId(int cityId) {
-        SPUtils.getInstance(USER_LOCATION).put(AppConstants.CITY_ID, cityId);
-    }
-
 }

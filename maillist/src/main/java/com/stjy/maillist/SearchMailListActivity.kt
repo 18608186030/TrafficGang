@@ -30,7 +30,7 @@ class SearchMailListActivity : BaseVMActivity<MailListViewModel>() {
 
     override fun initView() {
         setBarTitle(title)
-        recyclerview.layoutManager = LinearLayoutManager(mContext)
+        recyclerview.layoutManager = LinearLayoutManager(this)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
         var adapter = MailListAdapter(ArrayList())
         recyclerview.adapter = adapter
@@ -66,13 +66,11 @@ class SearchMailListActivity : BaseVMActivity<MailListViewModel>() {
         var mailListRes = GsonUtils.fromJson<MailListResp>(a, MailListResp::class.java)
         adapter.setNewData(adapter.generateData((mailListRes.list)))
         adapter.setOnItemClickListener { adapter, view, position ->
-            run {
                 var itme = adapter.data[position] as SecondListBean
                 ARouter.getInstance()
                         .build(ARouterHub.MAILLIST_SEARCHMAILLIST_ACTIVITY)
                         .withString("title", itme.title)
-                        .navigation(mContext)
-            }
+                        .navigation(this)
         }
     }
 

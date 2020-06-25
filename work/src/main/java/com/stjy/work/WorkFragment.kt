@@ -3,7 +3,7 @@ package com.stjy.work
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.stjy.baselib.base.BaseFragment
+import com.stjy.baselib.base.mvvm.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import kotlinx.android.synthetic.main.fragment_work.*
 
@@ -26,7 +26,7 @@ class WorkFragment : BaseFragment() {
         login.setOnClickListener {
             ARouter.getInstance()
                     .build(ARouterHub.LOGIN_ACTIVITY)
-                    .navigation(mContext)
+                    .navigation(mActivity)
         }
     }
 }

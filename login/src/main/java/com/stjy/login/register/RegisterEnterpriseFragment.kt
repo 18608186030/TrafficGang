@@ -37,7 +37,7 @@ class RegisterEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
     override fun initView(contentView: View?) {
         setBarTitle("注册企业")
         setBarRightText("保存")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar)
+        StatusBarUtils.setStatusBarColor(fakeStatusBar())
         initBusinessLicense()
     }
 
@@ -55,7 +55,7 @@ class RegisterEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
      */
     private fun initBusinessLicense() {
         if (businessLicenseUrl != null) {
-            Glide.with(mContext).load(businessLicenseUrl).into(ivBusinessLicense)
+            Glide.with(mActivity).load(businessLicenseUrl).into(ivBusinessLicense)
             ivBusinessLicense.setOnClickListener {
                 if (businessLicenseUrl.isNullOrEmpty()) {
                     requestPermission(object : PermissionListener {
@@ -66,7 +66,7 @@ class RegisterEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
                         }
                     }, MatisseUtils.PERMISSION.toString())
                 } else {
-                    PhotoPreviewUtils.start(mContext, 0, arrayListOf(businessLicenseUrl))
+                    PhotoPreviewUtils.start(mActivity, 0, arrayListOf(businessLicenseUrl))
                 }
             }
             ivBusinessLicenseDelete.setOnClickListener {
@@ -84,14 +84,14 @@ class RegisterEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
         pop()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             val multipleResult = Matisse.obtainPathResult(data)
             val imagePath: String? = multipleResult[0]
             when (requestCode) {
                 1100 -> {
-                    Glide.with(mContext).load(imagePath).into(ivBusinessLicense)
+                    Glide.with(mActivity).load(imagePath).into(ivBusinessLicense)
                     ivBusinessLicenseDelete.visibility = View.VISIBLE
                 }
 
@@ -102,4 +102,5 @@ class RegisterEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
             //uploadImage(imagePath, requestCode)
         }
     }
+
 }

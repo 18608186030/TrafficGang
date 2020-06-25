@@ -1,4 +1,4 @@
-package com.stjy.baselib.base;
+package com.stjy.baselib.base.mvvm;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

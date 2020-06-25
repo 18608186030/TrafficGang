@@ -3,7 +3,7 @@ package com.stjy.person
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.stjy.baselib.base.BaseFragment
+import com.stjy.baselib.base.mvvm.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
 import kotlinx.android.synthetic.main.fragment_person.*
@@ -16,7 +16,7 @@ class PersonFragment : BaseFragment() {
 
     override fun initView(contentView: View?) {
         setBarTitle("个人中心")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar)
+        StatusBarUtils.setStatusBarColor(fakeStatusBar())
     }
 
     override fun initData() {
@@ -27,7 +27,7 @@ class PersonFragment : BaseFragment() {
         tv_my_archive.setOnClickListener {
             ARouter.getInstance()
                 .build(ARouterHub.ARCHIVE_ACTIVITY)
-                .navigation(mContext)
+                .navigation(mActivity)
         }
     }
 

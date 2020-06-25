@@ -28,7 +28,7 @@ class CheckEnterpriseModeFragment : BaseVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("选择或创建企业")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar)
+        StatusBarUtils.setStatusBarColor(fakeStatusBar())
     }
 
     override fun initData() {

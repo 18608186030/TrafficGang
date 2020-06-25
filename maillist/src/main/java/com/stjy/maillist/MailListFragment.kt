@@ -5,7 +5,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.GsonUtils
-import com.stjy.baselib.base.BaseFragment
+import com.stjy.baselib.base.mvvm.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.maillist.adpater.MailListAdapter
@@ -21,8 +21,8 @@ class MailListFragment : BaseFragment() {
 
     override fun initView(contentView: View?) {
         setBarTitle("通讯录")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar)
-        recyclerview.layoutManager = LinearLayoutManager(mContext)
+        StatusBarUtils.setStatusBarColor(fakeStatusBar())
+        recyclerview.layoutManager = LinearLayoutManager(mActivity)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
         var adapter = MailListAdapter(ArrayList())
         recyclerview.adapter = adapter
@@ -63,7 +63,7 @@ class MailListFragment : BaseFragment() {
                 ARouter.getInstance()
                         .build(ARouterHub.MAILLIST_SEARCHMAILLIST_ACTIVITY)
                         .withString("title", itme.title)
-                        .navigation(mContext)
+                        .navigation(mActivity)
             }
         }
     }

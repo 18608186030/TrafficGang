@@ -30,8 +30,8 @@ class AuditDetailsFragment : BaseVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("企业注册信息审核详情")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar)
-        recyclerview.layoutManager = LinearLayoutManager(mContext)
+        StatusBarUtils.setStatusBarColor(fakeStatusBar())
+        recyclerview.layoutManager = LinearLayoutManager(mActivity)
         var mVideoCourseAdapter = TimeLineListAdapter(ArrayList())
         recyclerview.adapter = mVideoCourseAdapter
         var datas = arrayListOf("成都科技有限公司", "成都谛听科技股份有限公司", "成都哇哈哈科技有限公司", "成都王老吉科技有限公司")

@@ -28,7 +28,7 @@ class RegisterFragment : BaseVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("注册")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar)
+        StatusBarUtils.setStatusBarColor(fakeStatusBar())
     }
 
     override fun initData() {

@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.stjy.baselib.base.BaseActivity
-import com.stjy.baselib.base.FragmentSubAdapter
+import com.stjy.baselib.base.mvvm.BaseActivity
+import com.stjy.baselib.base.mvvm.FragmentSubAdapter
 import com.stjy.baselib.utils.ARouterHub
-import com.stjy.baselib.wigiet.bottomview.BotBean
+import com.stjy.baselib.wigiet.BotBean
+import com.stjy.baselib.wigiet.BottomView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -29,11 +30,12 @@ class MainActivity : BaseActivity() {
         itemIcon.add(BotBean("工作 ", R.mipmap.ic_home_normal, R.mipmap.ic_home_pressed))
         itemIcon.add(BotBean("通讯录", R.mipmap.ic_home_normal, R.mipmap.ic_home_pressed))
         itemIcon.add(BotBean("个人中心", R.mipmap.ic_home_normal, R.mipmap.ic_home_pressed))
-        vp_content.adapter = FragmentSubAdapter(supportFragmentManager,fragments)
+        vp_content.adapter = FragmentSubAdapter(supportFragmentManager, fragments)
         vp_content.offscreenPageLimit = fragments.size
-        bottom.setViewPager(vp_content, itemIcon) {
-
-        }
+        bottom.setViewPager(vp_content, itemIcon,object : BottomView.BottomPageChangeListener {
+            override fun onBottomPageChangeListener(position: Int) {
+            }
+        })
     }
 
     override fun initData() {

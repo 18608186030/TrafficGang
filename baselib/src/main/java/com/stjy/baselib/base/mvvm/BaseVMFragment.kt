@@ -3,7 +3,6 @@ package com.stjy.baselib.base.mvvm
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
-import com.stjy.baselib.base.BaseFragment
 import obtainViewModel
 
 /**
@@ -21,39 +20,21 @@ abstract class BaseVMFragment<V : BaseViewModel> : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
     }
 
-    private fun initViewModel(): V {
-        return obtainViewModel(viewModelClass())
-    }
+    private fun initViewModel(): V = obtainViewModel(viewModelClass())
 
     private fun observeEvent(viewModel: V) {
         viewModel.setLifecycleOwner(this)
         viewModel.actionLiveData.observe(this,
-                Observer<BaseActionEvent> { actionEvent ->
+                Observer { actionEvent ->
                     when (actionEvent?.action) {
-                        BaseActionEvent.START_LOADING -> {
-                            startLoading()
-                        }
-                        BaseActionEvent.STOP_LOADING -> {
-                            stopLoading()
-                        }
-                        BaseActionEvent.START_LOADING_DIALOG -> {
-                            startLoadingDialog()
-                        }
-                        BaseActionEvent.STOP_LOADING_DIALOG -> {
-                            stopLoadingDialog()
-                        }
-                        BaseActionEvent.SHOW_TOAST -> {
-                            ToastUtils.showShort(actionEvent.message)
-                        }
-                        BaseActionEvent.SHOW_ERROR -> {
-                            showError(actionEvent.code, actionEvent.message)
-                        }
-                        BaseActionEvent.FINISH_REFRESH -> {
-                            finishRefresh()
-                        }
-                        BaseActionEvent.FINISH_LOAD_MORE -> {
-                            finishLoadMore()
-                        }
+                        BaseActionEvent.START_LOADING -> startLoading()
+                        BaseActionEvent.STOP_LOADING -> stopLoading()
+                        BaseActionEvent.START_LOADING_DIALOG ->  startLoadingDialog()
+                        BaseActionEvent.STOP_LOADING_DIALOG -> stopLoadingDialog()
+                        BaseActionEvent.SHOW_TOAST -> ToastUtils.showShort(actionEvent.message)
+                        BaseActionEvent.SHOW_ERROR -> showError(actionEvent.code, actionEvent.message)
+                        BaseActionEvent.FINISH_REFRESH -> finishRefresh()
+                        BaseActionEvent.FINISH_LOAD_MORE ->  finishLoadMore()
                         else -> {
                         }
                     }
@@ -64,13 +45,9 @@ abstract class BaseVMFragment<V : BaseViewModel> : BaseFragment() {
         mStateView.showRetry()
     }
 
-    open fun finishRefresh() {
+    open fun finishRefresh() {}
 
-    }
-
-    open fun finishLoadMore() {
-
-    }
+    open fun finishLoadMore() {}
 
     abstract fun viewModelClass(): Class<V>
 }

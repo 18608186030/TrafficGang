@@ -1,4 +1,4 @@
-package com.stjy.baselib.base
+package com.stjy.baselib.base.mvvm
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

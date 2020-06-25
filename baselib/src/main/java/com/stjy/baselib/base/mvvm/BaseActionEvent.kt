@@ -15,5 +15,4 @@ open class BaseActionEvent(val action: Int) {
         const val FINISH_REFRESH = 7
         const val FINISH_LOAD_MORE = 8
     }
-
 }

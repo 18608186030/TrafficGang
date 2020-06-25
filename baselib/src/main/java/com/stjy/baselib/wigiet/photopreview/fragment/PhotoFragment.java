@@ -22,7 +22,7 @@ import com.github.chrisbanes.photoview.PhotoView;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.stjy.baselib.R;
-import com.stjy.baselib.base.BaseFragment;
+import com.stjy.baselib.base.mvvm.BaseFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -58,12 +58,12 @@ public class PhotoFragment extends BaseFragment {
         imageUrl = arguments.getString("imageUrl");
         RequestOptions options = new RequestOptions();
         options.placeholder(R.drawable.photo_load_error_icon);
-        Glide.with(getBaseActivity()).load(imageUrl).apply(options).into(photoView);
+        Glide.with(mActivity).load(imageUrl).apply(options).into(photoView);
     }
 
     @Override
     protected void initListener() {
-        photoView.setOnClickListener(v -> getBaseActivity().finish());
+        photoView.setOnClickListener(v -> mActivity.finish());
 
         photoView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -109,7 +109,7 @@ public class PhotoFragment extends BaseFragment {
     }
 
     public void savePictureToLocal() {
-        Glide.with(getBaseActivity())
+        Glide.with(mActivity)
                 .asBitmap()
                 .load(imageUrl)
                 .into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
@@ -122,7 +122,7 @@ public class PhotoFragment extends BaseFragment {
 
                     @Override
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                        if (saveImageToGallery(mContext, resource)) {
+                        if (saveImageToGallery(_mActivity, resource)) {
                             ToastUtils.showShort("保存成功");
                         } else {
                             ToastUtils.showShort("保存失败");

@@ -1,7 +1,7 @@
 package com.stjy.baselib.net.interceptor;
 
 import com.blankj.utilcode.util.GsonUtils;
-import com.stjy.baselib.event.RenewLoginEvent;
+import com.stjy.baselib.event.LoginEvent;
 import com.stjy.baselib.net.HttpParamContact;
 import com.stjy.baselib.net.request.BaseApiResult;
 import com.stjy.baselib.utils.EventBusUtils;
@@ -55,6 +55,6 @@ public class TokenInterceptor extends BaseExpiredInterceptor {
     }
 
     private void refreshLogin() {
-        EventBusUtils.post(new RenewLoginEvent());
+        EventBusUtils.post(new LoginEvent());
     }
 }
