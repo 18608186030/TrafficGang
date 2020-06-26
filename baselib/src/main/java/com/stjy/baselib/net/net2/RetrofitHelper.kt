@@ -1,7 +1,7 @@
-package com.stjy.baselib.net2
+package com.stjy.baselib.net.net2
 
-import com.stjy.baselib.net.HttpConstant
-import com.stjy.baselib.net2.converterfactory.LenientGsonConverterFactory
+import com.stjy.baselib.net.AppConfig
+import com.stjy.baselib.net.net2.converterfactory.LenientGsonConverterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -31,7 +31,7 @@ object RetrofitHelper {
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .baseUrl(HttpConstant.BASE_URL).build()
+                    .baseUrl(AppConfig.BASE_URL).build()
         }
 
     fun <T> create(service: Class<T>?): T {

@@ -16,13 +16,12 @@ import com.alibaba.sdk.android.oss.model.ObjectMetadata;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.blankj.utilcode.util.ThreadUtils;
-import com.stjy.baselib.common.AppConstants;
 import com.stjy.baselib.common.LoginUser;
 import com.stjy.baselib.model.UserBean;
-import com.stjy.baselib.net.HttpConstant;
-import com.stjy.baselib.net.HttpManager;
-import com.stjy.baselib.net.callback.OSSCallback;
-import com.stjy.baselib.net.request.BaseGetRequest;
+import com.stjy.baselib.net.AppConfig;
+import com.stjy.baselib.net.net1.HttpManager;
+import com.stjy.baselib.net.net1.callback.OSSCallback;
+import com.stjy.baselib.net.net1.request.BaseGetRequest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -76,16 +75,16 @@ public class OSSUploadUtils {
      * @return
      */
     private static void initOSSClient() {
-        OSSAuthCredentialsProvider credentialProvider = new OSSAuthCredentialsProvider(HttpConstant.STS_SERVER_URL);
+        OSSAuthCredentialsProvider credentialProvider = new OSSAuthCredentialsProvider(AppConfig.STS_SERVER_URL);
         ClientConfiguration conf = new ClientConfiguration();
         // 失败后最大重试次数，默认2次
         conf.setMaxErrorRetry(0);
-        if (AppConstants.isDebug) {
+        if (AppConfig.isDebug) {
             OSSLog.enableLog();
         }
         ThreadUtils.getSinglePool()
                 .submit(() -> {
-                    sOSSClient = new OSSClient(mContext, HttpConstant.OSS_ENDPOINT, credentialProvider);
+                    sOSSClient = new OSSClient(mContext, AppConfig.OSS_ENDPOINT, credentialProvider);
                 });
     }
 
@@ -294,7 +293,7 @@ public class OSSUploadUtils {
     }
 
     public BaseGetRequest getFileUrl(String objectKey) {
-        return HttpManager.get(HttpConstant.OSS_FILE_URL)
+        return HttpManager.get(AppConfig.OSS_FILE_URL)
                 .params("objectKey", objectKey);
     }
 

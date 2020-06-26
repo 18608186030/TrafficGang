@@ -1,7 +1,6 @@
-package com.stjy.baselib.net2.api
+package com.stjy.baselib.net.net2.api
 
-import com.stjy.baselib.net2.api.BaseApi
-import com.stjy.baselib.net2.resp.BaseRespListData
+import com.stjy.baselib.net.net2.resp.BaseRespListData
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.POST

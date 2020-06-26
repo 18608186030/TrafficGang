@@ -10,10 +10,9 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.stjy.baselib.R
-import com.stjy.baselib.common.AppConstants
 import com.stjy.baselib.common.LoginUser
-import com.stjy.baselib.net.HttpConstant
-import com.stjy.baselib.net.interceptor.TokenInterceptor
+import com.stjy.baselib.net.AppConfig
+import com.stjy.baselib.net.net1.interceptor.TokenInterceptor
 import com.stjy.baselib.utils.OSSUploadUtils
 import com.stjy.baselib.wigiet.refreshheader.material.MaterialHeader
 import com.zhouyou.http.EasyHttp
@@ -42,7 +41,7 @@ class MyAppliction : Application() {
 
     private fun initLog() {
         LogUtils.getConfig()
-                .setLogSwitch(AppConstants.isDebug)
+                .setLogSwitch(AppConfig.isDebug)
                 .setConsoleSwitch(true)
                 .setBorderSwitch(false).globalTag = "TrafficGang"
     }
@@ -58,9 +57,9 @@ class MyAppliction : Application() {
             httpHeaders.put("token", token)
         }
         EasyHttp.getInstance()
-                .debug(" http_log", AppConstants.isDebug)
+                .debug(" http_log", AppConfig.isDebug)
                 //设置全局URL
-                .setBaseUrl(HttpConstant.BASE_URL)
+                .setBaseUrl(AppConfig.BASE_URL)
                 //设置全局公共头
                 .addCommonHeaders(httpHeaders)
                 //设置超时时间
@@ -75,7 +74,7 @@ class MyAppliction : Application() {
 
     private fun initARouter() {
         ARouter.init(this) // 尽可能早，推荐在Application中初始化
-        if (AppConstants.isDebug) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+        if (AppConfig.isDebug) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog()     // 打印日志
             ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
@@ -105,7 +104,7 @@ class MyAppliction : Application() {
         //Fragmentation 初始化
         Fragmentation.builder()
                 .stackViewMode(Fragmentation.NONE)
-                .debug(AppConstants.isDebug)
+                .debug(AppConfig.isDebug)
                 .install()
         //屏幕适配
         AutoSizeConfig.getInstance().isExcludeFontScale = true

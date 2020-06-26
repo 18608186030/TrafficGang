@@ -1,4 +1,4 @@
-package com.stjy.baselib.net.request;
+package com.stjy.baselib.net.net1.request;
 
 import com.google.gson.annotations.SerializedName;
 import com.zhouyou.http.model.ApiResult;

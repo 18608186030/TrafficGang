@@ -1,4 +1,4 @@
-package com.stjy.baselib.net2.converterfactory;
+package com.stjy.baselib.net.net2.converterfactory;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;

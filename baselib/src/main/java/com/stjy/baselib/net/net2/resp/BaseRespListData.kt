@@ -1,4 +1,4 @@
-package com.stjy.baselib.net2.resp
+package com.stjy.baselib.net.net2.resp
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

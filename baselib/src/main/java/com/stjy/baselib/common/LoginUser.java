@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.stjy.baselib.model.UserBean;
+import com.stjy.baselib.net.AppConfig;
 
 
 /**
@@ -13,7 +14,7 @@ import com.stjy.baselib.model.UserBean;
  */
 public class LoginUser {
 
-    private static final String USER_JSON = AppConstants.USER_JSON;
+    private static final String USER_JSON = AppConfig.USER_JSON;
     private static final String USER_LOGIN = "USER_LOGIN";
     //上次登录的账号
     private volatile static LoginUser instance;
@@ -32,7 +33,7 @@ public class LoginUser {
      * 获取登录token
      */
     public String getToken() {
-        return SPUtils.getInstance(USER_JSON).getString(AppConstants.KEY_TOKEN, null);
+        return SPUtils.getInstance(USER_JSON).getString(AppConfig.KEY_TOKEN, null);
     }
 
     /**
@@ -40,7 +41,7 @@ public class LoginUser {
      */
     public void setToken(String token) {
         if (!TextUtils.isEmpty(token)) {
-            SPUtils.getInstance(USER_JSON).put(AppConstants.KEY_TOKEN, token);
+            SPUtils.getInstance(USER_JSON).put(AppConfig.KEY_TOKEN, token);
         }
     }
 
@@ -48,7 +49,7 @@ public class LoginUser {
      * 删除登录token
      */
     public void deleteToken() {
-        SPUtils.getInstance(USER_JSON).remove(AppConstants.KEY_TOKEN);
+        SPUtils.getInstance(USER_JSON).remove(AppConfig.KEY_TOKEN);
     }
 
     /**
@@ -57,7 +58,7 @@ public class LoginUser {
      * @return
      */
     public UserBean getUser() {
-        String userJson = SPUtils.getInstance(USER_JSON).getString(AppConstants.USER_DATA);
+        String userJson = SPUtils.getInstance(USER_JSON).getString(AppConfig.USER_DATA);
         return GsonUtils.fromJson(userJson, UserBean.class);
     }
 
@@ -68,7 +69,7 @@ public class LoginUser {
      */
     public void setUser(UserBean userJson) {
         if (userJson != null) {
-            SPUtils.getInstance(USER_JSON).put(AppConstants.USER_DATA, GsonUtils.toJson(userJson));
+            SPUtils.getInstance(USER_JSON).put(AppConfig.USER_DATA, GsonUtils.toJson(userJson));
         }
     }
 
@@ -76,7 +77,7 @@ public class LoginUser {
      * 删除登录的用户信息
      */
     public void deleteUser() {
-        SPUtils.getInstance(USER_JSON).remove(AppConstants.USER_DATA);
+        SPUtils.getInstance(USER_JSON).remove(AppConfig.USER_DATA);
 
     }
 

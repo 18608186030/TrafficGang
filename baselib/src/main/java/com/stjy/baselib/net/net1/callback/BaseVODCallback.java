@@ -1,4 +1,4 @@
-package com.stjy.baselib.net.callback;
+package com.stjy.baselib.net.net1.callback;
 
 
 import com.alibaba.sdk.android.vod.upload.model.UploadFileInfo;

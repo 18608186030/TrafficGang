@@ -1,10 +1,10 @@
-package com.stjy.baselib.net;
+package com.stjy.baselib.net.net1;
 
 
-import com.stjy.baselib.net.request.BaseDeleteRequest;
-import com.stjy.baselib.net.request.BaseGetRequest;
-import com.stjy.baselib.net.request.BasePostRequest;
-import com.stjy.baselib.net.request.BasePutRequest;
+import com.stjy.baselib.net.net1.request.BaseDeleteRequest;
+import com.stjy.baselib.net.net1.request.BaseGetRequest;
+import com.stjy.baselib.net.net1.request.BasePostRequest;
+import com.stjy.baselib.net.net1.request.BasePutRequest;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.request.DownloadRequest;
 

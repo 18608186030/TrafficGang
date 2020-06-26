@@ -1,9 +1,9 @@
-package com.stjy.baselib.net.interceptor;
+package com.stjy.baselib.net.net1.interceptor;
 
 import com.blankj.utilcode.util.GsonUtils;
 import com.stjy.baselib.event.LoginEvent;
-import com.stjy.baselib.net.HttpParamContact;
-import com.stjy.baselib.net.request.BaseApiResult;
+import com.stjy.baselib.net.net1.HttpParamContact;
+import com.stjy.baselib.net.net1.request.BaseApiResult;
 import com.stjy.baselib.utils.EventBusUtils;
 import com.zhouyou.http.interceptor.BaseExpiredInterceptor;
 
