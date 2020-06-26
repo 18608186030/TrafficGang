@@ -18,15 +18,4 @@ object AppConstants {
      * 用户数据保存
      */
     const val USER_JSON = "user_json"
-
-    /**
-     * 视频播放进度记录
-     */
-    const val PLAY_POSITION = "study_video_position"
-
-    /**
-     * 练习题当前位置
-     */
-    const val QUES_OFFSET = "ques_offset"
-    const val COURSE_EXERCISE = "course_exercise"
 }

@@ -15,10 +15,8 @@ public class LoginUser {
 
     private static final String USER_JSON = AppConstants.USER_JSON;
     private static final String USER_LOGIN = "USER_LOGIN";
-    private static final String USER_LOCATION = "USER_LOCATION";
     //上次登录的账号
     private volatile static LoginUser instance;
-
     public static LoginUser getInstance() {
         if (instance == null) {
             synchronized (LoginUser.class) {
@@ -87,21 +85,6 @@ public class LoginUser {
      */
     public void clearUser() {
         SPUtils.getInstance(USER_JSON).clear();
-    }
-
-    /**
-     * 清除用户保存的视频播放进度
-     */
-    public void clearPlayPosition() {
-        SPUtils.getInstance(AppConstants.PLAY_POSITION).clear();
-    }
-
-    /**
-     * 清除用户课程练习信息
-     */
-    public void clearCourse() {
-        SPUtils.getInstance(AppConstants.COURSE_EXERCISE).clear();
-        SPUtils.getInstance(AppConstants.QUES_OFFSET).clear();
     }
 
     /**
