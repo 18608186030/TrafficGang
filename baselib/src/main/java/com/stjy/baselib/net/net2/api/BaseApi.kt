@@ -1,6 +1,6 @@
 package com.stjy.baselib.net.net2.api
 
-import com.stjy.baselib.net.AppConfig.Companion.USER_ADMIN
+
 
 /**
  * 公共的接口
@@ -12,6 +12,6 @@ interface BaseApi {
         /**
          * 全部地区数据
          */
-        const val AREA_ALL = USER_ADMIN + "public/sys/area/all"
+        const val AREA_ALL = "api/v2/information"
     }
 }

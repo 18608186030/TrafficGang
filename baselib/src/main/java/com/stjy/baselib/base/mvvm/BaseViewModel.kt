@@ -5,6 +5,9 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
 import com.stjy360.basicres.IViewModelAction
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * @author daifalin
@@ -72,5 +75,10 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun getLifecycleOwner(): LifecycleOwner {
         return lifecycleOwner
+    }
+
+    protected fun <T> toObservable(observable: Observable<T>): Observable<T> {
+        return observable.subscribeOn(Schedulers.io())//网络请求在子线程，所以是在io线程，避免阻塞线程
+                .observeOn(AndroidSchedulers.mainThread())
     }
 }

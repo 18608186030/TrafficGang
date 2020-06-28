@@ -29,6 +29,11 @@ class PersonFragment : BaseFragment() {
                 .build(ARouterHub.ARCHIVE_ACTIVITY)
                 .navigation(mActivity)
         }
+        tvOutLogin.setOnClickListener {
+            ARouter.getInstance()
+                    .build(ARouterHub.LOGIN_ACTIVITY)
+                    .navigation(mActivity)
+        }
     }
 
     override fun isShowBacking(): Boolean {

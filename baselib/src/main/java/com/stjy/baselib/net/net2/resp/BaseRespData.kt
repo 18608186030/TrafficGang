@@ -6,4 +6,4 @@ import java.io.Serializable
 open class BaseRespData<T>(
         @SerializedName("data")
         var data: T
-) : Serializable
+) : BaseResp(),Serializable
