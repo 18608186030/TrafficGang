@@ -12,6 +12,22 @@ interface ARouterHub {
     companion object {
         //********************************app模块***************************************************
         /**
+         * 公用模块
+         */
+        private const val BASELIB = "/baselib/"
+        /**
+         * 公用浏览器
+         */
+        const val BASELIB_WEBVIEW_ACTIVITY = BASELIB + "StandardWebActivity"
+        const val BASELIB_COMMONWEB_ACTIVITY = BASELIB + "CommonWebActivity"
+
+        /**
+         * 公用浏览器
+         */
+        const val BASELIB_WEBVIEW_FRAGMENT = BASELIB + "WebFragment"
+
+        //********************************app模块***************************************************
+        /**
          * The constant APP.
          * 宿主APP组件
          */

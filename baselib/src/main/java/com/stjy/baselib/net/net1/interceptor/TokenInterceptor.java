@@ -55,6 +55,6 @@ public class TokenInterceptor extends BaseExpiredInterceptor {
     }
 
     private void refreshLogin() {
-        EventBusUtils.post(new LoginEvent());
+        EventBusUtils.post(new LoginEvent(LoginEvent.GOLOGIN));
     }
 }

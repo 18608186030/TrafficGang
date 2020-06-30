@@ -32,7 +32,7 @@ import me.yokeyword.fragmentation.SupportFragment
  */
 abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     lateinit var mActivity: BaseActivity
-    private lateinit var mView: View
+     lateinit var mView: View
     protected lateinit var mStateView: StateView
     protected var mDisposablePool = CompositeDisposable()
     private var mBarTitle: TextView? = null

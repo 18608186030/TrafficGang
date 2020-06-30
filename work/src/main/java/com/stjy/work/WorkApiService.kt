@@ -1,6 +1,6 @@
 package com.stjy.work
 
-import com.jiuwe.common.net.resp.BaseRespData
+import com.stjy.baselib.net.net2.resp.BaseRespData
 import com.stjy.baselib.net.net2.api.BaseApi
 import com.stjy.work.bean.ZiXunAllResp
 import io.reactivex.Observable

@@ -284,7 +284,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         toolbar!!.setNavigationIcon(resId)
     }
 
-    fun setNavigationOnClickListener() {
+    open fun setNavigationOnClickListener() {
         finish()
     }
 

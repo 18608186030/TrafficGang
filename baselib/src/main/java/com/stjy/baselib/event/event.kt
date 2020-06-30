@@ -6,9 +6,10 @@ package com.stjy.baselib.event
  * action=0 去登陆 包括Token失效
  * action=1 退出登陆 此时因该清楚用户数据
  */
-open class LoginEvent(val action: Int = 0) {
+open class LoginEvent(val action: Int? = null) {
     companion object {
-        const val LOGIN = 0
+        const val GOLOGIN = 0
         const val LOGINOUT = 1
+        const val LOGINOK = -1
     }
 }
