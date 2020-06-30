@@ -37,7 +37,7 @@ class WebViewActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_commonweb)
+        setContentView(R.layout.activity_webview)
     }
 
     override fun initListener() {

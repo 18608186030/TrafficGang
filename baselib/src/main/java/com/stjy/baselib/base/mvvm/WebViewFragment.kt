@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.R
 import com.stjy.baselib.utils.ARouterHub
-import kotlinx.android.synthetic.main.fragment_web.*
+import kotlinx.android.synthetic.main.fragment_webview.*
 
 
 /**
@@ -44,7 +44,7 @@ class WebViewFragment : BaseAgentWebFragment() {
         }
     }
 
-    override fun getLayoutID() = R.layout.fragment_web
+    override fun getLayoutID() = R.layout.fragment_webview
 
     override fun getAgentWebParent(): FrameLayout = fl_web
 
