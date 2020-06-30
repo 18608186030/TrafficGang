@@ -18,13 +18,8 @@ interface ARouterHub {
         /**
          * 公用浏览器
          */
-        const val BASELIB_WEBVIEW_ACTIVITY = BASELIB + "StandardWebActivity"
-        const val BASELIB_COMMONWEB_ACTIVITY = BASELIB + "CommonWebActivity"
-
-        /**
-         * 公用浏览器
-         */
-        const val BASELIB_WEBVIEW_FRAGMENT = BASELIB + "WebFragment"
+        const val BASELIB_WEBVIEW_ACTIVITY = BASELIB + "WebViewActivity"
+        const val BASELIB_WEBVIEW_FRAGMENT = BASELIB + "WebViewFragment"
 
         //********************************app模块***************************************************
         /**

@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_web.*
  * @Description
  */
 @Route(path = ARouterHub.BASELIB_WEBVIEW_FRAGMENT, name = "福利网页界面")
-class WebFragment : BaseAgentWebFragment() {
+class WebViewFragment : BaseAgentWebFragment() {
 
     @Autowired(name = URL, desc = "链接")
     lateinit var webUrl: String
@@ -84,7 +84,7 @@ class WebFragment : BaseAgentWebFragment() {
         const val SHOWWEBURLTITLE = "showWebUrlTitle"
 
         @JvmStatic
-        fun newInstance(url: String = "", title: String = "", showToobar: Boolean = true, showShare: Boolean = true, showWebUrlTitle: Boolean = true): WebFragment {
+        fun newInstance(url: String = "", title: String = "", showToobar: Boolean = true, showShare: Boolean = true, showWebUrlTitle: Boolean = true): WebViewFragment {
             return ARouter.getInstance()
                     .build("${ARouterHub.BASELIB_WEBVIEW_FRAGMENT}")
                     .withString(URL, url)
@@ -92,7 +92,7 @@ class WebFragment : BaseAgentWebFragment() {
                     .withBoolean(SHOWTOOBAR, showToobar)
                     .withBoolean(SHOWSHARE, showShare)
                     .withBoolean(SHOWWEBURLTITLE, showWebUrlTitle)
-                    .navigation() as WebFragment
+                    .navigation() as WebViewFragment
         }
     }
 }

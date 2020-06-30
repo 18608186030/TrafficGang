@@ -4,8 +4,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvvm.BaseFragment
-import com.stjy.baselib.base.mvvm.CommonWebActivity
-import com.stjy.baselib.base.mvvm.StandardWebActivity
+import com.stjy.baselib.base.mvvm.WebViewActivity
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
 import kotlinx.android.synthetic.main.fragment_person.*
@@ -31,8 +30,8 @@ class PersonFragment : BaseFragment() {
 //                .build(ARouterHub.ARCHIVE_ACTIVITY)
 //                .navigation(mActivity)
 
-           // CommonWebActivity.start(mActivity, "http://cjs-pro-h5.zqf.com.cn/andtest?os=android", title = "郑仁超", showShare = false, showWebUrlTitle = false)
-            CommonWebActivity.start(mActivity, "https://www.baidu.com")
+           // WebViewActivity.start(mActivity, "http://cjs-pro-h5.zqf.com.cn/andtest?os=android", title = "郑仁超", showShare = false, showWebUrlTitle = false)
+            WebViewActivity.start(mActivity, "https://www.baidu.com")
         }
         tvOutLogin.setOnClickListener {
             ARouter.getInstance()

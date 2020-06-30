@@ -29,15 +29,9 @@
             android:name="design_height_in_dp"
             android:value="667" />
         <activity android:name=".wigiet.photopreview.activity.PhotoPreviewActivity" />
-        <activity
-            android:name=".base.mvvm.StandardWebActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:hardwareAccelerated="true"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".base.mvvm.CommonWebActivity"
+            android:name=".base.mvvm.WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
