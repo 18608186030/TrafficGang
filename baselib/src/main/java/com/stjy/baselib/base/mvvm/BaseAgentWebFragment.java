@@ -20,6 +20,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.ToastUtils;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.github.lzyzsd.jsbridge.BridgeWebViewClient;
 import com.just.agentweb.AgentWeb;
@@ -306,8 +307,9 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
              * @param context 第三方上下文
              */
             WBH5FaceVerifySDK.getInstance().setWebViewSettings(bridgeWebView, getContext());
-            bridgeWebView.registerHandler("androidToJS", (data, function) -> {
-                function.onCallBack(data);
+            bridgeWebView.registerHandler("CJSJSBridge_OpenIMPage_ToNative", (data, function) -> {
+                ToastUtils.showLong(data);
+//                function.onCallBack(data);
             });
 
             syncCookie();

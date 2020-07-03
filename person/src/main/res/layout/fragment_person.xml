@@ -117,6 +117,7 @@
         android:text="修改密码" />
 
     <TextView
+        android:foreground="?android:attr/selectableItemBackground"
         android:id="@+id/tvOutLogin"
         style="@style/TextViewStyle"
         android:layout_width="match_parent"

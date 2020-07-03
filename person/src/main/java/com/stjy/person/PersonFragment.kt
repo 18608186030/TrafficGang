@@ -30,8 +30,8 @@ class PersonFragment : BaseFragment() {
 //                .build(ARouterHub.ARCHIVE_ACTIVITY)
 //                .navigation(mActivity)
 
-           // WebViewActivity.start(mActivity, "http://cjs-pro-h5.zqf.com.cn/andtest?os=android", title = "郑仁超", showShare = false, showWebUrlTitle = false)
-            WebViewActivity.start(mActivity, "https://www.baidu.com")
+            WebViewActivity.start(mActivity, "http://cjs-pro-h5.zqf.com.cn/tj?os=android&session_token=eyJhbGciOiJIUzUxMiIsImV4cCI6MTU5NzI3ODUyNSwiaWF0IjoxNTkzNjc4NTI1fQ.IjVlZDg4Yjc3NmEyMjA0NjI1MzRhMGRmYSI.zrD0Dnkl1Hoc2MyCzz__hux7_gMIPhoEm5UGGCj_HePpVUYcFsVzn-YJeEL7Tg-ROlSbbL6TBv5EvHvLPBAdGQ&pro_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTYyOTkzMjUsImlhdCI6MTU5MzcwNzMyNSwiZGF0YSI6eyJ1c2VyaWQiOjUsInVzZXJuYW1lIjoiMTUzKioqKjk5MjgiLCJxdGdfdXNlcl9pZCI6MjQ3MiwiY3JtX3VzZXJfaWQiOjM2NTY0NTM3fX0.VRBx3nztAm9eZcf8ukweFh7cis907blKSjSHZhZgOgs&pt=n_app", title = "郑仁超", showShare = false, showWebUrlTitle = false)
+//            WebViewActivity.start(mActivity, "https://www.baidu.com")
         }
         tvOutLogin.setOnClickListener {
             ARouter.getInstance()
