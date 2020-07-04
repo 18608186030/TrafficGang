@@ -95,7 +95,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //ARouter
-    kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
     //依赖baselib
     implementation project(':baselib')
     //work 依赖工作模块

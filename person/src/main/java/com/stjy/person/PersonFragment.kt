@@ -3,6 +3,7 @@ package com.stjy.person
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.ToastUtils
 import com.stjy.baselib.base.mvvm.BaseFragment
 import com.stjy.baselib.base.mvvm.WebViewActivity
 import com.stjy.baselib.utils.ARouterHub
@@ -30,8 +31,9 @@ class PersonFragment : BaseFragment() {
 //                .build(ARouterHub.ARCHIVE_ACTIVITY)
 //                .navigation(mActivity)
 
-            WebViewActivity.start(mActivity, "https://www.pgyer.com", title = "郑仁超", showShare = false, showWebUrlTitle = false)
+//            WebViewActivity.start(mActivity, "https://www.pgyer.com", title = "郑仁超", showShare = false, showWebUrlTitle = false)
 //            WebViewActivity.start(mActivity, "https://www.baidu.com")
+            ToastUtils.showLong("我就是bug")
         }
         tvOutLogin.setOnClickListener {
             ARouter.getInstance()
