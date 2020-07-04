@@ -1,4 +1,4 @@
-package com.stjy.baselib.base.mvvm
+package com.stjy.baselib.ui.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle

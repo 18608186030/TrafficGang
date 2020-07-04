@@ -27,14 +27,15 @@ import com.just.agentweb.MiddlewareWebChromeBase;
 import com.just.agentweb.MiddlewareWebClientBase;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
+import com.stjy.baselib.utils.WBH5FaceVerifySDK;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 /**
- * AgentWeb基类
- *
- * @author superman
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: 浏览器BaseAgentWebActivity基类
  */
 public abstract class BaseAgentWebActivity extends BaseActivity {
     private final int REQUEST_CONTACT = 2001;

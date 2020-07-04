@@ -4,13 +4,10 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
-import com.stjy360.basicres.extend.obtainViewModel
-
 /**
- * @author daifalin
- * @date 2018/12/4 5:37 PM
- * @ClassName BaseVMActivity
- * @Description ViewModel模式基类
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: ViewModel模式基类
  */
 @SuppressLint("Registered")
 abstract class BaseVMActivity<V : BaseViewModel> : BaseActivity() {

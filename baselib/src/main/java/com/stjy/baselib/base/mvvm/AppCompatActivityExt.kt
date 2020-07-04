@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.stjy360.basicres.extend
+package com.stjy.baselib.base.mvvm
 
 /**
  * Various extension functions for AppCompatActivity.
@@ -25,7 +25,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import com.stjy360.basicres.ViewModelFactory
 
 
 /**

@@ -4,16 +4,13 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
-import com.stjy360.basicres.IViewModelAction
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-
 /**
- * @author daifalin
- * @date 2018/12/5 3:51 PM
- * @ClassName BaseViewModel
- * @Description
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: BaseViewModel基类
  */
 open class BaseViewModel(application: Application) : AndroidViewModel(application), IViewModelAction {
 

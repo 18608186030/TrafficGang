@@ -40,14 +40,14 @@
             android:theme="@android:style/Theme.Translucent" />
 
         <activity
-            android:name=".base.mvvm.UpgradeActivity"
+            android:name=".ui.activity.UpgradeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@style/UpgradeActivity" />
 
         <activity android:name=".wigiet.photopreview.activity.PhotoPreviewActivity" />
 
         <activity
-            android:name=".base.mvvm.WebViewActivity"
+            android:name=".ui.activity.WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"

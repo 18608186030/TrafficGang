@@ -4,12 +4,10 @@ import android.arch.lifecycle.Observer
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
 import obtainViewModel
-
 /**
- * @author daifalin
- * @date 2018/12/4 5:50 PM
- * @ClassName BaseVMFragment
- * @Description ViewModel基类
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: ViewModel基类
  */
 abstract class BaseVMFragment<V : BaseViewModel> : BaseFragment() {
     protected lateinit var mViewModel: V

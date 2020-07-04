@@ -7,7 +7,9 @@ import com.tencent.tinker.loader.app.TinkerApplication
 import com.tencent.tinker.loader.shareutil.ShareConstants
 
 /**
- * Created by superman on 2018/4/9.
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: 程序进程
  */
 class BaseApplication : TinkerApplication(ShareConstants.TINKER_ENABLE_ALL,
         "com.stjy.baselib.base.BaseApplicationLike",

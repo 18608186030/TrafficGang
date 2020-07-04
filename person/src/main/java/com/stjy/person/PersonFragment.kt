@@ -5,7 +5,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ToastUtils
 import com.stjy.baselib.base.mvvm.BaseFragment
-import com.stjy.baselib.base.mvvm.WebViewActivity
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
 import kotlinx.android.synthetic.main.fragment_person.*

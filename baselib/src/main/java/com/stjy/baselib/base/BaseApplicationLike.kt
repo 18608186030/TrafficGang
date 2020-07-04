@@ -25,16 +25,16 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
-import com.stjy.baselib.base.mvvm.UpgradeActivity
+import com.stjy.baselib.ui.activity.UpgradeActivity
 import com.stjy.baselib.common.LoginUser
 import com.stjy.baselib.utils.OSSUploadUtils
 import com.stjy.baselib.wigiet.refreshheader.material.MaterialHeader
 import me.jessyan.autosize.AutoSizeConfig
 import me.yokeyword.fragmentation.Fragmentation
-
 /**
- * 这是application的代理类
- * 用于初始化一些东西
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: 这是application的代理类（用于初始化一些东西）
  */
 class BaseApplicationLike(application: Application?, tinkerFlags: Int, tinkerLoadVerifyFlag: Boolean,
                           applicationStartElapsedTime: Long, applicationStartMillisTime: Long, tinkerResultIntent: Intent?)

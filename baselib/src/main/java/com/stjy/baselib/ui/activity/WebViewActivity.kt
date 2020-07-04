@@ -1,4 +1,4 @@
-package com.stjy.baselib.base.mvvm
+package com.stjy.baselib.ui.activity
 
 import android.content.Context
 import android.os.Bundle
@@ -6,6 +6,8 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.R
+import com.stjy.baselib.base.mvvm.BaseActivity
+import com.stjy.baselib.ui.fragment.WebViewFragment
 import com.stjy.baselib.utils.ARouterHub
 
 

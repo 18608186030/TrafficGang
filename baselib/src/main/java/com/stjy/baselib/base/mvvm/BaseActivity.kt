@@ -33,8 +33,9 @@ import me.jessyan.autosize.internal.CustomAdapt
 import me.yokeyword.fragmentation.SupportActivity
 
 /**
- * @author DaiFalin
- * @Description: Activity基类
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: Activity基类
  */
 abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListener {
     var mProgressDialog: Dialog? = null

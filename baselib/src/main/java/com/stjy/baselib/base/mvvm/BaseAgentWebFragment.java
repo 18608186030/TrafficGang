@@ -32,12 +32,15 @@ import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
 import com.stjy.baselib.event.LoginEvent;
 import com.stjy.baselib.utils.ARouterHub;
+import com.stjy.baselib.utils.WBH5FaceVerifySDK;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 /**
- * @author daifalin
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: 浏览器fragment基类
  */
 public abstract class BaseAgentWebFragment extends BaseFragment {
     private final int REQUEST_CONTACT = 2001;

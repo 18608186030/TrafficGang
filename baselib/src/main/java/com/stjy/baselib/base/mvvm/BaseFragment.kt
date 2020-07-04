@@ -28,11 +28,13 @@ import io.reactivex.disposables.CompositeDisposable
 import me.yokeyword.fragmentation.SupportFragment
 
 /**
- * @author DaiFalin
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: BaseFragment基类
  */
 abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     lateinit var mActivity: BaseActivity
-    private  var mView: View?=null
+    private var mView: View? = null
     protected lateinit var mStateView: StateView
     protected var mDisposablePool = CompositeDisposable()
     private var mBarTitle: TextView? = null

@@ -1,4 +1,4 @@
-package com.stjy360.basicres
+package com.stjy.baselib.base.mvvm
 
 import android.app.Application
 import android.arch.lifecycle.ViewModel
