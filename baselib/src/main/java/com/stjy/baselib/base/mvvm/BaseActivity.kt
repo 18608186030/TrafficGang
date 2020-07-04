@@ -38,7 +38,7 @@ import me.yokeyword.fragmentation.SupportActivity
  */
 abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListener {
     var mProgressDialog: Dialog? = null
-    protected lateinit var mStateView: StateView
+    protected var mStateView: StateView? = null
     protected var mDisposablePool = CompositeDisposable()
     private var mBarTitle: TextView? = null
     private var mBarRight: TextView? = null
@@ -145,9 +145,9 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         mBarRight = findViewById(R.id.bar_right)
         //判断是否有Toolbar,并默认显示返回按钮
         toolbar?.let {
-            if (isShowBacking()){
+            if (isShowBacking()) {
                 setNavigationIcon(R.mipmap.ic_black)
-                it.setNavigationOnClickListener { setNavigationOnClickListener()  }
+                it.setNavigationOnClickListener { setNavigationOnClickListener() }
             }
         }
     }

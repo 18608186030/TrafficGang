@@ -31,7 +31,9 @@ class SearchEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("选择或创建企业")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar())
+        fakeStatusBar()?.let {
+            StatusBarUtils.setStatusBarColor(it)
+        }
         recyclerview.layoutManager = LinearLayoutManager(mActivity)
         recyclerview.addItemDecoration(DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL))
         var mVideoCourseAdapter = SearchEnterpriseListAdapter(ArrayList())

@@ -37,7 +37,9 @@ class RegisterEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
     override fun initView(contentView: View?) {
         setBarTitle("注册企业")
         setBarRightText("保存")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar())
+        fakeStatusBar()?.let {
+            StatusBarUtils.setStatusBarColor(it)
+        }
         initBusinessLicense()
     }
 

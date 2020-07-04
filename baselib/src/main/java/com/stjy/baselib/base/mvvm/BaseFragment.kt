@@ -32,7 +32,7 @@ import me.yokeyword.fragmentation.SupportFragment
  */
 abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     lateinit var mActivity: BaseActivity
-     lateinit var mView: View
+    private  var mView: View?=null
     protected lateinit var mStateView: StateView
     protected var mDisposablePool = CompositeDisposable()
     private var mBarTitle: TextView? = null
@@ -47,7 +47,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(getLayoutID(), container, false)
         mView?.let {
-            mStateView = StateView.inject(mView)
+            mStateView = StateView.inject(it)
         }
         return mView
     }
@@ -83,13 +83,13 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
      * 初始化ToolBar
      */
     private fun initToolBar() {
-        mBarTitle = mView.findViewById(R.id.bar_title)
-        mBarRight = mView.findViewById(R.id.bar_right)
+        mBarTitle = mView?.findViewById(R.id.bar_title)
+        mBarRight = mView?.findViewById(R.id.bar_right)
         //判断是否有Toolbar,并默认显示返回按钮
         toolbar?.let {
-            if (isShowBacking()){
+            if (isShowBacking()) {
                 setNavigationIcon(R.mipmap.ic_black)
-                it.setNavigationOnClickListener { setNavigationOnClickListener()  }
+                it.setNavigationOnClickListener { setNavigationOnClickListener() }
             }
         }
     }
@@ -134,7 +134,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
      * @return support.v7.widget.Toolbar.
      */
     val toolbar: Toolbar?
-        get() = mView.findViewById(R.id.toolbar)
+        get() = mView?.findViewById(R.id.toolbar)
 
     protected fun <T> bindLifecycle(): LifecycleTransformer<T> {
         return RxLifecycleUtils.bindLifecycle(this)
@@ -202,7 +202,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
 
     override fun onClick(v: View) {}
 
-    open fun fakeStatusBar(): View = mView.findViewById(R.id.fake_status_bar)
+    open fun fakeStatusBar(): View? = mView?.findViewById(R.id.fake_status_bar)
 
     /**
      * 请求权限

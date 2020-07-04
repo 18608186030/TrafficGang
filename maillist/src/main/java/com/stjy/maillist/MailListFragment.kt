@@ -21,7 +21,9 @@ class MailListFragment : BaseFragment() {
 
     override fun initView(contentView: View?) {
         setBarTitle("通讯录")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar())
+        fakeStatusBar()?.let {
+            StatusBarUtils.setStatusBarColor(it)
+        }
         recyclerview.layoutManager = LinearLayoutManager(mActivity)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
         var adapter = MailListAdapter(ArrayList())

@@ -26,7 +26,9 @@ class PersonInfoFragment : BaseFragment() {
 
     override fun initView(contentView: View?) {
         setBarTitle("个人信息")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar())
+        fakeStatusBar()?.let {
+            StatusBarUtils.setStatusBarColor(it)
+        }
     }
 
     override fun initData() {

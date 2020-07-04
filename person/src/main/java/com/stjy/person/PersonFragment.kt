@@ -18,7 +18,9 @@ class PersonFragment : BaseFragment() {
 
     override fun initView(contentView: View?) {
         setBarTitle("个人中心")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar())
+        fakeStatusBar()?.let {
+            StatusBarUtils.setStatusBarColor(it)
+        }
     }
 
     override fun initData() {

@@ -32,7 +32,9 @@ class SubmitEnterpriseListFragment : BaseVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("提交信息列表")
-        StatusBarUtils.setStatusBarColor(fakeStatusBar())
+        fakeStatusBar()?.let {
+            StatusBarUtils.setStatusBarColor(it)
+        }
         recyclerview.layoutManager = LinearLayoutManager(mActivity)
         recyclerview.addItemDecoration(HorizontalDividerItemDecoration.Builder(mActivity)
                 .colorResId(R.color.colorPrimary)
