@@ -19,6 +19,22 @@ abstract class BaseMVPFragment<V, P : BasePresenter<V>?> : BaseFragment(), IBase
         super.onActivityCreated(savedInstanceState)
     }
 
+    override fun showLoadingDialog() {
+        startLoadingDialog()
+    }
+
+    override fun hideLoadingDialog() {
+        stopLoadingDialog()
+    }
+
+    override fun showLoadingStateView() {
+        startLoading()
+    }
+
+    override fun hideLoadingStateView() {
+        stopLoading()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mPresenter?.detachView()

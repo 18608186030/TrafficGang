@@ -70,9 +70,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         if (isRegisterEvent()) {
             EventBusUtils.unregister(this)
         }
-        if (mProgressDialog != null) {
-            mProgressDialog?.dismiss()
-        }
+        mProgressDialog?.dismiss()
         ActivityManager.getInstance().removeActivity(this)
     }
 
@@ -154,21 +152,24 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
     }
 
     fun startLoadingDialog() {
-        if (mProgressDialog == null) {
-            initLoadingDialog()
+        mProgressDialog = mProgressDialog ?: progressDialog()
+        if (!this.isFinishing) {
+            mProgressDialog?.let {
+                if (!it.isShowing) {
+                    it.show()
+                }
+            }
         }
-        if (mProgressDialog?.isShowing!!) {
-            return
-        }
-        mProgressDialog?.show()
     }
 
     fun stopLoadingDialog() {
-        if (mProgressDialog == null) {
-            initLoadingDialog()
-        }
-        if (mProgressDialog?.isShowing!! && !this.isFinishing) {
-            mProgressDialog?.dismiss()
+        mProgressDialog = mProgressDialog ?: progressDialog()
+        if (!this.isFinishing) {
+            mProgressDialog?.let {
+                if (it.isShowing) {
+                    it.dismiss()
+                }
+            }
         }
     }
 
@@ -282,7 +283,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
      * 后退按钮图片
      */
     fun setNavigationIcon(@DrawableRes resId: Int) {
-        toolbar!!.setNavigationIcon(resId)
+        toolbar?.setNavigationIcon(resId)
     }
 
     open fun setNavigationOnClickListener() {
@@ -316,10 +317,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
     /**
      * 公用加载dialog
      */
-    private fun initLoadingDialog() {
-        mProgressDialog = mProgressDialog ?: progressDialog()
-    }
-
     private fun progressDialog() = QMUITipDialog.Builder(this@BaseActivity)
             .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
             .setTipWord("加载中")

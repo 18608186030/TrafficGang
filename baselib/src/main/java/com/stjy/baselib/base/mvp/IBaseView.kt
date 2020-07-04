@@ -6,5 +6,8 @@ package com.stjy.baselib.base.mvp
  * @Describe:  MVP模式View基类
  */
 interface IBaseView {
-
+    fun showLoadingDialog()
+    fun hideLoadingDialog()
+    fun showLoadingStateView()
+    fun hideLoadingStateView()
 }

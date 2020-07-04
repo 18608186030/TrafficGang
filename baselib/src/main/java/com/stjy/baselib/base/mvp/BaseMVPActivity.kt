@@ -19,6 +19,23 @@ abstract class BaseMVPActivity<V, P : BasePresenter<V>?> : BaseActivity(), IBase
         super.setContentView(layoutResID)
     }
 
+
+    override fun showLoadingDialog() {
+        startLoadingDialog()
+    }
+
+    override fun hideLoadingDialog() {
+        stopLoadingDialog()
+    }
+
+    override fun showLoadingStateView() {
+        startLoading()
+    }
+
+    override fun hideLoadingStateView() {
+        stopLoading()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mPresenter?.detachView()
