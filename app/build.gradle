@@ -2,6 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+// 依赖插件脚本
+if (!IS_DEBUG.toBoolean()) {
+    apply from: 'tinker-support.gradle'
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -10,7 +15,7 @@ android {
         applicationId "com.stjy.trafficgang"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode  rootProject.ext.versionCode
+        versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         renderscriptTargetApi rootProject.ext.minSdkVersion
@@ -18,12 +23,45 @@ android {
         multiDexEnabled true
     }
 
+    signingConfigs {
+        release {
+            storeFile file('zrc')
+            storePassword 'zrc123456'
+            keyAlias 'zrc123456'
+            keyPassword 'zrc123456'
+        }
+        debug {
+            storeFile file('zrc')
+            storePassword 'zrc123456'
+            keyAlias 'zrc123456'
+            keyPassword 'zrc123456'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
+
+
+    // 多渠道打包（示例配置）
+    productFlavors {
+        flavorDimensions 'oppo,vivo'
+        oppo {}
+        vivo {}
+    }
+
+
 
     compileOptions {
         sourceCompatibility = '1.8'

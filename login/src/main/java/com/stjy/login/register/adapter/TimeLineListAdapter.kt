@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.stjy.baselib.base.MyAppliction.Companion.context
 import com.stjy.login.R
 
 /**
@@ -19,7 +18,7 @@ class TimeLineListAdapter(data: List<String>) : BaseQuickAdapter<String, BaseVie
     @SuppressLint("NewApi")
     override fun convert(helper: BaseViewHolder, item: String) {
         //获取物流信息和物流时间的字体颜色, 最新的一条物流数据字体为绿色
-        val newInfoColor = context.resources.getColor(if (helper.layoutPosition == 0) R.color.blue else R.color.gray)
+        val newInfoColor = mContext.resources.getColor(if (helper.layoutPosition == 0) R.color.blue else R.color.gray)
         //当前item的索引==0 && 物流数据的数量大于1条   ->  显示绿色大圆圈
         helper.setGone(R.id.iv_new, helper.layoutPosition == 0 && data.size > 1)
                 //当前item的索引!=0 && 物流数据的数量大于1条   ->  显示灰色小圆圈

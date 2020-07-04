@@ -60,10 +60,6 @@ class SubmitEnterpriseListFragment : BaseVMFragment<LoginViewModel>() {
     }
 
     override fun initListener() {
-
-        select.setOnClickListener {
-
-        }
     }
 
     override fun isShowBacking() = true

@@ -16,6 +16,10 @@ android {
 
         //是否debug
         buildConfigField "boolean", "IS_DEBUG", IS_DEBUG
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
 
     buildTypes {
@@ -141,4 +145,13 @@ dependencies {
 
     api "com.github.chenBingX:SuperTextView:$superTextViewVersion"
 
+    //************************************************************************************
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
+    api 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    api 'com.tencent.bugly:nativecrashreport:latest.release'
+    // 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
+    api 'com.tencent.tinker:tinker-android-lib:1.9.9'
+    //************************************************************************************
 }
