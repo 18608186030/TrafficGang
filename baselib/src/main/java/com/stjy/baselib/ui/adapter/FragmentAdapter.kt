@@ -1,4 +1,4 @@
-package com.stjy.baselib.base.cmmont
+package com.stjy.baselib.ui.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

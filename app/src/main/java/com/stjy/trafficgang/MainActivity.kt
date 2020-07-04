@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.cmmont.BaseActivity
-import com.stjy.baselib.base.cmmont.FragmentSubAdapter
+import com.stjy.baselib.ui.adapter.FragmentSubAdapter
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.wigiet.BotBean
 import com.stjy.baselib.wigiet.BottomView
