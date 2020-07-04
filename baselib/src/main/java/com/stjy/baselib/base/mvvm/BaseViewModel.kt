@@ -4,6 +4,7 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
+import com.stjy.baselib.base.cmmont.IViewModelAction
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -16,33 +17,33 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     private lateinit var lifecycleOwner: LifecycleOwner
 
-    val actionLiveData: MutableLiveData<BaseActionEvent> = MutableLiveData()
+    val actionLiveData: MutableLiveData<BaseMVVMActionEvent> = MutableLiveData()
 
     override fun startLoading() {
         startLoading("")
     }
 
     override fun startLoading(message: String?) {
-        val baseActionEvent = BaseActionEvent(BaseActionEvent.START_LOADING)
+        val baseActionEvent = BaseMVVMActionEvent(BaseMVVMActionEvent.START_LOADING)
         baseActionEvent.message = message
         actionLiveData.value = baseActionEvent
     }
 
     override fun stopLoading() {
-        actionLiveData.value = BaseActionEvent(BaseActionEvent.STOP_LOADING)
+        actionLiveData.value = BaseMVVMActionEvent(BaseMVVMActionEvent.STOP_LOADING)
     }
 
     override fun startLoadingDialog() {
-        val baseActionEvent = BaseActionEvent(BaseActionEvent.START_LOADING_DIALOG)
+        val baseActionEvent = BaseMVVMActionEvent(BaseMVVMActionEvent.START_LOADING_DIALOG)
         actionLiveData.value = baseActionEvent
     }
 
     override fun stopLoadingDialog() {
-        actionLiveData.value = BaseActionEvent(BaseActionEvent.STOP_LOADING_DIALOG)
+        actionLiveData.value = BaseMVVMActionEvent(BaseMVVMActionEvent.STOP_LOADING_DIALOG)
     }
 
     override fun showToast(message: String?) {
-        val baseActionEvent = BaseActionEvent(BaseActionEvent.SHOW_TOAST)
+        val baseActionEvent = BaseMVVMActionEvent(BaseMVVMActionEvent.SHOW_TOAST)
         baseActionEvent.message = message
         actionLiveData.value = baseActionEvent
     }
@@ -52,18 +53,18 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     override fun showError(code: String?, message: String?) {
-        val baseActionEvent = BaseActionEvent(BaseActionEvent.SHOW_ERROR)
+        val baseActionEvent = BaseMVVMActionEvent(BaseMVVMActionEvent.SHOW_ERROR)
         baseActionEvent.message = code
         baseActionEvent.message = message
         actionLiveData.value = baseActionEvent
     }
 
     override fun finishRefresh() {
-        actionLiveData.value = BaseActionEvent(BaseActionEvent.FINISH_REFRESH)
+        actionLiveData.value = BaseMVVMActionEvent(BaseMVVMActionEvent.FINISH_REFRESH)
     }
 
     override fun finishLoadMore() {
-        actionLiveData.value = BaseActionEvent(BaseActionEvent.FINISH_LOAD_MORE)
+        actionLiveData.value = BaseMVVMActionEvent(BaseMVVMActionEvent.FINISH_LOAD_MORE)
     }
 
     fun setLifecycleOwner(lifecycleOwner: LifecycleOwner) {

@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.stjy.baselib.base.mvvm.BaseActivity
-import com.stjy.baselib.base.mvvm.FragmentSubAdapter
+import com.stjy.baselib.base.cmmont.BaseActivity
+import com.stjy.baselib.base.cmmont.FragmentSubAdapter
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.wigiet.BotBean
 import com.stjy.baselib.wigiet.BottomView

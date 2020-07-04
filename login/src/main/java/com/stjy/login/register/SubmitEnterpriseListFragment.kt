@@ -5,7 +5,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.SizeUtils
-import com.stjy.baselib.base.mvvm.BaseVMFragment
+import com.stjy.baselib.base.mvvm.BaseMVVMFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.baselib.wigiet.divider.HorizontalDividerItemDecoration
@@ -15,7 +15,7 @@ import com.stjy.login.register.adapter.SubmitEnterpriseListAdapter
 import kotlinx.android.synthetic.main.fragment_submitenterpriselist.*
 
 @Route(path = ARouterHub.LOGIN_SUBMITENTERPRISELIST_FRAGMENT, name = "提交信息列表")
-class SubmitEnterpriseListFragment : BaseVMFragment<LoginViewModel>() {
+class SubmitEnterpriseListFragment : BaseMVVMFragment<LoginViewModel>() {
 
     companion object {
         @JvmStatic

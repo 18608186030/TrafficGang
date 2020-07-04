@@ -48,7 +48,7 @@ fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String) {
 }
 
 fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
-        ViewModelProviders.of(this, ViewModelFactory.newInstance(application)).get(viewModelClass)
+        ViewModelProviders.of(this, BaseMVVM_ViewModelFactory.newInstance(application)).get(viewModelClass)
 
 /**
  * Runs a FragmentTransaction, then calls commit().

@@ -3,13 +3,14 @@ package com.stjy.baselib.base.mvvm
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
-import obtainViewModel
+import com.stjy.baselib.base.cmmont.BaseFragment
+
 /**
  * @Author: superman
  * @CreateTime: 2020/7/4
  * @Describe: ViewModel基类
  */
-abstract class BaseVMFragment<V : BaseViewModel> : BaseFragment() {
+abstract class BaseMVVMFragment<V : BaseViewModel> : BaseFragment() {
     protected lateinit var mViewModel: V
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -25,14 +26,14 @@ abstract class BaseVMFragment<V : BaseViewModel> : BaseFragment() {
         viewModel.actionLiveData.observe(this,
                 Observer { actionEvent ->
                     when (actionEvent?.action) {
-                        BaseActionEvent.START_LOADING -> startLoading()
-                        BaseActionEvent.STOP_LOADING -> stopLoading()
-                        BaseActionEvent.START_LOADING_DIALOG ->  startLoadingDialog()
-                        BaseActionEvent.STOP_LOADING_DIALOG -> stopLoadingDialog()
-                        BaseActionEvent.SHOW_TOAST -> ToastUtils.showShort(actionEvent.message)
-                        BaseActionEvent.SHOW_ERROR -> showError(actionEvent.code, actionEvent.message)
-                        BaseActionEvent.FINISH_REFRESH -> finishRefresh()
-                        BaseActionEvent.FINISH_LOAD_MORE ->  finishLoadMore()
+                        BaseMVVMActionEvent.START_LOADING -> startLoading()
+                        BaseMVVMActionEvent.STOP_LOADING -> stopLoading()
+                        BaseMVVMActionEvent.START_LOADING_DIALOG ->  startLoadingDialog()
+                        BaseMVVMActionEvent.STOP_LOADING_DIALOG -> stopLoadingDialog()
+                        BaseMVVMActionEvent.SHOW_TOAST -> ToastUtils.showShort(actionEvent.message)
+                        BaseMVVMActionEvent.SHOW_ERROR -> showError(actionEvent.code, actionEvent.message)
+                        BaseMVVMActionEvent.FINISH_REFRESH -> finishRefresh()
+                        BaseMVVMActionEvent.FINISH_LOAD_MORE ->  finishLoadMore()
                         else -> {
                         }
                     }

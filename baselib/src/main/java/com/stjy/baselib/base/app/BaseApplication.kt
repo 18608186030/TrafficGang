@@ -1,4 +1,4 @@
-package com.stjy.baselib.base
+package com.stjy.baselib.base.app
 
 import android.app.Application
 import android.content.Context
@@ -12,7 +12,7 @@ import com.tencent.tinker.loader.shareutil.ShareConstants
  * @Describe: 程序进程
  */
 class BaseApplication : TinkerApplication(ShareConstants.TINKER_ENABLE_ALL,
-        "com.stjy.baselib.base.BaseApplicationLike",
+        "com.stjy.baselib.base.app.BaseApplicationLike",
         "com.tencent.tinker.loader.TinkerLoader", false) {
 
     override fun onCreate() {

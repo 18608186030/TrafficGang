@@ -1,4 +1,4 @@
-package com.stjy.baselib.base.mvvm
+package com.stjy.baselib.base.cmmont
 
 
 interface IViewModelAction {

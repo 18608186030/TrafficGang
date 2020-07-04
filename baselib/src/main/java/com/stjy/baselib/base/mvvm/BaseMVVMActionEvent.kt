@@ -1,6 +1,6 @@
 package com.stjy.baselib.base.mvvm
 
-open class BaseActionEvent(val action: Int) {
+open class BaseMVVMActionEvent(val action: Int) {
 
     var code: String? = null
     var message: String? = null

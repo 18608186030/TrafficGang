@@ -1,4 +1,4 @@
-package com.stjy.baselib.base
+package com.stjy.baselib.base.app
 
 import android.annotation.TargetApi
 import android.app.Application
@@ -26,7 +26,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.stjy.baselib.ui.activity.UpgradeActivity
-import com.stjy.baselib.common.LoginUser
+import com.stjy.baselib.model.LoginUser
 import com.stjy.baselib.utils.OSSUploadUtils
 import com.stjy.baselib.wigiet.refreshheader.material.MaterialHeader
 import me.jessyan.autosize.AutoSizeConfig
@@ -106,7 +106,7 @@ class BaseApplicationLike(application: Application?, tinkerFlags: Int, tinkerLoa
                 // 设置是否提示用户重启，默认为false
                 Beta.canNotifyUserRestart = false
                 // 设置渠道信息
-                //Bugly.setAppChannel(this@BaseApplication, ChannelReaderUtil.getChannel(getApplication()))
+                //Bugly.setAppChannel(this@BaseApplication, ChannelReaderUtil.getChannel(com.stjy.baselib.base.mvvm.getApplication()))
                 // 更新监听，收到策略时回调
                 Beta.upgradeListener = UpgradeListener { ret: Int, upgradeInfo: UpgradeInfo?, isManual: Boolean, isSilence: Boolean ->
                     if (upgradeInfo != null) {

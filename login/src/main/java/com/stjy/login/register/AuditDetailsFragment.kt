@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.stjy.baselib.base.mvvm.BaseVMFragment
+import com.stjy.baselib.base.mvvm.BaseMVVMFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.login.R
@@ -13,7 +13,7 @@ import com.stjy.login.register.adapter.TimeLineListAdapter
 import kotlinx.android.synthetic.main.fragment_auditdetails.*
 
 @Route(path = ARouterHub.LOGIN_AUDITDETAILS_FRAGMENT, name = "企业注册信息审核详情")
-class AuditDetailsFragment : BaseVMFragment<LoginViewModel>() {
+class AuditDetailsFragment : BaseMVVMFragment<LoginViewModel>() {
 
     companion object {
         @JvmStatic

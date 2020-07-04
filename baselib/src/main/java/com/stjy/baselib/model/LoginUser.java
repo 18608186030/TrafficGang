@@ -1,11 +1,10 @@
-package com.stjy.baselib.common;
+package com.stjy.baselib.model;
 
 
 import android.text.TextUtils;
 
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.SPUtils;
-import com.stjy.baselib.model.UserBean;
 import com.stjy.baselib.net.AppConfig;
 
 

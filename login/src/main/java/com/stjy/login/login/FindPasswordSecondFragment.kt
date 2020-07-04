@@ -3,14 +3,14 @@ package com.stjy.login.login
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.stjy.baselib.base.mvvm.BaseVMFragment
+import com.stjy.baselib.base.mvvm.BaseMVVMFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_findpasswordfrist.*
 
 @Route(path = ARouterHub.LOGIN_FINDPASSWORDSECOND_FRAGMENT, name = "找回密码第一级界面")
-class FindPasswordSecondFragment : BaseVMFragment<LoginViewModel>() {
+class FindPasswordSecondFragment : BaseMVVMFragment<LoginViewModel>() {
 
     companion object {
         @JvmStatic

@@ -16,7 +16,7 @@ import com.alibaba.sdk.android.oss.model.ObjectMetadata;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.blankj.utilcode.util.ThreadUtils;
-import com.stjy.baselib.common.LoginUser;
+import com.stjy.baselib.model.LoginUser;
 import com.stjy.baselib.model.UserBean;
 import com.stjy.baselib.net.AppConfig;
 import com.stjy.baselib.net.net1.HttpManager;

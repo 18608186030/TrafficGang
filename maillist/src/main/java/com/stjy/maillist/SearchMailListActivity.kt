@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.GsonUtils
-import com.stjy.baselib.base.mvvm.BaseVMActivity
+import com.stjy.baselib.base.mvvm.BaseMVVMActivity
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.maillist.adpater.MailListAdapter
 import com.stjy.maillist.modle.MailListResp
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.maillist_activity_searchhhmaillist.*
 
 
 @Route(path = ARouterHub.MAILLIST_SEARCHMAILLIST_ACTIVITY, name = "搜索通讯录二级界面")
-class SearchMailListActivity : BaseVMActivity<MailListViewModel>() {
+class SearchMailListActivity : BaseMVVMActivity<MailListViewModel>() {
     @Autowired(name = "title", desc = "机构名称")
     @JvmField
     var title: String = ""

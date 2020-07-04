@@ -22,7 +22,7 @@ import com.github.chrisbanes.photoview.PhotoView;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.stjy.baselib.R;
-import com.stjy.baselib.base.mvvm.BaseFragment;
+import com.stjy.baselib.base.cmmont.BaseFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;

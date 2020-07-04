@@ -5,7 +5,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.Glide
-import com.stjy.baselib.base.mvvm.BaseVMFragment
+import com.stjy.baselib.base.mvvm.BaseMVVMFragment
 import com.stjy.baselib.listener.PermissionListener
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.MatisseUtils
@@ -17,7 +17,7 @@ import com.zhihu.matisse.Matisse
 import kotlinx.android.synthetic.main.fragment_registerenterprise.*
 
 @Route(path = ARouterHub.LOGIN_REGISTERENTERPRISE_FRAGMENT, name = "注册企业")
-class RegisterEnterpriseFragment : BaseVMFragment<LoginViewModel>() {
+class RegisterEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
     //营业制造
     var businessLicenseUrl: String = ""
 

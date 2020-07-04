@@ -5,7 +5,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.GsonUtils
-import com.stjy.baselib.base.mvvm.BaseFragment
+import com.stjy.baselib.base.cmmont.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.maillist.adpater.MailListAdapter
