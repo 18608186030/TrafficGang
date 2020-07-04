@@ -30,7 +30,7 @@ import com.just.agentweb.MiddlewareWebClientBase;
 import com.just.agentweb.PermissionInterceptor;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
-import com.stjy.baselib.event.LoginEvent;
+import com.stjy.baselib.bean.event.LoginEvent;
 import com.stjy.baselib.utils.ARouterHub;
 import com.stjy.baselib.utils.WBH5FaceVerifySDK;
 

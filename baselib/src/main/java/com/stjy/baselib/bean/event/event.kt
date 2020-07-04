@@ -1,4 +1,4 @@
-package com.stjy.baselib.event
+package com.stjy.baselib.bean.event
 
 /**
  * 全局登陆事件

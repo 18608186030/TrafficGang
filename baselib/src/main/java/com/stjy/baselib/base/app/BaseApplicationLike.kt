@@ -26,7 +26,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.stjy.baselib.ui.activity.UpgradeActivity
-import com.stjy.baselib.model.LoginUser
+import com.stjy.baselib.bean.model.LoginUser
 import com.stjy.baselib.utils.OSSUploadUtils
 import com.stjy.baselib.wigiet.refreshheader.material.MaterialHeader
 import me.jessyan.autosize.AutoSizeConfig

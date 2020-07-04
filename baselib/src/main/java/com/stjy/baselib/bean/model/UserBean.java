@@ -1,4 +1,4 @@
-package com.stjy.baselib.model;
+package com.stjy.baselib.bean.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

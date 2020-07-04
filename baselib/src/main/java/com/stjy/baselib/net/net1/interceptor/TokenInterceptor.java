@@ -1,7 +1,7 @@
 package com.stjy.baselib.net.net1.interceptor;
 
 import com.blankj.utilcode.util.GsonUtils;
-import com.stjy.baselib.event.LoginEvent;
+import com.stjy.baselib.bean.event.LoginEvent;
 import com.stjy.baselib.net.net1.HttpParamContact;
 import com.stjy.baselib.net.net1.request.BaseApiResult;
 import com.stjy.baselib.utils.EventBusUtils;
