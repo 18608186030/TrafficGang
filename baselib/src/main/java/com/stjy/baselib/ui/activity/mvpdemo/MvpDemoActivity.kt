@@ -19,7 +19,7 @@ class MvpDemoActivity : BaseMVPActivity<MvpDemoActivity?, PresenterMvpDemo?>() {
         setBarTitle("MVP框架使用案例")
     }
     override fun initData() {
-        mPresenter?.getListData()
+        mPresenter?.getListData(1)
     }
 
     override fun initListener() {}

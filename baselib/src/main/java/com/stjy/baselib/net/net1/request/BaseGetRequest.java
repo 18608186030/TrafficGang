@@ -17,7 +17,6 @@
 package com.stjy.baselib.net.net1.request;
 
 import com.google.gson.reflect.TypeToken;
-import com.stjy.baselib.net.net1.func.BaseApiResultFunc;
 import com.zhouyou.http.cache.model.CacheResult;
 import com.zhouyou.http.callback.CallBack;
 import com.zhouyou.http.callback.CallBackProxy;

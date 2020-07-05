@@ -17,7 +17,7 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
     }
 
     override fun initView(contentView: View?) {
-        mViewModel.getListData(1)
+        //mViewModel.getListData(1)
     }
 
     override fun initData() {

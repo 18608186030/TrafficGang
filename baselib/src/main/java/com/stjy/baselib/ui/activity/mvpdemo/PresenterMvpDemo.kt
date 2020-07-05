@@ -1,11 +1,13 @@
 package com.stjy.baselib.ui.activity.mvpdemo
 
+import com.blankj.utilcode.util.ToastUtils
 import com.stjy.baselib.base.mvp.BasePresenter
-import com.stjy.baselib.bean.model.ConfigH5Bean
+import com.stjy.baselib.bean.model.ZIXunAllListResp
 import com.stjy.baselib.net.BaseApi
 import com.stjy.baselib.net.net1.HttpManager
 import com.stjy.baselib.net.net1.callback.BaseCallBack
 import com.zhouyou.http.exception.ApiException
+import kotlin.collections.HashMap
 
 /**
  * @Author: superman
@@ -13,11 +15,16 @@ import com.zhouyou.http.exception.ApiException
  * @Describe:
  */
 class PresenterMvpDemo() : BasePresenter<MvpDemoActivity?>() {
-    fun getListData() {
-//        HttpManager.get(java.lang.String.format(BaseApi.DICT, "SYS_CONFIG_H5"))
-//                .execute(ConfigH5Bean::class.java)
-//                .subscribe(object : BaseObserver<ConfigH5Bean>() {
-//                    override fun onSuccess(t: ConfigH5Bean) {
+    fun getListData(page_num: Int) {
+
+        val params = HashMap<String, String>()
+        params["page_size"] = "${10}"
+        params["page_num"] = "$page_num"
+//        HttpManager.get(BaseApi.INFORMATION)
+//                .params(params)
+//                .execute(ZIXunAllListResp::class.java)
+//                .subscribe(object : BaseObserver<ZIXunAllListResp>() {
+//                    override fun onSuccess(t: ZIXunAllListResp) {
 //
 //                    }
 //
@@ -25,18 +32,19 @@ class PresenterMvpDemo() : BasePresenter<MvpDemoActivity?>() {
 //
 //                    }
 //                })
-
         view?.mDisposablePool?.add(
-                HttpManager.get(java.lang.String.format(BaseApi.DICT, "SYS_CONFIG_H5"))
-                        .execute(object : BaseCallBack<ConfigH5Bean>() {
+                HttpManager.get(BaseApi.INFORMATION)
+                        .params(params)
+                        .execute(object : BaseCallBack<ZIXunAllListResp>() {
                             override fun onStart() {
                                 view?.mStateView?.showLoading()
                                 super.onStart()
                             }
 
-                            override fun onSuccess(data: ConfigH5Bean) {
+                            override fun onSuccess(data: ZIXunAllListResp) {
                                 view?.getListDataSuccess(data.toString())
                                 view?.mStateView?.showContent()
+                                ToastUtils.showLong(data.toString())
                             }
 
                             override fun onError(e: ApiException) {
