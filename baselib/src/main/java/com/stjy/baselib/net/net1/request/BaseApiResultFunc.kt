@@ -18,7 +18,6 @@ import java.lang.reflect.Type
  * @author dai
  */
 class BaseApiResultFunc<T>(private var type: Type) : Function<ResponseBody, ApiResult<T?>> {
-
     var gson: Gson
 
     init {
