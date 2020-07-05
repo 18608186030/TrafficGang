@@ -22,7 +22,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup" >
-        <activity android:name=".base.mvp.demo.MvpDemoActivity" >
+        <activity android:name="com.stjy.baselib.ui.activity.mvpdemo.MvpDemoActivity" >
         </activity>
 
         <uses-library

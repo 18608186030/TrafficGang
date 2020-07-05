@@ -26,12 +26,14 @@ interface  AppConfig {
         /**
          * 测试BaseUrl
          */
-        private const val TEST_URL_254 = "http://cjs-pro-api.zqf.com.cn:80/"
+        //private const val TEST_URL_254 = "http://cjs-pro-api.zqf.com.cn:80/"
+        private const val TEST_URL_254 = "http://182.150.22.222:6061"
 
         /**
          * 正式BaseUrl
          */
-        private const val RELEASE_URL = "https://cjs-pro-api.cjs.com.cn/"
+        //private const val RELEASE_URL = "https://cjs-pro-api.cjs.com.cn/"
+        private const val RELEASE_URL = "https://es.staq360.com/"
 
         /**
          * 域名地址

@@ -8,31 +8,13 @@ import com.stjy.baselib.base.mvc.BaseFragment
  * @CreateTime: 2020/7/4
  * @Describe: MVP模式fragment基类
  */
-abstract class BaseMVPFragment<V, P : BasePresenter<V>?> : BaseFragment(), IBaseView {
+abstract class BaseMVPFragment<V, P : BasePresenter<V>?> : BaseFragment() {
     var mPresenter: P? = null
-        get() = mPresenter
-
     protected abstract fun createPresenter(): P
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         mPresenter = createPresenter()
         super.onActivityCreated(savedInstanceState)
-    }
-
-    override fun showLoadingDialog() {
-        startLoadingDialog()
-    }
-
-    override fun hideLoadingDialog() {
-        stopLoadingDialog()
-    }
-
-    override fun showLoadingStateView() {
-        startLoading()
-    }
-
-    override fun hideLoadingStateView() {
-        stopLoading()
     }
 
     override fun onDestroy() {

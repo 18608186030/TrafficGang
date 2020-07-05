@@ -39,8 +39,8 @@ import me.yokeyword.fragmentation.SupportActivity
  */
 abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListener {
     var mProgressDialog: Dialog? = null
-    protected var mStateView: StateView? = null
-    protected var mDisposablePool = CompositeDisposable()
+    var mStateView: StateView? = null
+    var mDisposablePool = CompositeDisposable()
     private var mBarTitle: TextView? = null
     private var mBarRight: TextView? = null
 

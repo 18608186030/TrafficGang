@@ -7,33 +7,14 @@ import com.stjy.baselib.base.mvc.BaseActivity
  * @CreateTime: 2020/7/4
  * @Describe: MVP模式Activity基类
  */
-abstract class BaseMVPActivity<V, P : BasePresenter<V>?> : BaseActivity(), IBaseView {
+abstract class BaseMVPActivity<V, P : BasePresenter<V>?> : BaseActivity() {
     var mPresenter: P? = null
-        get() = mPresenter
-
-    protected abstract fun createPresenter(): P
+    protected abstract fun createPresenter(): P?
 
     override fun setContentView(layoutResID: Int) {
         mPresenter = createPresenter()
         mPresenter?.attachView(this as V)
         super.setContentView(layoutResID)
-    }
-
-
-    override fun showLoadingDialog() {
-        startLoadingDialog()
-    }
-
-    override fun hideLoadingDialog() {
-        stopLoadingDialog()
-    }
-
-    override fun showLoadingStateView() {
-        startLoading()
-    }
-
-    override fun hideLoadingStateView() {
-        stopLoading()
     }
 
     override fun onDestroy() {

@@ -36,6 +36,13 @@ class PersonFragment : BaseFragment() {
 //            WebViewActivity.start(mActivity, "https://www.baidu.com")
             ToastUtils.showLong("我就是bug")
         }
+
+        tvWodeXiaoxi.setOnClickListener {
+            ARouter.getInstance()
+                    .build(ARouterHub.BASELIB_MVPDEMO_ACTIVITY)
+                    .navigation(mActivity)
+        }
+
         tvOutLogin.setOnClickListener {
             ARouter.getInstance()
                     .build(ARouterHub.LOGIN_ACTIVITY)

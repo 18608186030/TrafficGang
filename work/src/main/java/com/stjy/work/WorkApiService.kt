@@ -1,7 +1,7 @@
 package com.stjy.work
 
 import com.stjy.baselib.net.net2.resp.BaseRespData
-import com.stjy.baselib.net.net2.api.BaseApi
+import com.stjy.baselib.net.BaseApi
 import com.stjy.work.bean.ZiXunAllResp
 import io.reactivex.Observable
 import retrofit2.http.POST

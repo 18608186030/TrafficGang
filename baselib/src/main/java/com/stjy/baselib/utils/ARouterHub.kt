@@ -21,6 +21,11 @@ interface ARouterHub {
         const val BASELIB_WEBVIEW_ACTIVITY = BASELIB + "WebViewActivity"
         const val BASELIB_WEBVIEW_FRAGMENT = BASELIB + "WebViewFragment"
 
+        /**
+         * MVP案例
+         */
+        const val BASELIB_MVPDEMO_ACTIVITY = BASELIB + "MvpDemoActivity"
+
         //********************************app模块***************************************************
         /**
          * The constant APP.
