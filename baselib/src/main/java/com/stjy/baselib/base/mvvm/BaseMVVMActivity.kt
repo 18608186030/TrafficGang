@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
-import com.stjy.baselib.base.cmmont.BaseActivity
+import com.stjy.baselib.base.mvc.BaseActivity
 
 /**
  * @Author: superman
@@ -22,7 +22,7 @@ abstract class BaseMVVMActivity<V : BaseViewModel> : BaseActivity() {
         observeEvent(mViewModel)
     }
 
-    private fun initViewModel(): V = obtainViewModel(viewModelClass())
+    private fun initViewModel(): V = obtainViewModelWithActivity(viewModelClass())
 
     private fun observeEvent(viewModel: BaseViewModel) {
         viewModel.setLifecycleOwner(this)

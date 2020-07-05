@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.R
-import com.stjy.baselib.base.cmmont.BaseActivity
+import com.stjy.baselib.base.mvc.BaseActivity
 import com.stjy.baselib.ui.fragment.WebViewFragment
 import com.stjy.baselib.utils.ARouterHub
 

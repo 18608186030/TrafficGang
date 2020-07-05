@@ -4,6 +4,7 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
+import com.stjy.baselib.base.mvvm.IViewModelAction
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -23,28 +24,23 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     override fun startLoading(message: String?) {
-        val baseActionEvent = BaseMVVMActionEvent(BaseMVVMActionEvent.START_LOADING)
-        baseActionEvent.message = message
-        actionLiveData.value = baseActionEvent
+        actionLiveData.value = BaseMVVMActionEvent(action = BaseMVVMActionEvent.START_LOADING,message=message)
     }
 
     override fun stopLoading() {
-        actionLiveData.value = BaseMVVMActionEvent(BaseMVVMActionEvent.STOP_LOADING)
+        actionLiveData.value = BaseMVVMActionEvent(action =BaseMVVMActionEvent.STOP_LOADING)
     }
 
     override fun startLoadingDialog() {
-        val baseActionEvent = BaseMVVMActionEvent(BaseMVVMActionEvent.START_LOADING_DIALOG)
-        actionLiveData.value = baseActionEvent
+        actionLiveData.value = BaseMVVMActionEvent(action =BaseMVVMActionEvent.START_LOADING_DIALOG)
     }
 
     override fun stopLoadingDialog() {
-        actionLiveData.value = BaseMVVMActionEvent(BaseMVVMActionEvent.STOP_LOADING_DIALOG)
+        actionLiveData.value = BaseMVVMActionEvent(action = BaseMVVMActionEvent.STOP_LOADING_DIALOG)
     }
 
     override fun showToast(message: String?) {
-        val baseActionEvent = BaseMVVMActionEvent(BaseMVVMActionEvent.SHOW_TOAST)
-        baseActionEvent.message = message
-        actionLiveData.value = baseActionEvent
+        actionLiveData.value = BaseMVVMActionEvent(action =BaseMVVMActionEvent.SHOW_TOAST,message = message)
     }
 
     override fun showError() {
@@ -52,10 +48,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     override fun showError(code: String?, message: String?) {
-        val baseActionEvent = BaseMVVMActionEvent(BaseMVVMActionEvent.SHOW_ERROR)
-        baseActionEvent.message = code
-        baseActionEvent.message = message
-        actionLiveData.value = baseActionEvent
+        actionLiveData.value = BaseMVVMActionEvent(action = BaseMVVMActionEvent.SHOW_ERROR,code = code,message = message)
     }
 
     override fun finishRefresh() {
@@ -75,7 +68,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     protected fun <T> toObservable(observable: Observable<T>): Observable<T> {
-        return observable.subscribeOn(Schedulers.io())//网络请求在子线程，所以是在io线程，避免阻塞线程
-                .observeOn(AndroidSchedulers.mainThread())
+        //网络请求在子线程，所以是在io线程，避免阻塞线程
+        return observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
 }

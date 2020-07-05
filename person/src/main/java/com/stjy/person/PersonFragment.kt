@@ -4,7 +4,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ToastUtils
-import com.stjy.baselib.base.cmmont.BaseFragment
+import com.stjy.baselib.base.mvc.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.StatusBarUtils
 import kotlinx.android.synthetic.main.fragment_person.*

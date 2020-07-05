@@ -3,13 +3,13 @@ package com.stjy.baselib.base.mvvm
 import android.app.Application
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-
 /**
- * A creator is used to inject the product ID into the ViewModel
- *
- * This creator is to showcase how to inject dependencies into ViewModels.
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: A creator is used to inject the product ID into the ViewModel
+ *            This creator is to showcase how to inject dependencies into ViewModels.
  */
-class BaseMVVM_ViewModelFactory constructor(val application: Application) : ViewModelProvider.NewInstanceFactory() {
+class BaseViewModelFactory constructor(val application: Application) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         try {
@@ -23,6 +23,6 @@ class BaseMVVM_ViewModelFactory constructor(val application: Application) : View
     }
 
     companion object {
-        fun newInstance(application: Application) = BaseMVVM_ViewModelFactory(application)
+        fun newInstance(application: Application) = BaseViewModelFactory(application)
     }
 }

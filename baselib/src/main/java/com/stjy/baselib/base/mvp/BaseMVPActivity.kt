@@ -1,6 +1,6 @@
 package com.stjy.baselib.base.mvp
 
-import com.stjy.baselib.base.cmmont.BaseActivity
+import com.stjy.baselib.base.mvc.BaseActivity
 
 /**
  * @Author: superman

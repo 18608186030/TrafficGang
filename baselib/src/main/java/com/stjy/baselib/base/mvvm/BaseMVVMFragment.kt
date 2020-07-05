@@ -3,7 +3,7 @@ package com.stjy.baselib.base.mvvm
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
-import com.stjy.baselib.base.cmmont.BaseFragment
+import com.stjy.baselib.base.mvc.BaseFragment
 
 /**
  * @Author: superman
@@ -19,7 +19,7 @@ abstract class BaseMVVMFragment<V : BaseViewModel> : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
     }
 
-    private fun initViewModel(): V = obtainViewModel(viewModelClass())
+    private fun initViewModel(): V = obtainViewModelWithFragment(viewModelClass())
 
     private fun observeEvent(viewModel: V) {
         viewModel.setLifecycleOwner(this)

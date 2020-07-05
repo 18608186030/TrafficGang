@@ -1,4 +1,4 @@
-package com.stjy.baselib.base.cmmont;
+package com.stjy.baselib.base.mvc;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -6,12 +6,11 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.ColorInt;
-import android.support.annotation.Nullable;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.RequiresApi;
-import android.view.View;
+import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceError;
@@ -19,7 +18,6 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.github.lzyzsd.jsbridge.BridgeWebViewClient;
@@ -27,11 +25,8 @@ import com.just.agentweb.AgentWeb;
 import com.just.agentweb.AgentWebConfig;
 import com.just.agentweb.MiddlewareWebChromeBase;
 import com.just.agentweb.MiddlewareWebClientBase;
-import com.just.agentweb.PermissionInterceptor;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
-import com.stjy.baselib.bean.event.LoginEvent;
-import com.stjy.baselib.utils.ARouterHub;
 import com.stjy.baselib.utils.WBH5FaceVerifySDK;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -40,25 +35,24 @@ import org.greenrobot.eventbus.ThreadMode;
 /**
  * @Author: superman
  * @CreateTime: 2020/7/4
- * @Describe: 浏览器fragment基类
+ * @Describe: 浏览器BaseAgentWebActivity基类
  */
-public abstract class BaseAgentWebFragment extends BaseFragment {
+public abstract class BaseAgentWebActivity extends BaseActivity {
     private final int REQUEST_CONTACT = 2001;
     protected AgentWeb mAgentWeb;
     protected BridgeWebView bridgeWebView;
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
         buildAgentWeb();
     }
 
     protected void buildAgentWeb() {
-        mAgentWeb = AgentWeb.with(getActivity())
+        mAgentWeb = AgentWeb.with(this)
                 .setAgentWebParent(getAgentWebParent(), new ViewGroup.LayoutParams(-1, -1))
                 .useDefaultIndicator(getIndicatorColor(), getIndicatorHeight())
                 .setWebView(getWebView())
-                .setPermissionInterceptor(getPermissionInterceptor())
                 .setWebViewClient(getWebViewClient())
                 .setWebChromeClient(getWebChromeClient())
                 .setSecurityType(AgentWeb.SecurityType.DEFAULT_CHECK)
@@ -91,30 +85,30 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(Object event) {
-        if (event instanceof LoginEvent) {
-            if (((LoginEvent) event).getAction() == LoginEvent.GOLOGIN) {
-                ARouter.getInstance()
-                        .build(ARouterHub.ARCHIVE_ACTIVITY)
-                        .navigation(mActivity);
-            } else if (((LoginEvent) event).getAction() == LoginEvent.LOGINOK) {
-                //登陆成功
-                syncCookie();
-            } else if (((LoginEvent) event).getAction() == LoginEvent.LOGINOUT) {
-                //用户退出了登录
-                AgentWebConfig.removeAllCookies();
-            }
+    public void onMessageEvent(Object o) {
+        if (o instanceof Object) {
+            //用户退出了登录
+            AgentWebConfig.removeAllCookies();
         } else {
 
         }
     }
 
     @Override
-    public void onDestroy() {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (mAgentWeb.handleKeyEvent(keyCode, event)) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
         if (bridgeWebView != null) {
             bridgeWebView.destroy();
             bridgeWebView = null;
         }
+
         if (mAgentWeb != null) {
             mAgentWeb.getWebLifeCycle().onDestroy();
             mAgentWeb = null;
@@ -123,7 +117,7 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         /**
          * 法大大摄像认证
@@ -139,7 +133,7 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
                         ContactsContract.CommonDataKinds.Phone.NUMBER,
                         ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY
                 };
-                Cursor cursor = getActivity().getContentResolver().query(contactUri, queryFields, null, null, null);
+                Cursor cursor = this.getContentResolver().query(contactUri, queryFields, null, null, null);
                 try {
                     if (null != cursor && cursor.moveToFirst()) {
                         String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY));
@@ -163,14 +157,9 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public boolean onBackPressedSupport() {
-        if (!mAgentWeb.back() && mAgentWeb != null) {
-            return super.onBackPressedSupport();
-        } else {
-            return true;
-        }
-    }
+    protected abstract String getUrl();
+
+    protected abstract ViewGroup getAgentWebParent();
 
     protected @ColorInt
     int getIndicatorColor() {
@@ -181,10 +170,6 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
         return -1;
     }
 
-    protected abstract ViewGroup getAgentWebParent();
-
-    protected abstract String getUrl();
-
     private WebViewClient getWebViewClient() {
         return new WebViewClient() {
             BridgeWebViewClient mBridgeWebViewClient = new BridgeWebViewClient(getWebView());
@@ -192,21 +177,21 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                return mBridgeWebViewClient.shouldOverrideUrlLoading(view, request);
+                return mBridgeWebViewClient.shouldOverrideUrlLoading(view, request);  //兼容高版本，必须设置
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return mBridgeWebViewClient.shouldOverrideUrlLoading(view, url);
+                return mBridgeWebViewClient.shouldOverrideUrlLoading(view, url);  //兼容低版本，必须设置
             }
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                mBridgeWebViewClient.onPageStarted(view, url, favicon);
+                mBridgeWebViewClient.onPageStarted(view, url, favicon);  //必须设置
             }
 
             @Override
-            public void onPageFinished(WebView view, String url) {
+            public void onPageFinished(WebView view, String url) {  //必须设置
                 mBridgeWebViewClient.onPageFinished(view, url);
             }
 
@@ -219,12 +204,9 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
         };
     }
 
+
     protected WebChromeClient getWebChromeClient() {
         return null;
-    }
-
-    protected boolean showWebUrlTitle() {
-        return true;
     }
 
     protected MiddlewareWebChromeBase getMiddleWareWebChrome() {
@@ -233,12 +215,10 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
-                if (showWebUrlTitle()) {
-                    if (title.length() > 10) {
-                        title = title.substring(0, 10).concat("...");
-                    }
-                    setBarTitle(title);
+                if (title.length() > 10) {
+                    title = title.substring(0, 10).concat("...");
                 }
+                setBarTitle(title);
             }
 
 
@@ -257,7 +237,8 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
                 /**
                  * 法大大摄像认证
                  */
-                if (WBH5FaceVerifySDK.getInstance().recordVideoForApiBelow21(valueCallback, acceptType, getActivity())) {
+                if (WBH5FaceVerifySDK.getInstance().recordVideoForApiBelow21(valueCallback,
+                        acceptType, BaseAgentWebActivity.this)) {
                     return;
                 }
             }
@@ -271,7 +252,8 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
                 /**
                  * 法大大摄像认证
                  */
-                if (WBH5FaceVerifySDK.getInstance().recordVideoForApiBelow21(uploadFile, acceptType, getActivity())) {
+                if (WBH5FaceVerifySDK.getInstance().recordVideoForApiBelow21(uploadFile,
+                        acceptType, BaseAgentWebActivity.this)) {
                     return;
                 }
             }
@@ -285,7 +267,8 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
                 /**
                  * 法大大摄像认证
                  */
-                if (WBH5FaceVerifySDK.getInstance().recordVideoForApi21(webView, filePathCallback, getActivity(), fileChooserParams)) {
+                if (WBH5FaceVerifySDK.getInstance().recordVideoForApi21(webView,
+                        filePathCallback, BaseAgentWebActivity.this, fileChooserParams)) {
                     return true;
                 }
                 return super.onShowFileChooser(webView, filePathCallback, fileChooserParams);
@@ -300,7 +283,7 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
 
     protected BridgeWebView getWebView() {
         if (bridgeWebView == null) {
-            bridgeWebView = new BridgeWebView(getActivity());
+            bridgeWebView = new BridgeWebView(this);
             WebSettings webSettings = bridgeWebView.getSettings();
             String userAgentString = webSettings.getUserAgentString();
             webSettings.setUserAgentString(userAgentString + " safety");
@@ -309,19 +292,17 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
              * 对 WebSettings 进行设置:添加 ua 字段和适配 h5 页面布局等 * @param mWebView 第三方的 WebView 对象
              * @param context 第三方上下文
              */
-            WBH5FaceVerifySDK.getInstance().setWebViewSettings(bridgeWebView, getContext());
-            bridgeWebView.registerHandler("CJSJSBridge_OpenIMPage_ToNative", (data, function) -> {
+            WBH5FaceVerifySDK.getInstance().setWebViewSettings(bridgeWebView, this);
+            bridgeWebView.registerHandler("androidToJS", (data, function) -> {
                 ToastUtils.showLong(data);
-//                function.onCallBack(data);
+                function.onCallBack(data);
             });
-
             syncCookie();
         }
         return bridgeWebView;
     }
 
-
-    protected PermissionInterceptor getPermissionInterceptor() {
-        return null;
+    protected AgentWeb getAgentWeb() {
+        return this.mAgentWeb;
     }
 }

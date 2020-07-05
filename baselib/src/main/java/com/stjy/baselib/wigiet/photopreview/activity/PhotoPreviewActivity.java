@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.stjy.baselib.R;
-import com.stjy.baselib.base.cmmont.BaseActivity;
+import com.stjy.baselib.base.mvc.BaseActivity;
 import com.stjy.baselib.wigiet.photopreview.adapter.PhotoPagerAdapter;
 import com.stjy.baselib.wigiet.photopreview.fragment.PhotoFragment;
 

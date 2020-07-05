@@ -1,7 +1,7 @@
 package com.stjy.baselib.base.mvp
 
 import android.os.Bundle
-import com.stjy.baselib.base.cmmont.BaseFragment
+import com.stjy.baselib.base.mvc.BaseFragment
 
 /**
  * @Author: superman

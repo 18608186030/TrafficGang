@@ -1,10 +1,13 @@
 package com.stjy.baselib.base.mvvm
 
-open class BaseMVVMActionEvent(val action: Int) {
-
-    var code: String? = null
-    var message: String? = null
-
+/**
+ * @Author: superman
+ * @CreateTime: 2020/7/4
+ * @Describe: MVVM BaseMVVMActivity基类和BaseMVVMFragment基类通用事件
+ */
+open class BaseMVVMActionEvent(val action: Int?=null,
+                               val code: String? = null,
+                               val message: String? = null) {
     companion object {
         const val START_LOADING = 1
         const val STOP_LOADING = 2
