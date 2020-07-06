@@ -1,7 +1,9 @@
 package com.stjy.baselib.ui.activity.mvpdemo
 
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.BarUtils
 import com.stjy.baselib.R
 import com.stjy.baselib.base.mvp.BaseMVPActivity
 import com.stjy.baselib.utils.ARouterHub
@@ -18,6 +20,7 @@ class MvpDemoActivity : BaseMVPActivity<MvpDemoActivity?, PresenterMvpDemo?>() {
     override fun initView() {
         setBarTitle("MVP框架使用案例")
     }
+
     override fun initData() {
         mPresenter?.getListData(1)
     }

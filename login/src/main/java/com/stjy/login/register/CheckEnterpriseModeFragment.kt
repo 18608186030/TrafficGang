@@ -5,7 +5,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvvm.BaseMVVMFragment
 import com.stjy.baselib.utils.ARouterHub
-import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_checkenterprisemode.*
@@ -28,9 +27,6 @@ class CheckEnterpriseModeFragment : BaseMVVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("选择或创建企业")
-        fakeStatusBar()?.let {
-            StatusBarUtils.setStatusBarColor(it)
-        }
     }
 
     override fun initData() {

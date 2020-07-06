@@ -37,17 +37,20 @@ class PresenterMvpDemo() : BasePresenter<MvpDemoActivity?>() {
                         .params(params)
                         .execute(object : BaseCallBack<ZIXunAllListResp>() {
                             override fun onStart() {
+                                view?.startLoadingDialog()
                                 view?.mStateView?.showLoading()
                                 super.onStart()
                             }
 
                             override fun onSuccess(data: ZIXunAllListResp) {
-                                view?.getListDataSuccess(data.toString())
+                                view?.stopLoadingDialog()
                                 view?.mStateView?.showContent()
+                                view?.getListDataSuccess(data.toString())
                                 ToastUtils.showLong(data.toString())
                             }
 
                             override fun onError(e: ApiException) {
+                                view?.stopLoadingDialog()
                                 view?.mStateView?.showRetry()
                             }
                         })

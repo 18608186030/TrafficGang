@@ -57,8 +57,8 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
             EventBusUtils.register(this)
         }
         mStateView = StateView.inject(this, true)
-        initStatusBar()
         initToolBar()
+        initStatusBar()
         initView()
         initListener()
         initData()
@@ -243,7 +243,12 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
      * 更新状态栏颜色和状态栏透明度
      */
     open fun initStatusBar() {
+        BarUtils.setStatusBarColor(this, resources.getColor(R.color.colorPrimary))
         BarUtils.setStatusBarLightMode(this, true)
+        toolbar?.let {
+            it.setBackgroundResource(R.drawable.shap_toolbar_bg)
+            BarUtils.addMarginTopEqualStatusBarHeight(it)
+        }
     }
 
     protected fun <T> bindLifecycle(): LifecycleTransformer<T> {

@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
@@ -36,7 +37,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     lateinit var mActivity: BaseActivity
     private var mView: View? = null
     protected lateinit var mStateView: StateView
-    protected var mDisposablePool = CompositeDisposable()
+    var mDisposablePool = CompositeDisposable()
     private var mBarTitle: TextView? = null
     private var mBarRight: TextView? = null
 
@@ -47,9 +48,9 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView = inflater.inflate(getLayoutID(), container, false)
-        mView?.let {
-            mStateView = StateView.inject(it)
+        mView = with(inflater.inflate(getLayoutID(), container, false)){
+            mStateView = StateView.inject(this)
+            this
         }
         return mView
     }
@@ -60,6 +61,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
             EventBusUtils.register(this)
         }
         initToolBar()
+        initStatusBar()
         initView(mView)
         initListener()
         initData()
@@ -92,6 +94,20 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
             if (isShowBacking()) {
                 setNavigationIcon(R.mipmap.ic_black)
                 it.setNavigationOnClickListener { setNavigationOnClickListener() }
+            }
+        }
+    }
+
+    /**
+     * 更新状态栏颜色和状态栏透明度
+     */
+    open fun initStatusBar() {
+        activity?.let {
+            BarUtils.setStatusBarColor(it, resources.getColor(R.color.colorPrimary))
+            BarUtils.setStatusBarLightMode(it, true)
+            toolbar?.let {
+                it.setBackgroundResource(R.drawable.shap_toolbar_bg)
+                BarUtils.addMarginTopEqualStatusBarHeight(it)
             }
         }
     }
@@ -203,8 +219,6 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {}
-
-    open fun fakeStatusBar(): View? = mView?.findViewById(R.id.fake_status_bar)
 
     /**
      * 请求权限

@@ -8,8 +8,6 @@
     android:orientation="vertical"
     tools:context=".PersonFragment">
 
-    <include layout="@layout/fake_status_bar_view_wihte" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

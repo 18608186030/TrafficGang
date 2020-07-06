@@ -6,6 +6,5 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.activity.mvpdemo.MvpDemoActivity">
-    <include layout="@layout/fake_status_bar_view_wihte" />
-    <include layout="@layout/toolbar_wihte" />
+    <include layout="@layout/toolbar" />
 </LinearLayout>

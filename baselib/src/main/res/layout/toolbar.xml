@@ -18,7 +18,7 @@
         android:gravity="center"
         android:maxLines="1"
         android:textColor="@color/black1"
-        android:textSize="18dp"
+        android:textSize="16sp"
         tools:text="主标题" />
 
     <TextView
@@ -30,6 +30,6 @@
         android:maxLength="5"
         android:maxLines="1"
         android:textColor="@color/black1"
-        android:textSize="18dp"
+        android:textSize="16sp"
         tools:text="副按钮" />
 </android.support.v7.widget.Toolbar>

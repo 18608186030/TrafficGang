@@ -5,7 +5,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvc.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
-import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.person.R
 
 @Route(path = ARouterHub.PERSON_INFO_FRAGMENT, name = "个人信息界面")
@@ -26,9 +25,6 @@ class PersonInfoFragment : BaseFragment() {
 
     override fun initView(contentView: View?) {
         setBarTitle("个人信息")
-        fakeStatusBar()?.let {
-            StatusBarUtils.setStatusBarColor(it)
-        }
     }
 
     override fun initData() {

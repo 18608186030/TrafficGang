@@ -7,7 +7,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvvm.BaseMVVMFragment
 import com.stjy.baselib.utils.ARouterHub
-import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
 import com.stjy.login.register.adapter.SearchEnterpriseListAdapter
@@ -31,9 +30,6 @@ class SearchEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("选择或创建企业")
-        fakeStatusBar()?.let {
-            StatusBarUtils.setStatusBarColor(it)
-        }
         recyclerview.layoutManager = LinearLayoutManager(mActivity)
         recyclerview.addItemDecoration(DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL))
         var mVideoCourseAdapter = SearchEnterpriseListAdapter(ArrayList())

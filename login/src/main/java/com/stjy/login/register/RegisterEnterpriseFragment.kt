@@ -10,7 +10,6 @@ import com.stjy.baselib.listener.PermissionListener
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.MatisseUtils
 import com.stjy.baselib.utils.PhotoPreviewUtils
-import com.stjy.baselib.utils.StatusBarUtils
 import com.stjy.login.R
 import com.stjy.login.model.LoginViewModel
 import com.zhihu.matisse.Matisse
@@ -37,9 +36,6 @@ class RegisterEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
     override fun initView(contentView: View?) {
         setBarTitle("注册企业")
         setBarRightText("保存")
-        fakeStatusBar()?.let {
-            StatusBarUtils.setStatusBarColor(it)
-        }
         initBusinessLicense()
     }
 

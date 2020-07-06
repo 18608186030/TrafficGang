@@ -8,8 +8,6 @@
     android:orientation="vertical"
     tools:context=".PersonFragment">
 
-    <include layout="@layout/fake_status_bar_view_wihte" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
