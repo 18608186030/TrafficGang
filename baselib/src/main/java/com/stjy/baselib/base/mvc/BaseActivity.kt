@@ -243,7 +243,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
      * 更新状态栏颜色和状态栏透明度
      */
     open fun initStatusBar() {
-        BarUtils.setStatusBarColor(this, resources.getColor(R.color.colorPrimary))
+        BarUtils.setStatusBarColor(this, resources.getColor(R.color.qmui_s_transparent))
         BarUtils.setStatusBarLightMode(this, true)
         toolbar?.let {
             it.setBackgroundResource(R.drawable.shap_toolbar_bg)
@@ -266,14 +266,10 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         rxPermissions.requestEachCombined(*permissions)
                 .subscribe { permission: Permission ->
                     if (permission.granted) {
-                        // All permissions are granted !
                         listener.onGranted()
                     } else if (permission.shouldShowRequestPermissionRationale) {
-                        // At least one denied permission without ask never again
                         ToastUtils.showShort("权限被拒绝")
                     } else {
-                        // At least one denied permission with ask never again
-                        // Need to go to the settings
                         MessageDialogBuilder(this)
                                 .setMessage("权限被拒绝并设置为不再询问，请前往设置中开启")
                                 .addAction("去设置") { dialog: QMUIDialog?, index: Int -> PermissionUtils.launchAppDetailsSettings() }

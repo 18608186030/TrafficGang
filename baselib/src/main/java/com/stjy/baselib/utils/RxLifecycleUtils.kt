@@ -20,5 +20,4 @@ class RxLifecycleUtils private constructor() {
             return AndroidLifecycle.createLifecycleProvider(lifecycleOwner).bindToLifecycle()
         }
     }
-
 }

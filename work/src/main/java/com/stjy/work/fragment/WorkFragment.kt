@@ -13,23 +13,19 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
 
     override fun viewModelClass() = WorkViewModel::class.java
 
-    override fun getLayoutID(): Int {
-        return R.layout.fragment_work
+    override fun getLayoutID(): Int=R.layout.fragment_work
+
+    override fun onResume() {
+        super.onResume()
+        initStatusBar()
     }
 
     override fun initStatusBar() {
         super.initStatusBar()
         BarUtils.setStatusBarColor(mActivity, resources.getColor(R.color.red))
-    }
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        try {
-            if (isVisibleToUser) {
-                initStatusBar()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        toolbar?.let {
+            it.setBackgroundResource(R.drawable.shap_toolbar_bg)
+            BarUtils.addMarginTopEqualStatusBarHeight(it)
         }
     }
 
@@ -44,4 +40,6 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
     override fun initListener() {
 
     }
+
+    override fun isShowBacking(): Boolean = false
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.BarUtils
 import com.stjy.baselib.base.mvc.BaseActivity
 import com.stjy.baselib.ui.adapter.FragmentSubAdapter
 import com.stjy.baselib.utils.ARouterHub
@@ -32,7 +33,7 @@ class MainActivity : BaseActivity() {
         itemIcon.add(BotBean("个人中心", R.mipmap.ic_home_normal, R.mipmap.ic_home_pressed))
         vp_content.adapter = FragmentSubAdapter(supportFragmentManager, fragments)
         vp_content.offscreenPageLimit = fragments.size
-        bottom.setViewPager(vp_content, itemIcon,object : BottomView.BottomPageChangeListener {
+        bottom.setViewPager(vp_content, itemIcon, object : BottomView.BottomPageChangeListener {
             override fun onBottomPageChangeListener(position: Int) {
             }
         })

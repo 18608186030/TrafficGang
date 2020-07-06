@@ -6,34 +6,22 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.stjy.baselib.base.mvc.BaseFragment
+import com.stjy.baselib.ui.activity.WebViewActivity
 import com.stjy.baselib.utils.ARouterHub
 import kotlinx.android.synthetic.main.fragment_person.*
 
 @Route(path = ARouterHub.PERSON_FRAGMENT, name = "个人中心块界面")
 class PersonFragment : BaseFragment() {
 
-    override fun getLayoutID(): Int {
-        return R.layout.fragment_person
-    }
+    override fun getLayoutID(): Int = R.layout.fragment_person
 
     override fun initStatusBar() {
         super.initStatusBar()
-        BarUtils.setStatusBarColor(mActivity, resources.getColor(R.color.blue))
-    }
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        try {
-            if (isVisibleToUser) {
-                initStatusBar()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        BarUtils.setStatusBarColor(mActivity, resources.getColor(R.color.yellow))
+        toolbar?.let {
+            it.setBackgroundResource(R.drawable.shap_toolbar_bg)
+            BarUtils.addMarginTopEqualStatusBarHeight(it)
         }
-    }
-
-    override fun getUserVisibleHint(): Boolean {
-        return super.getUserVisibleHint()
     }
 
     override fun initView(contentView: View?) {
@@ -49,10 +37,7 @@ class PersonFragment : BaseFragment() {
 //            ARouter.getInstance()
 //                .build(ARouterHub.ARCHIVE_ACTIVITY)
 //                .navigation(mActivity)
-
-//            WebViewActivity.start(mActivity, "https://www.pgyer.com", title = "郑仁超", showShare = false, showWebUrlTitle = false)
-//            WebViewActivity.start(mActivity, "https://www.baidu.com")
-            ToastUtils.showLong("我就是bug")
+            WebViewActivity.start(mActivity, "https://www.pgyer.com", title = "郑仁超", showShare = false, showWebUrlTitle = false)
         }
 
         tvWodeXiaoxi.setOnClickListener {
@@ -68,7 +53,5 @@ class PersonFragment : BaseFragment() {
         }
     }
 
-    override fun isShowBacking(): Boolean {
-        return false
-    }
+    override fun isShowBacking(): Boolean = false
 }

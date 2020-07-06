@@ -15,23 +15,13 @@ import kotlinx.android.synthetic.main.fragment_maillist.*
 
 @Route(path = ARouterHub.MAILLIST_FRAGMENT, name = "通讯录模块界面")
 class MailListFragment : BaseFragment() {
-    override fun getLayoutID(): Int {
-        return R.layout.fragment_maillist
-    }
-
+    override fun getLayoutID(): Int = R.layout.fragment_maillist
     override fun initStatusBar() {
         super.initStatusBar()
-        BarUtils.setStatusBarColor(mActivity, resources.getColor(R.color.yellow))
-    }
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        try {
-            if (isVisibleToUser) {
-                initStatusBar()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        BarUtils.setStatusBarColor(mActivity, resources.getColor(R.color.blue))
+        toolbar?.let {
+            it.setBackgroundResource(R.drawable.shap_toolbar_bg)
+            BarUtils.addMarginTopEqualStatusBarHeight(it)
         }
     }
 
@@ -91,8 +81,5 @@ class MailListFragment : BaseFragment() {
 
     }
 
-    override fun isShowBacking(): Boolean {
-        return false
-    }
-
+    override fun isShowBacking(): Boolean = false
 }

@@ -61,10 +61,27 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
             EventBusUtils.register(this)
         }
         initToolBar()
-        initStatusBar()
         initView(mView)
         initListener()
         initData()
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        try {
+            if (isVisibleToUser) {
+                initStatusBar()
+            }
+        } catch (e: Exception) {
+
+        }
+    }
+
+    /**
+     * 更新状态栏颜色和状态栏透明度
+     */
+    open fun initStatusBar() {
+       mActivity.initStatusBar()
     }
 
     override fun onDestroyView() {
@@ -94,20 +111,6 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
             if (isShowBacking()) {
                 setNavigationIcon(R.mipmap.ic_black)
                 it.setNavigationOnClickListener { setNavigationOnClickListener() }
-            }
-        }
-    }
-
-    /**
-     * 更新状态栏颜色和状态栏透明度
-     */
-    open fun initStatusBar() {
-        activity?.let {
-            BarUtils.setStatusBarColor(it, resources.getColor(R.color.colorPrimary))
-            BarUtils.setStatusBarLightMode(it, true)
-            toolbar?.let {
-                it.setBackgroundResource(R.drawable.shap_toolbar_bg)
-                BarUtils.addMarginTopEqualStatusBarHeight(it)
             }
         }
     }
@@ -161,7 +164,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     /**
      * 后退按钮图片
      */
-    fun setNavigationIcon(@DrawableRes resId: Int) {
+    open fun setNavigationIcon(@DrawableRes resId: Int) {
         toolbar?.setNavigationIcon(resId)
     }
 
