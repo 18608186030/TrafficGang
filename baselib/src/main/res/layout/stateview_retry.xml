@@ -11,16 +11,14 @@
     <ImageView
         android:id="@+id/iv_image"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:src="@mipmap/no_network" />
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_stateview_nonetwork" />
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="15dp"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="3"

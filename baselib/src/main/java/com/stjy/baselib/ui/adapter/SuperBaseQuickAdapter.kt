@@ -39,7 +39,7 @@ abstract class SuperBaseQuickAdapter<T, K : BaseViewHolder?> : BaseQuickAdapter<
     }
 
     fun showEmptyStaueView(content: String? = null,
-                           iccon: Int = R.mipmap.empty_data) {
+                           iccon: Int = R.mipmap.ic_stateview_empty) {
         emptyStateView?.let {
             it.findViewById<ImageView>(R.id.iv_image).setImageResource(iccon)
 
@@ -54,7 +54,7 @@ abstract class SuperBaseQuickAdapter<T, K : BaseViewHolder?> : BaseQuickAdapter<
     }
 
     fun showRetryStateView(content: String? = null,
-                           iccon: Int = R.mipmap.empty_data,
+                           iccon: Int = R.mipmap.ic_stateview_empty,
                            retry: String? = null,
                            btnClick: View.OnClickListener? = null) {
         retryStateView?.let {

@@ -103,7 +103,7 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
      */
     fun showEmpty(emptyTitle: String? = null, emptyDrawableResId: Int? = null): View? {
         mEmptyView = mEmptyView ?: inflate(mEmptyResource, EMPTY)
-        mEmptyView?.findViewById<ImageView>(R.id.iv_image)?.setImageResource(emptyDrawableResId ?: R.mipmap.empty_data)
+        mEmptyView?.findViewById<ImageView>(R.id.iv_image)?.setImageResource(emptyDrawableResId ?: R.mipmap.ic_stateview_empty)
         mEmptyView?.findViewById<TextView>(R.id.tv_title)?.text = emptyTitle ?: "暂无数据"
         mEmptyView?.findViewById<SuperTextView>(R.id.btn_retry)?.visibility = GONE
         showView(mEmptyView)
@@ -121,8 +121,8 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
      */
     fun showRetry(retryTitle: String? = null, retryDrawableResId: Int? = null, retryBtnText: String? = null, mRetryClickListener: OnClickListener? = null): View? {
         mRetryView = mRetryView ?: inflate(mRetryResource, RETRY)
-        //Glide.with(context).asGif().load(R.mipmap.no_network).into(ivImage)
-        mRetryView?.findViewById<ImageView>(R.id.iv_image)?.setImageResource(retryDrawableResId ?: R.mipmap.no_network)
+        //Glide.with(context).asGif().load(R.mipmap.ic_stateview_nonetwork).into(ivImage)
+        mRetryView?.findViewById<ImageView>(R.id.iv_image)?.setImageResource(retryDrawableResId ?: R.mipmap.ic_stateview_nonetwork)
         mRetryView?.findViewById<TextView>(R.id.tv_title)?.text = retryTitle ?: "似乎出了点问题..."
         mRetryView?.findViewById<SuperTextView>(R.id.btn_retry)?.text = retryBtnText ?: "重新加载"
         mRetryView?.findViewById<SuperTextView>(R.id.btn_retry)?.setOnClickListener(mRetryClickListener)
