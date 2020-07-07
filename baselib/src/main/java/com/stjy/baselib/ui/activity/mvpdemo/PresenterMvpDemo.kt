@@ -13,7 +13,7 @@ import kotlin.collections.HashMap
  * @CreateTime: 2020/7/4
  * @Describe:
  */
-class PresenterMvpDemo() : BasePresenter<MvpDemoActivity?>() {
+class PresenterMvpDemo : BasePresenter<MvpDemoActivity?>() {
     fun getListData(page_num: Int) {
 
         val params = HashMap<String, String>()

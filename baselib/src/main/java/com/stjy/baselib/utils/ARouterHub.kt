@@ -15,6 +15,7 @@ interface ARouterHub {
          * 公用模块
          */
         private const val BASELIB = "/baselib/"
+
         /**
          * 公用浏览器
          */
@@ -25,6 +26,11 @@ interface ARouterHub {
          * MVP案例
          */
         const val BASELIB_MVPDEMO_ACTIVITY = BASELIB + "MvpDemoActivity"
+
+        /**
+         * MVVM案例
+         */
+        const val BASELIB_MVVMDEMO_ACTIVITY = BASELIB + "MvvmDemoActivity"
 
         //********************************app模块***************************************************
         /**
@@ -49,6 +55,7 @@ interface ARouterHub {
          * 主界面
          */
         const val LOGIN_ACTIVITY = LOGIN + "LoginActivity"
+
         /**
          * 工作模块界面
          */
@@ -63,10 +70,12 @@ interface ARouterHub {
          * 找回密码第二级界面
          */
         const val LOGIN_FINDPASSWORDSECOND_FRAGMENT = LOGIN + "FindPasswordSecondFragment"
+
         /**
          * 找回密码第三级界面
          */
         const val LOGIN_FINDPASSWORDThird_FRAGMENT = LOGIN + "FindPasswordThirdFragment"
+
         /**
          * 找回密码第三级界面
          */
@@ -86,10 +95,12 @@ interface ARouterHub {
          * 选择或创建企业界面
          */
         const val LOGIN_SEARCHENTERPRISE_FRAGMENT = LOGIN + "SearchEnterpriseFragment"
+
         /**
          * 提交信息列表
          */
         const val LOGIN_SUBMITENTERPRISELIST_FRAGMENT = LOGIN + "SubmitEnterpriseListFragment"
+
         /**
          * 企业注册信息审核详情
          */

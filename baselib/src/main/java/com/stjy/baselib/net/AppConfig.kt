@@ -8,7 +8,7 @@ import com.stjy.baselib.BuildConfig
  * @ClassName StudyApiService
  * @Description
  */
-interface  AppConfig {
+interface AppConfig {
     companion object {
         /**
          * APP是否是开发或者模式 true 为开发或者测试环境，false 为正式环境
@@ -16,6 +16,7 @@ interface  AppConfig {
         const val isDebug = BuildConfig.IS_DEBUG
         const val KEY_TOKEN = "token"
         const val USER_DATA = "user_data"
+
         /**
          * 用户数据保存
          */
@@ -24,19 +25,12 @@ interface  AppConfig {
         const val USER_ADMIN = "admin/"
 
         /**
-         * 测试BaseUrl
-         */
-        private const val TEST_URL_254 = "http://cjs-pro-api.zqf.com.cn:80/"
-
-        /**
-         * 正式BaseUrl
-         */
-        private const val RELEASE_URL = "https://cjs-pro-api.cjs.com.cn/"
-
-        /**
          * 域名地址
          */
-        val BASE_URL = if (isDebug) TEST_URL_254 else RELEASE_URL
+        val BASE_URL = if (isDebug)
+            "http://cjs-pro-api.zqf.com.cn:80/"
+        else
+            "https://cjs-pro-api.cjs.com.cn/"
 
         /**
          * OSS访问的endpoint地址

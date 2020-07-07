@@ -14,6 +14,6 @@ interface BaseApi {
         /**
          * 根据字典类型获取字典
          */
-        var INFORMATION: String = "api/v2/information"
+        const val INFORMATION: String = "api/v2/information"
     }
 }

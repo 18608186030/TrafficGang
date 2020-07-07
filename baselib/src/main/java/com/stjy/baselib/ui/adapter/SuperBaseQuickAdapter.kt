@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.coorchice.library.SuperTextView
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.stjy.baselib.R
+
 /**
  * @Author: superman
  * @CreateTime: 2020/7/6
@@ -38,9 +39,8 @@ abstract class SuperBaseQuickAdapter<T, K : BaseViewHolder?> : BaseQuickAdapter<
         loadingStateView = LayoutInflater.from(context).inflate(R.layout.stateview_loading, smartRefreshLayout, false)
     }
 
-    fun showEmptyStaueView(content: String? = null,
-                           iccon: Int = R.mipmap.ic_stateview_empty) {
-        emptyStateView?.let {
+    fun showEmptyStaueView(content: String? = null, iccon: Int = R.mipmap.ic_stateview_empty) {
+        this.emptyView = emptyStateView?.let {
             it.findViewById<ImageView>(R.id.iv_image).setImageResource(iccon)
 
             it.findViewById<TextView>(R.id.tv_title).text = if (content.isNullOrEmpty()) {
@@ -48,16 +48,12 @@ abstract class SuperBaseQuickAdapter<T, K : BaseViewHolder?> : BaseQuickAdapter<
             } else {
                 content
             }
-
-            this.emptyView = emptyStateView
+            it
         }
     }
 
-    fun showRetryStateView(content: String? = null,
-                           iccon: Int = R.mipmap.ic_stateview_empty,
-                           retry: String? = null,
-                           btnClick: View.OnClickListener? = null) {
-        retryStateView?.let {
+    fun showRetryStateView(content: String? = null, iccon: Int = R.mipmap.ic_stateview_empty, retry: String? = null, btnClick: View.OnClickListener? = null) {
+        this.emptyView = retryStateView?.let {
             it.findViewById<ImageView>(R.id.iv_image).setImageResource(iccon)
             it.findViewById<TextView>(R.id.tv_title).text = if (content.isNullOrEmpty()) {
                 "似乎出了点问题"
@@ -73,14 +69,13 @@ abstract class SuperBaseQuickAdapter<T, K : BaseViewHolder?> : BaseQuickAdapter<
                 }
                 this.setOnClickListener(btnClick)
             }
-
-            this.emptyView = retryStateView
+            it
         }
     }
 
     fun showLoadingStateView() {
-        loadingStateView?.let {
-            this.emptyView = loadingStateView
+        this.emptyView = loadingStateView?.let {
+            it
         }
     }
 }

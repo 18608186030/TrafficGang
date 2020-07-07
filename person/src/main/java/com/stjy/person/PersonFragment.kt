@@ -46,6 +46,12 @@ class PersonFragment : BaseFragment() {
                     .navigation(mActivity)
         }
 
+        tvJoinOrganize.setOnClickListener {
+            ARouter.getInstance()
+                    .build(ARouterHub.BASELIB_MVVMDEMO_ACTIVITY)
+                    .navigation(mActivity)
+        }
+
         tvOutLogin.setOnClickListener {
             ARouter.getInstance()
                     .build(ARouterHub.LOGIN_ACTIVITY)

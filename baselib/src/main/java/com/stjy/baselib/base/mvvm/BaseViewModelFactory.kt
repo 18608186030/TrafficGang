@@ -6,7 +6,7 @@ import android.arch.lifecycle.ViewModelProvider
 /**
  * @Author: superman
  * @CreateTime: 2020/7/4
- * @Describe: A creator is used to inject the product ID into the ViewModel
+ * @Describe: A creator is used to inject the product ID into the MvvmDemoViewModel
  *            This creator is to showcase how to inject dependencies into ViewModels.
  */
 class BaseViewModelFactory constructor(val application: Application) : ViewModelProvider.NewInstanceFactory() {

@@ -1,6 +1,6 @@
 package com.stjy.baselib.net.net2.observer
 
-import com.jiuwe.common.net.resp.BaseResp
+import com.stjy.baselib.net.net2.resp.BaseResp
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
@@ -16,7 +16,7 @@ abstract class BaseObserver<T : BaseResp> : Observer<T> {
     }
 
     override fun onError(e: Throwable) {
-
+        e.printStackTrace()
     }
 
     /**

@@ -42,18 +42,6 @@ class WebViewActivity : BaseActivity() {
         setContentView(R.layout.activity_webview)
     }
 
-    override fun initListener() {
-
-    }
-
-    override fun initView() {
-        loadRootFragment(R.id.fl_web, WebViewFragment.newInstance(url = webUrl, title = title, showToobar = showToobar, showShare = showShare, showWebUrlTitle = showWebUrlTitle))
-    }
-
-    override fun initData() {
-
-    }
-
     companion object {
         const val URL = "url"
         const val TITILE = "title"
@@ -78,4 +66,12 @@ class WebViewActivity : BaseActivity() {
                     .navigation(context)
         }
     }
+
+    override fun initView() {
+        loadRootFragment(R.id.fl_web, WebViewFragment.newInstance(url = webUrl, title = title, showToobar = showToobar, showShare = showShare, showWebUrlTitle = showWebUrlTitle))
+    }
+
+    override fun initListener() {}
+
+    override fun initData() {}
 }
