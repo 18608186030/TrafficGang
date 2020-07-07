@@ -31,6 +31,7 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
 
     override fun initView(contentView: View?) {
         //mViewModel.getListData(1)
+        mStateView?.config(retryTitle = "郑仁超",retryBtnText = "刷新").showRetry()
     }
 
     override fun initData() {

@@ -33,9 +33,9 @@ abstract class SuperBaseQuickAdapter<T, K : BaseViewHolder?> : BaseQuickAdapter<
     constructor(@LayoutRes layoutResId: Int) : super(layoutResId, null) {}
 
     fun initStaueView(context: Context?, smartRefreshLayout: SmartRefreshLayout?) {
-        emptyStateView = LayoutInflater.from(context).inflate(R.layout.base_empty, smartRefreshLayout, false)
-        retryStateView = LayoutInflater.from(context).inflate(R.layout.base_retry, smartRefreshLayout, false)
-        loadingStateView = LayoutInflater.from(context).inflate(R.layout.base_loading, smartRefreshLayout, false)
+        emptyStateView = LayoutInflater.from(context).inflate(R.layout.stateview_empty, smartRefreshLayout, false)
+        retryStateView = LayoutInflater.from(context).inflate(R.layout.stateview_retry, smartRefreshLayout, false)
+        loadingStateView = LayoutInflater.from(context).inflate(R.layout.stateview_loading, smartRefreshLayout, false)
     }
 
     fun showEmptyStaueView(content: String? = null,

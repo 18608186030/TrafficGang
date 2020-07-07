@@ -44,7 +44,7 @@ abstract class BaseMVVMActivity<V : BaseViewModel> : BaseActivity() {
     }
 
     open fun showError(code: String?, message: String?) {
-        mStateView?.setRetryTitle(message)?.showRetry()
+        mStateView?.config(retryTitle = message)?.showRetry()
     }
 
     open fun finishRefresh() {}
