@@ -36,16 +36,10 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     private var mLoadingView: View? = null
 
     private var inflater: LayoutInflater? = null
-    private var mRetryClickListener: OnClickListener? = null
     private var mInflateListener: OnInflateListener? = null
     private var mLayoutParamsRelative: RelativeLayout.LayoutParams? = null
     private var mLayoutParamsConstrain: ConstraintLayout.LayoutParams? = null
     private var mProvider: AnimatorProvider? = null
-    private var emptyDrawableResId = 0
-    private var emptyTitle: String? = null
-    private var retryDrawableResId = 0
-    private var retryTitle: String? = null
-    private var retryBtnText: String? = null
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.StateView)
@@ -95,25 +89,6 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     /**
-     * 通用配置
-     *
-     * @param emptyDrawableResId 图片资源ID
-     * @return
-     */
-    fun config(emptyTitle: String? = null,
-               retryTitle: String? = null,
-               retryBtnText: String? = null,
-               emptyDrawableResId: Int? = null,
-               retryDrawableResId: Int? = null): StateView {
-        this.emptyTitle = emptyTitle ?: "暂无数据"
-        this.retryTitle = retryTitle ?: "似乎出了点问题..."
-        this.retryBtnText = retryBtnText ?: "重新加载"
-        this.emptyDrawableResId = emptyDrawableResId ?: R.mipmap.empty_data
-        this.retryDrawableResId = retryDrawableResId ?: R.mipmap.no_network
-        return this
-    }
-
-    /**
      * 显示内容视图
      */
     fun showContent() {
@@ -122,19 +97,15 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     /**
      * 显示空数据视图
-     *
-     * @return
+     * @param emptyTitle 标题
+     * @param emptyDrawableResId 顶部图片
+     * @return mEmptyView
      */
-    fun showEmpty(): View? {
-        if (mEmptyView == null) {
-            mEmptyView = inflate(mEmptyResource, EMPTY)
-            val ivImage = mEmptyView?.findViewById<ImageView>(R.id.iv_image)
-            val btnRetry = mEmptyView?.findViewById<SuperTextView>(R.id.btn_retry)
-            val tvTitle = mEmptyView?.findViewById<TextView>(R.id.tv_title)
-            ivImage?.setImageResource(emptyDrawableResId)
-            tvTitle?.text = emptyTitle
-            btnRetry?.visibility = GONE
-        }
+    fun showEmpty(emptyTitle: String? = null, emptyDrawableResId: Int? = null): View? {
+        mEmptyView = mEmptyView ?: inflate(mEmptyResource, EMPTY)
+        mEmptyView?.findViewById<ImageView>(R.id.iv_image)?.setImageResource(emptyDrawableResId ?: R.mipmap.empty_data)
+        mEmptyView?.findViewById<TextView>(R.id.tv_title)?.text = emptyTitle ?: "暂无数据"
+        mEmptyView?.findViewById<SuperTextView>(R.id.btn_retry)?.visibility = GONE
         showView(mEmptyView)
         return mEmptyView
     }
@@ -142,20 +113,19 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     /**
      * 显示重试加载视图
      *
-     * @return
+     * @param retryTitle 标题
+     * @param retryDrawableResId 顶部图片
+     * @param retryBtnText 按钮文字
+     * @param mRetryClickListener 按钮回调
+     * @return mRetryView
      */
-    fun showRetry(): View? {
-        if (mRetryView == null) {
-            mRetryView = inflate(mRetryResource, RETRY)
-            val ivImage = mRetryView?.findViewById<ImageView>(R.id.iv_image)
-            val tvTitle = mRetryView?.findViewById<TextView>(R.id.tv_title)
-            val btnRetry: SuperTextView? = mRetryView?.findViewById(R.id.btn_retry)
-            //Glide.with(context).asGif().load(R.mipmap.no_network).into(ivImage)
-            ivImage?.setImageResource(retryDrawableResId)
-            tvTitle?.text = retryTitle
-            btnRetry?.text = retryBtnText
-            btnRetry?.setOnClickListener(mRetryClickListener)
-        }
+    fun showRetry(retryTitle: String? = null, retryDrawableResId: Int? = null, retryBtnText: String? = null, mRetryClickListener: OnClickListener? = null): View? {
+        mRetryView = mRetryView ?: inflate(mRetryResource, RETRY)
+        //Glide.with(context).asGif().load(R.mipmap.no_network).into(ivImage)
+        mRetryView?.findViewById<ImageView>(R.id.iv_image)?.setImageResource(retryDrawableResId ?: R.mipmap.no_network)
+        mRetryView?.findViewById<TextView>(R.id.tv_title)?.text = retryTitle ?: "似乎出了点问题..."
+        mRetryView?.findViewById<SuperTextView>(R.id.btn_retry)?.text = retryBtnText ?: "重新加载"
+        mRetryView?.findViewById<SuperTextView>(R.id.btn_retry)?.setOnClickListener(mRetryClickListener)
         showView(mRetryView)
         return mRetryView
     }
@@ -165,12 +135,11 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
      *
      * @return
      */
-    fun showLoading(): View? {
-        if (mLoadingView == null) {
-            mLoadingView = inflate(mLoadingResource, LOADING)
+    fun showLoading(): View {
+        return mLoadingView ?: with(inflate(mLoadingResource, LOADING)) {
+            showView(mLoadingView)
+            this
         }
-        showView(mLoadingView)
-        return mLoadingView
     }
 
     /**

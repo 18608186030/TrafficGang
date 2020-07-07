@@ -13,7 +13,7 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
 
     override fun viewModelClass() = WorkViewModel::class.java
 
-    override fun getLayoutID(): Int=R.layout.fragment_work
+    override fun getLayoutID(): Int = R.layout.fragment_work
 
     override fun onResume() {
         super.onResume()
@@ -31,7 +31,7 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
 
     override fun initView(contentView: View?) {
         //mViewModel.getListData(1)
-        mStateView?.config(retryTitle = "郑仁超",retryBtnText = "刷新").showRetry()
+        mStateView?.showRetry()
     }
 
     override fun initData() {
