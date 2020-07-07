@@ -1,6 +1,5 @@
 package com.stjy.baselib.ui.activity.mvpdemo
 
-import com.blankj.utilcode.util.ToastUtils
 import com.stjy.baselib.base.mvp.BasePresenter
 import com.stjy.baselib.bean.model.ZIXunAllListResp
 import com.stjy.baselib.net.BaseApi
@@ -32,28 +31,42 @@ class PresenterMvpDemo() : BasePresenter<MvpDemoActivity?>() {
 //
 //                    }
 //                })
+//        view?.mDisposablePool?.add(
+//                HttpManager.get(BaseApi.INFORMATION)
+//                        .params(params)
+//                        .execute(object : BaseCallBack<ZIXunAllListResp>() {
+//                            override fun onStart() {
+//                                view?.startLoadingDialog()
+//                                view?.mStateView?.showLoading()
+//                                super.onStart()
+//                            }
+//
+//                            override fun onSuccess(data: ZIXunAllListResp) {
+//                                view?.stopLoadingDialog()
+//                                view?.mStateView?.showContent()
+//                                view?.getListDataSuccess(data)
+//                            }
+//
+//                            override fun onError(e: ApiException) {
+//                                view?.stopLoadingDialog()
+//                                view?.mStateView?.showRetry()
+//                            }
+//                        })
+//        )
         view?.mDisposablePool?.add(
                 HttpManager.get(BaseApi.INFORMATION)
                         .params(params)
                         .execute(object : BaseCallBack<ZIXunAllListResp>() {
-                            override fun onStart() {
-                                view?.startLoadingDialog()
-                                view?.mStateView?.showLoading()
-                                super.onStart()
-                            }
 
                             override fun onSuccess(data: ZIXunAllListResp) {
-                                view?.stopLoadingDialog()
-                                view?.mStateView?.showContent()
-                                view?.getListDataSuccess(data.toString())
-                                ToastUtils.showLong(data.toString())
+                                view?.getListDataSuccess(data)
                             }
 
                             override fun onError(e: ApiException) {
-                                view?.stopLoadingDialog()
-                                view?.mStateView?.showRetry()
+                                view?.getListDataError(e)
                             }
-                        })
-        )
+                        }))
+
     }
+
 }

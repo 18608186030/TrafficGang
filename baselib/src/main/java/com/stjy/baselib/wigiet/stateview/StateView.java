@@ -24,7 +24,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +32,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.coorchice.library.SuperTextView;
 import com.stjy.baselib.R;
 
 import java.lang.annotation.Retention;
@@ -430,7 +430,7 @@ public class StateView extends View {
         if (mEmptyView == null) {
             mEmptyView = inflate(mEmptyResource, EMPTY);
             ImageView ivImage = mEmptyView.findViewById(R.id.iv_image);
-            Button btnRetry = mEmptyView.findViewById(R.id.btn_retry);
+            SuperTextView btnRetry = mEmptyView.findViewById(R.id.btn_retry);
             TextView tvTitle = mEmptyView.findViewById(R.id.tv_title);
             if (emptyDrawableResId != 0) {
                 ivImage.setImageResource(emptyDrawableResId);
@@ -463,7 +463,7 @@ public class StateView extends View {
             mRetryView = inflate(mRetryResource, RETRY);
             ImageView ivImage = mRetryView.findViewById(R.id.iv_image);
             TextView tvTitle = mRetryView.findViewById(R.id.tv_title);
-            Button btnRetry = mRetryView.findViewById(R.id.btn_retry);
+            SuperTextView btnRetry = mRetryView.findViewById(R.id.btn_retry);
             if (retryDrawableResId != 0) {
                 ivImage.setImageResource(retryDrawableResId);
             } else {
