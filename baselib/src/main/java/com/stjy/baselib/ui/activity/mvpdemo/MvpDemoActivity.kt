@@ -67,7 +67,7 @@ class MvpDemoActivity : BaseMVPActivity<MvpDemoActivity?, PresenterMvpDemo?>(), 
     fun getListDataError(e: ApiException) {
         changeState()
         if (adapter.data?.isEmpty()){
-            adapter.showRetryStateView(e.message,R.mipmap.yingyezhizhao,"刷新", View.OnClickListener {
+            adapter.showRetryStateView(btnClick=View.OnClickListener {
                 mPresenter?.getListData(pageNum)
             })
         }

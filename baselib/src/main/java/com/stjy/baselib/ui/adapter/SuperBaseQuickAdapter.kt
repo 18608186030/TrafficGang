@@ -52,20 +52,20 @@ abstract class SuperBaseQuickAdapter<T, K : BaseViewHolder?> : BaseQuickAdapter<
         }
     }
 
-    fun showRetryStateView(content: String? = null, iccon: Int = R.mipmap.ic_stateview_empty, retry: String? = null, btnClick: View.OnClickListener? = null) {
+    fun showRetryStateView(title: String? = null, iccon: Int = R.mipmap.ic_stateview_empty, retryText: String? = null, btnClick: View.OnClickListener? = null) {
         this.emptyView = retryStateView?.let {
             it.findViewById<ImageView>(R.id.iv_image).setImageResource(iccon)
-            it.findViewById<TextView>(R.id.tv_title).text = if (content.isNullOrEmpty()) {
+            it.findViewById<TextView>(R.id.tv_title).text = if (title.isNullOrEmpty()) {
                 "似乎出了点问题"
             } else {
-                content
+                title
             }
 
             with(it.findViewById<SuperTextView>(R.id.btn_retry)) {
-                this.text = if (content.isNullOrEmpty()) {
+                this.text = if (retryText.isNullOrEmpty()) {
                     "重新加载"
                 } else {
-                    retry
+                    retryText
                 }
                 this.setOnClickListener(btnClick)
             }

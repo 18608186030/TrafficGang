@@ -71,7 +71,7 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
             } else {
                 changeState()
                 if (adapter.data?.isEmpty()) {
-                    adapter.showRetryStateView(iccon = R.mipmap.yingyezhizhao, retry = "从新加载", btnClick = View.OnClickListener {
+                    adapter.showRetryStateView( btnClick = View.OnClickListener {
                         pageNum = 1
                         adapter.data.clear()
                         adapter.showLoadingStateView()
