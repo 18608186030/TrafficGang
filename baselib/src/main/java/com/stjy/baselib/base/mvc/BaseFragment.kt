@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.DrawableRes
+import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -12,7 +13,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
-import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
@@ -229,7 +229,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
      * @param permissions
      */
     @SuppressLint("CheckResult")
-    fun requestPermission(listener: PermissionListener, vararg permissions: String) {
+    fun requestPermission(@NonNull listener: PermissionListener,@NonNull vararg permissions: String) {
         val rxPermissions = RxPermissions(this)
         rxPermissions.requestEachCombined(*permissions)
                 .subscribe { permission: Permission ->
@@ -273,4 +273,30 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
      * 初始化监听器
      */
     protected abstract fun initListener()
+
+    /**
+     *
+     *扩展点击事件
+     */
+    fun View.onClick(listener: View.OnClickListener): View {
+        setOnClickListener(listener)
+        return this
+    }
+
+    /**
+     *
+     *扩展点击事件，参数为方法
+     */
+    fun View.onClick(method: () -> Unit): View {
+        setOnClickListener { method() }
+        return this
+    }
+
+    /**
+     *
+     *扩展视图可见性
+     */
+    fun View.setVisible(visible: Boolean) {
+        this.visibility = if (visible) View.VISIBLE else View.GONE
+    }
 }

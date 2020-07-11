@@ -1,5 +1,6 @@
 package com.stjy.login.register
 
+import android.Manifest
 import android.content.Intent
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -48,30 +49,31 @@ class RegisterEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
         }
     }
 
+    private val PERMISSION = arrayOf(Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
     /**
      * 显示驾驶证图片
      */
     private fun initBusinessLicense() {
-        if (businessLicenseUrl != null) {
-            Glide.with(mActivity).load(businessLicenseUrl).into(ivBusinessLicense)
-            ivBusinessLicense.setOnClickListener {
-                if (businessLicenseUrl.isNullOrEmpty()) {
-                    requestPermission(object : PermissionListener {
-                        override fun onGranted() {
-                            MatisseUtils.fromImage(this@RegisterEnterpriseFragment)
-                                    .maxSelectable(1)
-                                    .forResult(1100)
-                        }
-                    }, MatisseUtils.PERMISSION.toString())
-                } else {
-                    PhotoPreviewUtils.start(mActivity, 0, arrayListOf(businessLicenseUrl))
-                }
+        Glide.with(mActivity).load(businessLicenseUrl).error(R.mipmap.yingyezhizhao).into(ivBusinessLicense)
+        ivBusinessLicense.setOnClickListener {
+            if (businessLicenseUrl.isNullOrEmpty()) {
+                requestPermission(object : PermissionListener {
+                    override fun onGranted() {
+                        MatisseUtils.fromImage(this@RegisterEnterpriseFragment)
+                                .maxSelectable(1)
+                                .forResult(1100)
+                    }
+                }, *MatisseUtils.PERMISSION)
+            } else {
+                //businessLicenseUrl="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1883122246,2639278773&fm=26&gp=0.jpg"
+                PhotoPreviewUtils.start(mActivity, 0, arrayListOf(businessLicenseUrl))
             }
-            ivBusinessLicenseDelete.setOnClickListener {
-                businessLicenseUrl = ""
-                ivBusinessLicenseDelete.visibility = View.GONE
-                ivBusinessLicense.setImageResource(R.mipmap.yingyezhizhao)
-            }
+        }
+        ivBusinessLicenseDelete.setOnClickListener {
+            businessLicenseUrl = ""
+            ivBusinessLicenseDelete.visibility = View.GONE
+            ivBusinessLicense.setImageResource(R.mipmap.yingyezhizhao)
         }
     }
 
@@ -89,6 +91,7 @@ class RegisterEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
             val imagePath: String? = multipleResult[0]
             when (requestCode) {
                 1100 -> {
+                    businessLicenseUrl=imagePath?:""
                     Glide.with(mActivity).load(imagePath).into(ivBusinessLicense)
                     ivBusinessLicenseDelete.visibility = View.VISIBLE
                 }

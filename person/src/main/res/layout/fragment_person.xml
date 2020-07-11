@@ -10,9 +10,9 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="25dp"
         android:background="@drawable/shap_toolbar_wihte_bg"
         android:theme="@style/ToolBarTheme">
 
@@ -42,13 +42,13 @@
             android:layout_height="60dp"
             android:src="@mipmap/person_changeorganize" />
 
-        <TextView
-            style="@style/TextViewStyle"
-            android:text="hahahahh" />
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:text="hahahahh" />
     </LinearLayout>
 
     <LinearLayout
@@ -90,15 +90,15 @@
         android:layout_marginTop="10dp"
         android:drawableLeft="@mipmap/person_wodedangan"
         android:drawablePadding="10dp"
-        android:text="我的档案" />
-
+        android:text="Webview案例" />
 
     <TextView
         android:id="@+id/tvWodeXiaoxi"
         style="@style/itemStyle"
         android:drawableLeft="@mipmap/person_wodexiaoxi"
         android:drawablePadding="10dp"
-        android:text="我的消息" />
+        android:text="MVP案例" />
+
 
     <TextView
         android:id="@+id/tvJoinOrganize"
@@ -106,7 +106,7 @@
         android:layout_marginTop="10dp"
         android:drawableLeft="@mipmap/person_joinorganize"
         android:drawablePadding="10dp"
-        android:text="申请加入新组织" />
+        android:text="MVVM案例" />
 
     <TextView
         android:id="@+id/tvChangePassword"
@@ -116,15 +116,14 @@
         android:text="修改密码" />
 
     <TextView
-        android:foreground="?android:attr/selectableItemBackground"
         android:id="@+id/tvOutLogin"
         style="@style/TextViewStyle"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:background="@color/white"
         android:drawablePadding="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:padding="15dp"
-        android:text="退出登陆" />
-
+        android:text="登录" />
 </LinearLayout>

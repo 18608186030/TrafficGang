@@ -33,28 +33,32 @@ class PersonFragment : BaseFragment() {
     }
 
     override fun initListener() {
-        tv_my_archive.setOnClickListener {
-//            ARouter.getInstance()
-//                .build(ARouterHub.ARCHIVE_ACTIVITY)
-//                .navigation(mActivity)
+
+        tv_my_archive.onClick {
             WebViewActivity.start(mActivity, "https://www.pgyer.com", title = "郑仁超", showShare = false, showWebUrlTitle = false)
         }
 
-        tvWodeXiaoxi.setOnClickListener {
+        tvWodeXiaoxi.onClick {
             ARouter.getInstance()
                     .build(ARouterHub.BASELIB_MVPDEMO_ACTIVITY)
                     .navigation(mActivity)
         }
 
-        tvJoinOrganize.setOnClickListener {
+        tvJoinOrganize.onClick {
             ARouter.getInstance()
                     .build(ARouterHub.BASELIB_MVVMDEMO_ACTIVITY)
                     .navigation(mActivity)
         }
 
-        tvOutLogin.setOnClickListener {
+        tvOutLogin.onClick {
             ARouter.getInstance()
                     .build(ARouterHub.LOGIN_ACTIVITY)
+                    .navigation(mActivity)
+        }
+
+        tvChangePassword.onClick {
+            ARouter.getInstance()
+                    .build(ARouterHub.ARCHIVE_ACTIVITY)
                     .navigation(mActivity)
         }
     }

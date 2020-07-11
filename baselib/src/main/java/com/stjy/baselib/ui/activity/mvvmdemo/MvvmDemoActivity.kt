@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.SizeUtils
 import com.chad.library.adapter.base.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.RefreshState
@@ -19,6 +20,7 @@ import com.stjy.baselib.bean.model.ZIXunAllListResp
 import com.stjy.baselib.ui.adapter.SuperBaseQuickAdapter
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.ImageLoaderUtils
+import com.stjy.baselib.wigiet.divider.HorizontalDividerItemDecoration
 import com.stjy.baselib.wigiet.refreshheader.material.MaterialHeader
 import kotlinx.android.synthetic.main.activity_mvvmdemo.*
 
@@ -48,6 +50,10 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
         adapter.initStaueView(this, refreshLayout)
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = adapter
+        recyclerview.addItemDecoration(HorizontalDividerItemDecoration.Builder(this)
+                        .colorResId(R.color.colorPrimary)
+                        .size(SizeUtils.dp2px(10f))
+                        .build())
     }
 
     override fun initData() {
