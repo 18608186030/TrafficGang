@@ -11,6 +11,17 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
+
+        <provider
+            android:name=".utils.provider.MatisseFileProvider"
+            android:authorities="${applicationId}.matisseFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/matissefile_paths" />
+        </provider>
+
         <activity android:name=".ui.activity.mvvmdemo.MvvmDemoActivity"></activity>
         <activity android:name=".ui.activity.mvpdemo.MvpDemoActivity"></activity>
 
@@ -40,10 +51,12 @@
         <meta-data
             android:name="design_height_in_dp"
             android:value="667" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -53,7 +66,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>

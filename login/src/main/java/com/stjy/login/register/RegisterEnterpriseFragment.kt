@@ -84,7 +84,7 @@ class RegisterEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
         pop()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             val multipleResult = Matisse.obtainPathResult(data)

@@ -189,7 +189,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
         }
     }
 
-    override fun startActivityForResult(intent: Intent, requestCode: Int) {
+    override fun startActivityForResult(intent: Intent?, requestCode: Int) {
         val fragment = parentFragment
         if (fragment != null) {
             fragment.startActivityForResult(intent, requestCode)
@@ -198,12 +198,16 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        childFragmentManager.fragments?.forEach {
-            it.onActivityResult(requestCode, resultCode, data)
+        val fragmentList = childFragmentManager.fragments
+        if (fragmentList != null) {
+            for (fragment in fragmentList) {
+                fragment.onActivityResult(requestCode, resultCode, data)
+            }
         }
     }
+
 
     open fun startLoadingDialog() {
         mActivity?.startLoadingDialog()
