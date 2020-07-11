@@ -68,11 +68,29 @@ class PhotoPreviewActivity : BaseActivity() {
          * @param position 当前图片位置
          * @param images   图片集合
          */
-        fun actionStart(context: Context, position: Int, images: List<String?>?) {
+        fun start(context: Context, position: Int, images: List<String?>?) {
             val intent = Intent(context, PhotoPreviewActivity::class.java)
             val bundle = Bundle()
             bundle.putInt(POSITION, position)
             bundle.putStringArrayList(IMAGES, images as ArrayList<String?>?)
+            intent.putExtras(bundle)
+            context.startActivity(intent)
+        }
+
+        /**
+         * @param context
+         * @param position 当前图片位置
+         * @param image   图片路径或url
+         */
+        fun start(context: Context, position: Int, image: String?) {
+            val intent = Intent(context, PhotoPreviewActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt(POSITION, position)
+            bundle.putStringArrayList(IMAGES, object : ArrayList<String?>() {
+                init {
+                    add(image)
+                }
+            })
             intent.putExtras(bundle)
             context.startActivity(intent)
         }
