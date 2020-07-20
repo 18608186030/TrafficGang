@@ -1,7 +1,7 @@
 package com.stjy.baselib.base.mvc
 
 import android.annotation.SuppressLint
-import android.app.Dialog
+import android.content.DialogInterface
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.support.annotation.ColorInt
@@ -14,16 +14,13 @@ import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.qmuiteam.qmui.widget.dialog.QMUIDialog
-import com.qmuiteam.qmui.widget.dialog.QMUIDialog.MessageDialogBuilder
-import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 import com.stjy.baselib.R
 import com.stjy.baselib.listener.PermissionListener
 import com.stjy.baselib.utils.ActivityManager
 import com.stjy.baselib.utils.EventBusUtils
 import com.stjy.baselib.utils.RxLifecycleUtils
+import com.stjy.baselib.wigiet.loading.LoadingDialog
 import com.stjy.baselib.wigiet.stateview.StateView
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -38,7 +35,7 @@ import me.yokeyword.fragmentation.SupportActivity
  * @Describe: Activity基类
  */
 abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListener {
-    var mProgressDialog: Dialog? = null
+    var mLoadingDialog: LoadingDialog? = null
     var mStateView: StateView? = null
     var mDisposablePool = CompositeDisposable()
     private var mBarTitle: TextView? = null
@@ -70,7 +67,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         if (isRegisterEvent()) {
             EventBusUtils.unregister(this)
         }
-        mProgressDialog?.dismiss()
+        mLoadingDialog?.dismiss()
         ActivityManager.getInstance().removeActivity(this)
     }
 
@@ -151,26 +148,35 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         }
     }
 
-    fun startLoadingDialog() {
-        mProgressDialog = mProgressDialog ?: progressDialog()
-        if (!this.isFinishing) {
-            mProgressDialog?.let {
-                if (!it.isShowing) {
-                    it.show()
-                }
-            }
-        }
+    fun startLoadingDialog(content: CharSequence? = null,
+                           contentTextColor: Int? = null,
+                           contentTextSize: Int? = null,
+                           cancelable: Boolean? = null,
+                           canceledOnTouchOutside: Boolean? = null,
+                           strokeWidth: Int? = null,
+                           strokeColor: Int? = null,
+                           solidColor: Int? = null,
+                           cancelListener: DialogInterface.OnCancelListener? = null,
+                           cornerRadius: Int? = null,
+                           LoadingViewSize: Int? = null,
+                           dimAmount: Float? = null) {
+        mLoadingDialog = mLoadingDialog ?: LoadingDialog(this)
+        mLoadingDialog?.showing(content,
+                contentTextColor,
+                contentTextSize,
+                cancelable,
+                canceledOnTouchOutside,
+                strokeWidth,
+                strokeColor,
+                solidColor,
+                cancelListener,
+                cornerRadius,
+                LoadingViewSize,
+                dimAmount)
     }
 
     fun stopLoadingDialog() {
-        mProgressDialog = mProgressDialog ?: progressDialog()
-        if (!this.isFinishing) {
-            mProgressDialog?.let {
-                if (it.isShowing) {
-                    it.dismiss()
-                }
-            }
-        }
+        mLoadingDialog?.dismissing()
     }
 
     fun startLoading() {
@@ -243,7 +249,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
      * 更新状态栏颜色和状态栏透明度
      */
     open fun initStatusBar() {
-        BarUtils.setStatusBarColor(this, resources.getColor(R.color.qmui_s_transparent))
+        BarUtils.setStatusBarColor(this, resources.getColor(android.R.color.transparent))
         BarUtils.setStatusBarLightMode(this, true)
         toolbar?.let {
             it.setBackgroundResource(R.drawable.shap_toolbar_bg)
@@ -265,17 +271,17 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         val rxPermissions = RxPermissions(this)
         rxPermissions.requestEachCombined(*permissions)
                 .subscribe { permission: Permission ->
-                    if (permission.granted) {
-                        listener.onGranted()
-                    } else if (permission.shouldShowRequestPermissionRationale) {
-                        ToastUtils.showShort("权限被拒绝")
-                    } else {
-                        MessageDialogBuilder(this)
-                                .setMessage("权限被拒绝并设置为不再询问，请前往设置中开启")
-                                .addAction("去设置") { dialog: QMUIDialog?, index: Int -> PermissionUtils.launchAppDetailsSettings() }
-                                .addAction("下次再说") { dialog: QMUIDialog, index: Int -> dialog.dismiss() }
-                                .create()
-                                .show()
+                    when {
+                        permission.granted -> listener.onGranted()
+                        permission.shouldShowRequestPermissionRationale -> ToastUtils.showShort("权限被拒绝")
+                        else -> {
+//                            MessageDialogBuilder(this)
+//                                    .setMessage("权限被拒绝并设置为不再询问，请前往设置中开启")
+//                                    .addAction("去设置") { dialog: QMUIDialog?, index: Int -> PermissionUtils.launchAppDetailsSettings() }
+//                                    .addAction("下次再说") { dialog: QMUIDialog, index: Int -> dialog.dismiss() }
+//                                    .create()
+//                                    .show()
+                        }
                     }
                 }
     }
@@ -314,12 +320,4 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
      * 初始化监听器
      */
     protected abstract fun initListener()
-
-    /**
-     * 公用加载dialog
-     */
-    private fun progressDialog() = QMUITipDialog.Builder(this@BaseActivity)
-            .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
-            .setTipWord("加载中")
-            .create(false)
 }

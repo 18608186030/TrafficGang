@@ -11,6 +11,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+        renderscriptTargetApi 14
+        renderscriptSupportModeEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -129,9 +131,6 @@ dependencies {
     //图片加载策略( https://github.com/wasabeef/glide-transformations )
     api 'jp.wasabeef:glide-transformations:4.0.1'
 
-    //qmui
-    api 'com.qmuiteam:qmui:1.2.0'
-
     //阿里云OSS上传
     api 'com.aliyun.dpa:oss-android-sdk:2.9.2'
 
@@ -147,21 +146,15 @@ dependencies {
     // 刷新控件
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-28'
 
-    //dialog
-    //api 'com.kongzue.dialog_v3:dialog:3.1.8'
+    //dialog( https://github.com/CymChad/BaseRecyclerViewAdapterHelper )
+    api 'com.kongzue.dialog_v3:dialog:3.2.1'
 
     //适配器( https://github.com/CymChad/BaseRecyclerViewAdapterHelper )
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45'
-
     api 'com.github.chenBingX:SuperTextView:v3.1.1'
 
-    //************************************************************************************
-    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
-    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
+    //bugly
     api 'com.tencent.bugly:crashreport_upgrade:latest.release'
-    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
     api 'com.tencent.bugly:nativecrashreport:latest.release'
-    // 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
     api 'com.tencent.tinker:tinker-android-lib:1.9.9'
-    //************************************************************************************
 }

@@ -1,6 +1,7 @@
 package com.stjy.baselib.base.mvc
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.DrawableRes
@@ -13,17 +14,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
-import com.blankj.utilcode.util.PermissionUtils
-import com.blankj.utilcode.util.ToastUtils
-import com.qmuiteam.qmui.widget.dialog.QMUIDialog
-import com.qmuiteam.qmui.widget.dialog.QMUIDialog.MessageDialogBuilder
 import com.stjy.baselib.R
 import com.stjy.baselib.listener.PermissionListener
 import com.stjy.baselib.utils.EventBusUtils
 import com.stjy.baselib.utils.RxLifecycleUtils
 import com.stjy.baselib.wigiet.stateview.StateView
-import com.tbruyelle.rxpermissions2.Permission
-import com.tbruyelle.rxpermissions2.RxPermissions
 import com.trello.rxlifecycle2.LifecycleTransformer
 import io.reactivex.disposables.CompositeDisposable
 import me.yokeyword.fragmentation.SupportFragment
@@ -48,7 +43,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView = with(inflater.inflate(getLayoutID(), container, false)){
+        mView = with(inflater.inflate(getLayoutID(), container, false)) {
             mStateView = StateView.inject(this)
             this
         }
@@ -81,7 +76,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
      * 更新状态栏颜色和状态栏透明度
      */
     open fun initStatusBar() {
-       mActivity.initStatusBar()
+        mActivity.initStatusBar()
     }
 
     override fun onDestroyView() {
@@ -89,7 +84,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
         if (isRegisterEvent()) {
             EventBusUtils.unregister(this)
         }
-        mActivity.mProgressDialog?.dismiss()
+        mActivity.mLoadingDialog?.dismissing()
         mDisposablePool.clear()
     }
 
@@ -209,8 +204,30 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
     }
 
 
-    open fun startLoadingDialog() {
-        mActivity?.startLoadingDialog()
+    open fun startLoadingDialog(content: CharSequence? = null,
+                                contentTextColor: Int? = null,
+                                contentTextSize: Int? = null,
+                                cancelable: Boolean? = null,
+                                canceledOnTouchOutside: Boolean? = null,
+                                strokeWidth: Int? = null,
+                                strokeColor: Int? = null,
+                                solidColor: Int? = null,
+                                cancelListener: DialogInterface.OnCancelListener? = null,
+                                cornerRadius: Int? = null,
+                                LoadingViewSize: Int? = null,
+                                dimAmount: Float? = null) {
+        mActivity?.startLoadingDialog(content,
+                contentTextColor,
+                contentTextSize,
+                cancelable,
+                canceledOnTouchOutside,
+                strokeWidth,
+                strokeColor,
+                solidColor,
+                cancelListener,
+                cornerRadius,
+                LoadingViewSize,
+                dimAmount)
     }
 
     open fun stopLoadingDialog() {
@@ -233,23 +250,8 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
      * @param permissions
      */
     @SuppressLint("CheckResult")
-    fun requestPermission(@NonNull listener: PermissionListener,@NonNull vararg permissions: String) {
-        val rxPermissions = RxPermissions(this)
-        rxPermissions.requestEachCombined(*permissions)
-                .subscribe { permission: Permission ->
-                    when {
-                        permission.granted -> listener.onGranted()
-                        permission.shouldShowRequestPermissionRationale -> ToastUtils.showShort("权限被拒绝")
-                        else -> {
-                            MessageDialogBuilder(mActivity)
-                                    .setMessage("权限被拒绝并设置为不再询问，请前往设置中开启")
-                                    .addAction("去设置") { dialog: QMUIDialog?, index: Int -> PermissionUtils.launchAppDetailsSettings() }
-                                    .addAction("下次再说") { dialog: QMUIDialog, index: Int -> dialog.dismiss() }
-                                    .create()
-                                    .show()
-                        }
-                    }
-                }
+    fun requestPermission(@NonNull listener: PermissionListener, @NonNull vararg permissions: String) {
+        mActivity?.requestPermission(listener, *permissions)
     }
 
     /**

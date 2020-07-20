@@ -1,42 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/mainBackground</item>
-
-        <!-- 配置qmui提供的theme -->
-        <item name="QMUITopBarStyle">@style/QDTopBar</item>
-        <item name="QMUIButtonStyle">@style/QDRoundButton</item>
-    </style>
-    <style name="QDTopBar" parent="QMUI.TopBar">
-        <item name="qmui_topbar_bg_color">@color/colorPrimary</item>
-        <item name="qmui_topbar_title_gravity">center</item>
-        <item name="qmui_topbar_title_text_size">18dp</item>
-        <item name="qmui_topbar_title_color">@color/black1</item>
-        <item name="qmui_topbar_subtitle_color">@color/black1</item>
-        <item name="qmui_topbar_height">?attr/actionBarSize</item>
-        <item name="qmui_topbar_image_btn_height">?attr/actionBarSize</item>
-        <item name="android:background">@drawable/shap_toolbar_bg</item>
-        <item name="qmui_topbar_need_separator">true</item>
-        <item name="qmui_topbar_title_margin_horizontal_when_no_btn_aside">8dp</item>
-        <item name="qmui_topbar_separator_height">1dp</item>
-        <item name="qmui_topbar_separator_color">@color/gray4</item>
-        <item name="qmui_topbar_left_back_drawable_id">@mipmap/ic_black</item>
-        <item name="qmui_topbar_text_btn_color_state_list">@color/black1</item>
-        <item name="qmui_topbar_text_btn_text_size">18dp</item>
-    </style>
-
-    <style name="QDRoundButton" parent="QMUI.RoundButton">
-        <item name="qmui_backgroundColor">@color/white</item>
-        <item name="qmui_borderWidth">1dp</item>
-        <item name="qmui_borderColor">@color/colorAccent</item>
-        <item name="qmui_isRadiusAdjustBounds">true</item>
-        <item name="qmui_radius">15dp</item>
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">14dp</item>
     </style>
 
     <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">

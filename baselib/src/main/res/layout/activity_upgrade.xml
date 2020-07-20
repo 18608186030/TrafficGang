@@ -76,15 +76,12 @@
                 </LinearLayout>
             </ScrollView>
 
-            <com.qmuiteam.qmui.widget.QMUIProgressBar
+            <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_margin="8dp"
-                android:visibility="invisible"
-                app:qmui_background_color="@color/gray"
-                app:qmui_progress_color="@color/colorAccent"
-                app:qmui_type="type_rect" />
+                android:visibility="invisible" />
 
             <include layout="@layout/line" />
 

@@ -31,7 +31,9 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
 
     override fun initView(contentView: View?) {
         //mViewModel.getListData(1)
-        mStateView?.showRetry()
+        mStateView?.showRetry(mRetryClickListener= View.OnClickListener {
+            startLoadingDialog()
+        })
     }
 
     override fun initData() {

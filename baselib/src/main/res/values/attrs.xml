@@ -34,4 +34,9 @@
         <item name="android:gravity">left</item>
         <item name="android:textColor">@color/gray2</item>
     </style>
+
+    <declare-styleable name="MyLoadingView">
+        <attr format="dimension" name="loading_view_size"/>
+        <attr name="android:color"/>
+    </declare-styleable>
 </resources>

@@ -1,17 +1,19 @@
 package com.stjy.trafficgang
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.blankj.utilcode.util.BarUtils
 import com.stjy.baselib.base.mvc.BaseActivity
 import com.stjy.baselib.ui.adapter.FragmentSubAdapter
 import com.stjy.baselib.utils.ARouterHub
+import com.stjy.baselib.utils.service.JobHandleService
 import com.stjy.baselib.wigiet.BotBean
 import com.stjy.baselib.wigiet.BottomView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+
 
 @Route(path = ARouterHub.APP_MAIN_ACTIVITY, name = "主页界面")
 class MainActivity : BaseActivity() {
@@ -37,6 +39,8 @@ class MainActivity : BaseActivity() {
             override fun onBottomPageChangeListener(position: Int) {
             }
         })
+
+        startService(Intent(this, JobHandleService::class.java))
     }
 
     override fun initData() {

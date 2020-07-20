@@ -17,9 +17,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+        renderscriptTargetApi 14
+        renderscriptSupportModeEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        renderscriptTargetApi rootProject.ext.minSdkVersion
-        //renderscriptSupportModeEnabled true
         multiDexEnabled true
     }
 

@@ -14,59 +14,28 @@ import kotlin.collections.HashMap
  * @Describe:
  */
 class PresenterMvpDemo : BasePresenter<MvpDemoActivity?>() {
-    fun getListData(page_num: Int) {
 
+    fun getListData(page_num: Int) {
         val params = HashMap<String, String>()
         params["page_size"] = "${10}"
         params["page_num"] = "$page_num"
-//        HttpManager.get(BaseApi.INFORMATION)
-//                .params(params)
-//                .execute(ZIXunAllListResp::class.java)
-//                .subscribe(object : BaseObserver<ZIXunAllListResp>() {
-//                    override fun onSuccess(t: ZIXunAllListResp) {
-//
-//                    }
-//
-//                    override fun onError(e: ApiException) {
-//
-//                    }
-//                })
-//        view?.mDisposablePool?.add(
-//                HttpManager.get(BaseApi.INFORMATION)
-//                        .params(params)
-//                        .execute(object : BaseCallBack<ZIXunAllListResp>() {
-//                            override fun onStart() {
-//                                view?.startLoadingDialog()
-//                                view?.mStateView?.showLoading()
-//                                super.onStart()
-//                            }
-//
-//                            override fun onSuccess(data: ZIXunAllListResp) {
-//                                view?.stopLoadingDialog()
-//                                view?.mStateView?.showContent()
-//                                view?.getListDataSuccess(data)
-//                            }
-//
-//                            override fun onError(e: ApiException) {
-//                                view?.stopLoadingDialog()
-//                                view?.mStateView?.showRetry()
-//                            }
-//                        })
-//        )
         view?.mDisposablePool?.add(
                 HttpManager.get(BaseApi.INFORMATION)
                         .params(params)
                         .execute(object : BaseCallBack<ZIXunAllListResp>() {
 
+                            override fun onStart() {
+                                view?.startLoadingDialog()
+                            }
+
                             override fun onSuccess(data: ZIXunAllListResp) {
                                 view?.getListDataSuccess(data)
+                                view?.stopLoadingDialog()
                             }
 
                             override fun onError(e: ApiException) {
                                 view?.getListDataError(e)
                             }
                         }))
-
     }
-
 }
