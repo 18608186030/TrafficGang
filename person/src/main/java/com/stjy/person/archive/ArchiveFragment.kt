@@ -39,7 +39,5 @@ class ArchiveFragment : BaseFragment() {
         }
     }
 
-    override fun isShowBacking(): Boolean {
-        return false
-    }
+    override fun isShowBacking(): Boolean =false
 }

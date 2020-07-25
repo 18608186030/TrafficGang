@@ -19,9 +19,7 @@ class PersonInfoFragment : BaseFragment() {
         }
     }
 
-    override fun getLayoutID(): Int {
-        return R.layout.fragment_person_info
-    }
+    override fun getLayoutID(): Int =R.layout.fragment_person_info
 
     override fun initView(contentView: View?) {
         setBarTitle("个人信息")
@@ -35,7 +33,5 @@ class PersonInfoFragment : BaseFragment() {
 
     }
 
-    override fun isShowBacking(): Boolean {
-        return false
-    }
+    override fun isShowBacking(): Boolean =false
 }
