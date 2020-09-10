@@ -72,7 +72,7 @@ class BottomView : LinearLayout {
 }
 
 // 图标 + 文字的 底部按钮
-class TabView(context: Context, var botBean: BotBean) : LinearLayout(context) {
+class TabView(context: Context, private var botBean: BotBean) : LinearLayout(context) {
     private lateinit var iconName: TextView
     private lateinit var iconImage: ImageView
 

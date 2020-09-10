@@ -157,4 +157,9 @@ dependencies {
     api 'com.tencent.bugly:crashreport_upgrade:latest.release'
     api 'com.tencent.bugly:nativecrashreport:latest.release'
     api 'com.tencent.tinker:tinker-android-lib:1.9.9'
+
+    api ("com.github.foolchen:AndroidTracker:0.3.3"){
+        exclude module: 'okhttp'
+        exclude module: 'retrofit'
+    }
 }
