@@ -3,7 +3,7 @@ package com.stjy.person
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.blankj.utilcode.util.BarUtils
+import com.gyf.immersionbar.ImmersionBar
 import com.stjy.baselib.base.mvc.BaseFragment
 import com.stjy.baselib.ui.activity.WebViewActivity
 import com.stjy.baselib.utils.ARouterHub
@@ -13,15 +13,6 @@ import kotlinx.android.synthetic.main.fragment_person.*
 class PersonFragment : BaseFragment() {
 
     override fun getLayoutID(): Int = R.layout.fragment_person
-
-    override fun initStatusBar() {
-        super.initStatusBar()
-        BarUtils.setStatusBarColor(mActivity, resources.getColor(R.color.yellow))
-        toolbar?.let {
-            it.setBackgroundResource(R.drawable.shap_toolbar_bg)
-            BarUtils.addMarginTopEqualStatusBarHeight(it)
-        }
-    }
 
     override fun initView(contentView: View?) {
         setBarTitle("个人中心")
@@ -60,6 +51,13 @@ class PersonFragment : BaseFragment() {
                     .build(ARouterHub.ARCHIVE_ACTIVITY)
                     .navigation(mActivity)
         }
+    }
+
+    override fun initImmersionBar() {
+        super.initImmersionBar()
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.yellow)
+                .init()
     }
 
     override fun isShowBacking(): Boolean = false

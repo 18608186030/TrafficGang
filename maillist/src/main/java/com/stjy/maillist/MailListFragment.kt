@@ -4,8 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.GsonUtils
+import com.gyf.immersionbar.ImmersionBar
 import com.stjy.baselib.base.mvc.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.maillist.adpater.MailListAdapter
@@ -16,18 +16,10 @@ import kotlinx.android.synthetic.main.fragment_maillist.*
 @Route(path = ARouterHub.MAILLIST_FRAGMENT, name = "通讯录模块界面")
 class MailListFragment : BaseFragment() {
     override fun getLayoutID(): Int = R.layout.fragment_maillist
-    override fun initStatusBar() {
-        super.initStatusBar()
-        BarUtils.setStatusBarColor(mActivity, resources.getColor(R.color.blue))
-        toolbar?.let {
-            it.setBackgroundResource(R.drawable.shap_toolbar_bg)
-            BarUtils.addMarginTopEqualStatusBarHeight(it)
-        }
-    }
 
     override fun initView(contentView: View?) {
         setBarTitle("通讯录")
-        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mActivity)
+        recyclerview.layoutManager = LinearLayoutManager(mActivity)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
         var adapter = MailListAdapter(ArrayList())
         recyclerview.adapter = adapter
@@ -79,6 +71,13 @@ class MailListFragment : BaseFragment() {
 
     override fun initListener() {
 
+    }
+
+    override fun initImmersionBar() {
+        super.initImmersionBar()
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.blue)
+                .init()
     }
 
     override fun isShowBacking(): Boolean = false

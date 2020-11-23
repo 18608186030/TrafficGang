@@ -10,7 +10,6 @@ import com.stjy.baselib.base.mvc.BaseAgentWebFragment
 import com.stjy.baselib.utils.ARouterHub
 import kotlinx.android.synthetic.main.fragment_webview.*
 
-
 /**
  * @author daifalin
  * @date 2019-06-24 10:48

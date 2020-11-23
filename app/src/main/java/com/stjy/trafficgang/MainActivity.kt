@@ -1,6 +1,5 @@
 package com.stjy.trafficgang
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -8,7 +7,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.stjy.baselib.base.mvc.BaseActivity
 import com.stjy.baselib.ui.adapter.FragmentSubAdapter
 import com.stjy.baselib.utils.ARouterHub
-import com.stjy.baselib.utils.service.JobHandleService
 import com.stjy.baselib.wigiet.BotBean
 import com.stjy.baselib.wigiet.BottomView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -40,11 +38,15 @@ class MainActivity : BaseActivity() {
             }
         })
 
-        startService(Intent(this, JobHandleService::class.java))
+        //startService(Intent(this, JobHandleService::class.java))
     }
 
     override fun initData() {
 
+    }
+
+    override fun initImmersionBar() {
+        super.initImmersionBar()
     }
 
     override fun initListener() {

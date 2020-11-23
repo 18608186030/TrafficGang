@@ -19,18 +19,13 @@ import java.util.*
  */
 class PhotoPreviewActivity : BaseActivity() {
     private lateinit var images: List<String>
-    private lateinit var vpPhoto: androidx.viewpager.widget.ViewPager
+    private lateinit var vpPhoto: ViewPager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_preview)
     }
 
     public override fun initData() {}
-    override fun initStatusBar() {
-        BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, R.color.black))
-        BarUtils.addMarginTopEqualStatusBarHeight(toolbar!!)
-        BarUtils.setStatusBarLightMode(this, false)
-    }
 
     public override fun initView() {
         val bundle = intent.extras

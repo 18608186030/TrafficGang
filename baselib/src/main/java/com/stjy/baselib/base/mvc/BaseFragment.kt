@@ -3,16 +3,20 @@ package com.stjy.baselib.base.mvc
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
-import androidx.annotation.DrawableRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
+import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.components.SimpleImmersionOwner
+import com.gyf.immersionbar.components.SimpleImmersionProxy
 import com.stjy.baselib.R
 import com.stjy.baselib.utils.EventBusUtils
 import com.stjy.baselib.utils.RxLifecycleUtils
@@ -21,12 +25,17 @@ import com.trello.rxlifecycle2.LifecycleTransformer
 import io.reactivex.disposables.CompositeDisposable
 import me.yokeyword.fragmentation.SupportFragment
 
+
 /**
  * @Author: superman
  * @CreateTime: 2020/7/4
  * @Describe: BaseFragment基类
  */
-abstract class BaseFragment : SupportFragment(), View.OnClickListener {
+abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnClickListener {
+    /**
+     * ImmersionBar代理类
+     */
+    private var mSimpleImmersionProxy=SimpleImmersionProxy(this)
     lateinit var mActivity: BaseActivity
     private var mView: View? = null
     protected lateinit var mStateView: StateView
@@ -50,6 +59,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        mSimpleImmersionProxy.onActivityCreated(savedInstanceState)
         if (isRegisterEvent()) {
             EventBusUtils.register(this)
         }
@@ -61,24 +71,42 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-        try {
-            if (isVisibleToUser) {
-                initStatusBar()
-            }
-        } catch (e: Exception) {
+        mSimpleImmersionProxy.isUserVisibleHint = isVisibleToUser
+    }
 
-        }
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        mSimpleImmersionProxy.onHiddenChanged(hidden)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        mSimpleImmersionProxy.onConfigurationChanged(newConfig)
     }
 
     /**
-     * 更新状态栏颜色和状态栏透明度
+     * 初始化沉浸式代码
+     * Init immersion bar.
      */
-    open fun initStatusBar() {
-        mActivity.initStatusBar()
+    override fun initImmersionBar() {
+        //设置共同沉浸式样式
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.colorPrimary)     //状态栏颜色，不写默认透明色
+                .statusBarDarkFont(true,0.2f) //自动状态栏字体变色，必须指定状态栏颜色才可以自动变色哦
+                .init()
     }
+
+    /**
+     * 是否可以实现沉浸式，当为true的时候才可以执行initImmersionBar方法
+     * Immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    override fun immersionBarEnabled() = true
 
     override fun onDestroyView() {
         super.onDestroyView()
+        mSimpleImmersionProxy.onDestroy()
         if (isRegisterEvent()) {
             EventBusUtils.unregister(this)
         }
@@ -101,6 +129,7 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
         mBarRight = mView?.findViewById(R.id.bar_right)
         //判断是否有Toolbar,并默认显示返回按钮
         toolbar?.let {
+            initImmersionBar()
             if (isShowBacking()) {
                 setNavigationIcon(R.mipmap.ic_black)
                 it.setNavigationOnClickListener { setNavigationOnClickListener() }
