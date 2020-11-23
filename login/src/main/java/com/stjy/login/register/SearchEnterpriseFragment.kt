@@ -1,7 +1,7 @@
 package com.stjy.login.register
 
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -30,8 +30,8 @@ class SearchEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("选择或创建企业")
-        recyclerview.layoutManager = LinearLayoutManager(mActivity)
-        recyclerview.addItemDecoration(DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL))
+        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mActivity)
+        recyclerview.addItemDecoration(androidx.recyclerview.widget.DividerItemDecoration(mActivity, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
         var mVideoCourseAdapter = SearchEnterpriseListAdapter(ArrayList())
         recyclerview.adapter = mVideoCourseAdapter
 

@@ -1,6 +1,6 @@
 package com.stjy.baselib.utils.provider
 
-import android.support.v4.content.FileProvider
+import androidx.core.content.FileProvider
 
 /**
  * @author daifalin

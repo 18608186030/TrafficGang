@@ -5,8 +5,8 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.PictureDrawable
 import android.net.Uri
-import android.support.annotation.DrawableRes
-import android.support.annotation.RawRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.RawRes
 import android.widget.ImageView
 import com.blankj.utilcode.util.SizeUtils
 import com.bumptech.glide.Glide

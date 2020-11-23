@@ -1,9 +1,9 @@
 package com.stjy.baselib.base.mvvm
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import com.stjy.baselib.base.mvvm.IViewModelAction
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

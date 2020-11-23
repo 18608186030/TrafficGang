@@ -1,7 +1,7 @@
 package com.stjy.maillist
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -30,7 +30,7 @@ class SearchMailListActivity : BaseMVVMActivity<MailListViewModel>() {
 
     override fun initView() {
         setBarTitle(title)
-        recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
         var adapter = MailListAdapter(ArrayList())
         recyclerview.adapter = adapter

@@ -2,7 +2,7 @@ package com.stjy.baselib.utils
 
 import android.Manifest
 import android.app.Activity
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.blankj.utilcode.util.AppUtils
 import com.stjy.baselib.R
 import com.zhihu.matisse.Matisse
@@ -38,7 +38,7 @@ object MatisseUtils {
      * @param fragment Fragment instance.
      * @return
      */
-    fun fromImage(fragment: Fragment): SelectionCreator {
+    fun fromImage(fragment:Fragment): SelectionCreator {
         return matisseFrom(fragment, MimeType.ofImage(), true)
     }
 
@@ -82,7 +82,7 @@ object MatisseUtils {
         return matisseFrom(fragment, MimeType.ofAll(), false)
     }
 
-    private fun matisseFrom(fragment: Fragment, mimeTypes: Set<MimeType>, showSingleMediaType: Boolean): SelectionCreator {
+    private fun matisseFrom(fragment:Fragment, mimeTypes: Set<MimeType>, showSingleMediaType: Boolean): SelectionCreator {
         return Matisse.from(fragment)
                 .choose(mimeTypes)
                 .countable(true)

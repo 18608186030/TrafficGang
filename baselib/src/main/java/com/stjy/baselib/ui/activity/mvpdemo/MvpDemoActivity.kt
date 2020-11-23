@@ -2,7 +2,7 @@ package com.stjy.baselib.ui.activity.mvpdemo
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.chad.library.adapter.base.BaseViewHolder
@@ -42,7 +42,7 @@ class MvpDemoActivity : BaseMVPActivity<MvpDemoActivity?, PresenterMvpDemo?>(), 
                 .autoRefresh()
         adapter = MvpDemoListAdapter()
         adapter.initStaueView(this,refreshLayout)
-        recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerview.adapter = adapter
     }
 

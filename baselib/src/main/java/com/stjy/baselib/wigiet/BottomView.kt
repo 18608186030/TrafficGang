@@ -1,14 +1,14 @@
 package com.stjy.baselib.wigiet
 
 import android.content.Context
-import android.support.v4.view.ViewPager
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener
 import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.LinearLayout
 import java.util.*
 import android.graphics.Color
-import android.support.v4.graphics.drawable.DrawableCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,11 +20,11 @@ class BottomView : LinearLayout {
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    private var vp: ViewPager? = null
+    private var vp: androidx.viewpager.widget.ViewPager? = null
     private var bottomPageChangeListener: BottomPageChangeListener? = null
 
     // 同tablayout用法相似，与ViewPager进行绑定
-    fun setViewPager(viewPager: ViewPager, botBeans: ArrayList<BotBean>, bottomPageChangeListener: BottomPageChangeListener) {
+    fun setViewPager(viewPager: androidx.viewpager.widget.ViewPager, botBeans: ArrayList<BotBean>, bottomPageChangeListener: BottomPageChangeListener) {
         vp = viewPager
         this.bottomPageChangeListener = bottomPageChangeListener
         initTabView(botBeans)
@@ -46,7 +46,7 @@ class BottomView : LinearLayout {
         for (i in botBeans.indices) {
             val bean = botBeans[i]
             val tabView = TabView(context, bean)
-            val params = LayoutParams(ViewPager.LayoutParams.WRAP_CONTENT, ViewPager.LayoutParams.WRAP_CONTENT)
+            val params = LayoutParams(androidx.viewpager.widget.ViewPager.LayoutParams.WRAP_CONTENT, androidx.viewpager.widget.ViewPager.LayoutParams.WRAP_CONTENT)
             params.weight = 1f
             params.gravity = Gravity.CENTER
             tabView.layoutParams = params

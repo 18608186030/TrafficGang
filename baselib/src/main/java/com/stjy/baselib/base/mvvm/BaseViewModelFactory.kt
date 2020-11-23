@@ -1,8 +1,8 @@
 package com.stjy.baselib.base.mvvm
 
 import android.app.Application
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 /**
  * @Author: superman
  * @CreateTime: 2020/7/4

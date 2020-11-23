@@ -3,10 +3,10 @@ package com.stjy.baselib.wigiet.photopreview.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewPager
-import android.support.v4.view.ViewPager.OnPageChangeListener
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.blankj.utilcode.util.BarUtils
 import com.stjy.baselib.R
 import com.stjy.baselib.base.mvc.BaseActivity
@@ -19,7 +19,7 @@ import java.util.*
  */
 class PhotoPreviewActivity : BaseActivity() {
     private lateinit var images: List<String>
-    private lateinit var vpPhoto: ViewPager
+    private lateinit var vpPhoto: androidx.viewpager.widget.ViewPager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_preview)

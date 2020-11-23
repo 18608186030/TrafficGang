@@ -1,6 +1,6 @@
 package com.stjy.login.register
 
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -29,7 +29,7 @@ class AuditDetailsFragment : BaseMVVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("企业注册信息审核详情")
-        recyclerview.layoutManager = LinearLayoutManager(mActivity)
+        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mActivity)
         var mVideoCourseAdapter = TimeLineListAdapter(ArrayList())
         recyclerview.adapter = mVideoCourseAdapter
         var datas = arrayListOf("成都科技有限公司", "成都谛听科技股份有限公司", "成都哇哈哈科技有限公司", "成都王老吉科技有限公司")

@@ -1,6 +1,6 @@
 package com.stjy.maillist
 
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -27,7 +27,7 @@ class MailListFragment : BaseFragment() {
 
     override fun initView(contentView: View?) {
         setBarTitle("通讯录")
-        recyclerview.layoutManager = LinearLayoutManager(mActivity)
+        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mActivity)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
         var adapter = MailListAdapter(ArrayList())
         recyclerview.adapter = adapter

@@ -1,10 +1,10 @@
 package com.stjy.baselib.ui.activity.mvvmdemo
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.SizeUtils
@@ -48,7 +48,7 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
         //.autoRefresh()
         adapter = MvpDemoListAdapter()
         adapter.initStaueView(this, refreshLayout)
-        recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerview.adapter = adapter
         recyclerview.addItemDecoration(HorizontalDividerItemDecoration.Builder(this)
                 .colorResId(R.color.colorPrimary)

@@ -1,7 +1,7 @@
 package com.stjy.work.viewmodel
 
 import android.app.Application
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.blankj.utilcode.util.ToastUtils
 import com.stjy.baselib.net.net2.resp.BaseRespData
 import com.stjy.baselib.base.mvvm.BaseViewModel

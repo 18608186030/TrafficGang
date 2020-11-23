@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.support.annotation.ColorInt
-import android.support.annotation.DrawableRes
-import android.support.annotation.LayoutRes
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import android.view.View
 import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter

@@ -1,6 +1,6 @@
 package com.stjy.login.register
 
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -31,7 +31,7 @@ class SubmitEnterpriseListFragment : BaseMVVMFragment<LoginViewModel>() {
 
     override fun initView(contentView: View?) {
         setBarTitle("提交信息列表")
-        recyclerview.layoutManager = LinearLayoutManager(mActivity)
+        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mActivity)
         recyclerview.addItemDecoration(HorizontalDividerItemDecoration.Builder(mActivity)
                 .colorResId(R.color.colorPrimary)
                 .size(SizeUtils.dp2px(10f))

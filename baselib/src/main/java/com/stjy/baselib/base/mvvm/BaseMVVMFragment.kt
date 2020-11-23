@@ -1,6 +1,6 @@
 package com.stjy.baselib.base.mvvm
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
 import com.stjy.baselib.base.mvc.BaseFragment

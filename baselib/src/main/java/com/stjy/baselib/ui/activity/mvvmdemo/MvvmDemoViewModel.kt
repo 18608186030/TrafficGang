@@ -1,7 +1,7 @@
 package com.stjy.baselib.ui.activity.mvvmdemo
 
 import android.app.Application
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.stjy.baselib.base.mvvm.BaseViewModel
 import com.stjy.baselib.bean.model.ZIXunAllListResp
 import com.stjy.baselib.net.net2.BaseApiService
