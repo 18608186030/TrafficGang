@@ -1,13 +1,11 @@
 package com.stjy.login.register
 
-import android.Manifest
 import android.content.Intent
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.Glide
 import com.stjy.baselib.base.mvvm.BaseMVVMFragment
-import com.stjy.baselib.listener.PermissionListener
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.baselib.utils.MatisseUtils
 import com.stjy.baselib.utils.PhotoPreviewUtils
@@ -49,8 +47,6 @@ class RegisterEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
         }
     }
 
-    private val PERMISSION = arrayOf(Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-
     /**
      * 显示驾驶证图片
      */
@@ -58,13 +54,11 @@ class RegisterEnterpriseFragment : BaseMVVMFragment<LoginViewModel>() {
         Glide.with(mActivity).load(businessLicenseUrl).error(R.mipmap.yingyezhizhao).into(ivBusinessLicense)
         ivBusinessLicense.setOnClickListener {
             if (businessLicenseUrl.isNullOrEmpty()) {
-                requestPermission(object : PermissionListener {
-                    override fun onGranted() {
-                        MatisseUtils.fromImage(this@RegisterEnterpriseFragment)
-                                .maxSelectable(1)
-                                .forResult(1100)
-                    }
-                }, *MatisseUtils.PERMISSION)
+                requestPermission(*MatisseUtils.PERMISSION,success = {
+                    MatisseUtils.fromImage(this@RegisterEnterpriseFragment)
+                            .maxSelectable(1)
+                            .forResult(1100)
+                })
             } else {
                 //businessLicenseUrl="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1883122246,2639278773&fm=26&gp=0.jpg"
                 PhotoPreviewUtils.start(mActivity, 0, arrayListOf(businessLicenseUrl))

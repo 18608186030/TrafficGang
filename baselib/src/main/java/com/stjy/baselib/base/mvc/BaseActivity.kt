@@ -14,10 +14,7 @@ import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.stjy.baselib.R
-import com.stjy.baselib.listener.PermissionListener
-import com.stjy.baselib.utils.ActivityManager
 import com.stjy.baselib.utils.EventBusUtils
 import com.stjy.baselib.utils.RxLifecycleUtils
 import com.stjy.baselib.wigiet.loading.LoadingDialog
@@ -35,6 +32,7 @@ import me.yokeyword.fragmentation.SupportActivity
  * @Describe: Activity基类
  */
 abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListener {
+    private lateinit var rxPermissions: RxPermissions
     var mLoadingDialog: LoadingDialog? = null
     var mStateView: StateView? = null
     var mDisposablePool = CompositeDisposable()
@@ -43,8 +41,8 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        rxPermissions = RxPermissions(this)
         ARouter.getInstance().inject(this)
-        ActivityManager.getInstance().addActivity(this)
         setPortraitScreen()
     }
 
@@ -68,7 +66,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
             EventBusUtils.unregister(this)
         }
         mLoadingDialog?.dismiss()
-        ActivityManager.getInstance().removeActivity(this)
     }
 
     /**
@@ -260,32 +257,40 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
     protected fun <T> bindLifecycle(): LifecycleTransformer<T> {
         return RxLifecycleUtils.bindLifecycle(this)
     }
-
+    
     /**
      * 请求权限
      *
      * @param permissions
      */
     @SuppressLint("CheckResult")
-    fun requestPermission(listener: PermissionListener, vararg permissions: String) {
-        val rxPermissions = RxPermissions(this)
+    fun requestPermission(vararg permissions: String, success: (() -> Unit)? = null, failed: (() -> Unit)? = null) {
         rxPermissions.requestEachCombined(*permissions)
                 .subscribe { permission: Permission ->
                     when {
-                        permission.granted -> listener.onGranted()
-                        permission.shouldShowRequestPermissionRationale -> ToastUtils.showShort("权限被拒绝")
+                        //请求的权限全部都通过
+                        permission.granted -> success?.let { it() }
+                        //请求的权限至少有一条被决绝了
+                        permission.shouldShowRequestPermissionRationale -> failed?.let { it() }
                         else -> {
-//                            MessageDialogBuilder(this)
-//                                    .setMessage("权限被拒绝并设置为不再询问，请前往设置中开启")
-//                                    .addAction("去设置") { dialog: QMUIDialog?, index: Int -> PermissionUtils.launchAppDetailsSettings() }
-//                                    .addAction("下次再说") { dialog: QMUIDialog, index: Int -> dialog.dismiss() }
-//                                    .create()
-//                                    .show()
+                            //请求的权限至少有一条被永久拒绝的权限（拒绝不在提醒）
+                            failed?.let { it() }
+                            //startActivity(with(Intent()) {
+                            //    this.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                            //    this.data = Uri.parse("package:" + this@CommonBaseActivity.packageName)
+                            //    this
+                            //})
+
+                            //MessageDialogBuilder(this)
+                            //        .setMessage("权限被拒绝并设置为不再询问，请前往设置中开启")
+                            //        .addAction("去设置") { dialog: QMUIDialog?, index: Int -> PermissionUtils.launchAppDetailsSettings() }
+                            //        .addAction("下次再说") { dialog: QMUIDialog, index: Int -> dialog.dismiss() }
+                            //        .create()
+                            //        .show()
                         }
                     }
                 }
     }
-
     /**
      * 后退按钮图片
      */

@@ -62,7 +62,7 @@ class JobHandleService : JobService() {
      */
     fun scheduleJob(t: JobInfo?) {
         Log.i("INFO", "scheduleJob")
-        (getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler)?.schedule(t)
+        //(getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler)?.schedule(t)
     }
 
     //间隔时间--周期

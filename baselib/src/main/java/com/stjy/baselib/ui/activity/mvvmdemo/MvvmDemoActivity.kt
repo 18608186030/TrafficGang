@@ -39,21 +39,21 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
 
     override fun initView() {
         setBarTitle("MVVM框架使用案例")
+        mStateView?.showEmpty()
         mViewModel?.getListData(1)
-        refreshLayout
-                .setRefreshFooter(ClassicsFooter(this))
+        refreshLayout.setRefreshFooter(ClassicsFooter(this))
                 .setRefreshHeader(MaterialHeader(this).setColorSchemeResources(R.color.colorAccent))
                 .setEnableRefresh(false)
                 .setOnLoadMoreListener(this)
-                //.autoRefresh()
+        //.autoRefresh()
         adapter = MvpDemoListAdapter()
         adapter.initStaueView(this, refreshLayout)
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = adapter
         recyclerview.addItemDecoration(HorizontalDividerItemDecoration.Builder(this)
-                        .colorResId(R.color.colorPrimary)
-                        .size(SizeUtils.dp2px(10f))
-                        .build())
+                .colorResId(R.color.colorPrimary)
+                .size(SizeUtils.dp2px(10f))
+                .build())
     }
 
     override fun initData() {
@@ -77,7 +77,7 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
             } else {
                 changeState()
                 if (adapter.data?.isEmpty()) {
-                    adapter.showRetryStateView( btnClick = View.OnClickListener {
+                    adapter.showRetryStateView(btnClick = View.OnClickListener {
                         pageNum = 1
                         adapter.data.clear()
                         adapter.showLoadingStateView()

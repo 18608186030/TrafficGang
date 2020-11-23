@@ -17,11 +17,9 @@ import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.github.chrisbanes.photoview.PhotoView
-import com.kongzue.dialog.interfaces.OnMenuItemClickListener
 import com.kongzue.dialog.v3.BottomMenu
 import com.stjy.baselib.R
 import com.stjy.baselib.base.mvc.BaseFragment
-import com.stjy.baselib.listener.PermissionListener
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -66,11 +64,9 @@ class PhotoFragment : BaseFragment() {
         BottomMenu.show(mActivity, arrayOf("保存图片")) { text, index ->
             //注意此处的 text 返回为自定义 Adapter.getItem(position).toString()，如需获取自定义Object，请尝试 datas.get(index)
             when (text) {
-                "保存图片" -> requestPermission(object : PermissionListener {
-                    override fun onGranted() {
-                        savePictureToLocal()
-                    }
-                }, *PERMISSIONS)
+                "保存图片" -> requestPermission(*PERMISSIONS, success = {
+                    savePictureToLocal()
+                })
             }
         }.title = "请选择..."
     }

@@ -5,7 +5,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.DrawableRes
-import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -15,7 +14,6 @@ import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
 import com.stjy.baselib.R
-import com.stjy.baselib.listener.PermissionListener
 import com.stjy.baselib.utils.EventBusUtils
 import com.stjy.baselib.utils.RxLifecycleUtils
 import com.stjy.baselib.wigiet.stateview.StateView
@@ -250,8 +248,8 @@ abstract class BaseFragment : SupportFragment(), View.OnClickListener {
      * @param permissions
      */
     @SuppressLint("CheckResult")
-    fun requestPermission(@NonNull listener: PermissionListener, @NonNull vararg permissions: String) {
-        mActivity?.requestPermission(listener, *permissions)
+    fun requestPermission(vararg permissions: String, success: (() -> Unit)? = null, failed: (() -> Unit)? = null) {
+        mActivity?.requestPermission(*permissions, success = success, failed = failed)
     }
 
     /**
