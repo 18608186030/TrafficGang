@@ -33,10 +33,7 @@ import me.yokeyword.fragmentation.SupportFragment
  * @Describe: BaseFragment基类
  */
 abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnClickListener {
-    /**
-     * ImmersionBar代理类
-     */
-    private var mSimpleImmersionProxy=SimpleImmersionProxy(this)
+    private var mSimpleImmersionProxy=SimpleImmersionProxy(this)//ImmersionBar代理类
     lateinit var mActivity: BaseActivity
     private var mView: View? = null
     protected lateinit var mStateView: StateView
@@ -103,7 +100,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     /**
      * 是否可以实现沉浸式，当为true的时候才可以执行initImmersionBar方法
      * Immersion bar enabled boolean.
-     *
      * @return the boolean
      */
     override fun immersionBarEnabled() = true
@@ -120,7 +116,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
 
     /**
      * 是否订阅Bus事件
-     *
      * @return
      */
     open fun isRegisterEvent(): Boolean = false
@@ -147,7 +142,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
 
     /**
      * 设置头部标题
-     *
      * @param title
      */
     fun setBarTitle(title: CharSequence?) {
@@ -156,7 +150,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
 
     /**
      * 设置右边的文字
-     *
      * @return
      */
     fun setBarRightText(subTitle: CharSequence?) {
@@ -165,7 +158,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
 
     /**
      * 设置右边的文字的点击监听
-     *
      * @param listener
      */
     fun setOnClickRightTextListener(listener: View.OnClickListener?) {
@@ -176,8 +168,7 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
 
     /**
      * this Activity of tool bar.
-     * 获取头部.
-     *
+     * 获取头部
      * @return support.v7.widget.Toolbar.
      */
     val toolbar: Toolbar?
@@ -196,14 +187,12 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
 
     /**
      * 是否显示后退按钮,默认显示,可在子类重写该方法.
-     *
      * @return
      */
     open fun isShowBacking(): Boolean = true
 
     /**
      * 打开新的Activity
-     *
      * @param toActivity 新Activity
      * @param isFinish   是否关闭当前Activity
      */
@@ -233,7 +222,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
             }
         }
     }
-
 
     open fun startLoadingDialog(content: CharSequence? = null,
                                 contentTextColor: Int? = null,
@@ -277,7 +265,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
 
     /**
      * 请求权限
-     *
      * @param permissions
      */
     @SuppressLint("CheckResult")
@@ -287,33 +274,28 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
 
     /**
      * 布局的LayoutID
-     *
      * @return LayoutID
      */
     protected abstract fun getLayoutID(): Int
 
     /**
      * 初始化子View
-     *
      * @param contentView view
      */
     protected abstract fun initView(contentView: View?)
 
     /**
-     *
      * 初始化数据
      */
     protected abstract fun initData()
 
     /**
-     *
      * 初始化监听器
      */
     protected abstract fun initListener()
 
     /**
-     *
-     *扩展点击事件
+     * 扩展点击事件
      */
     fun View.onClick(listener: View.OnClickListener): View {
         setOnClickListener(listener)
@@ -321,7 +303,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     }
 
     /**
-     *
      *扩展点击事件，参数为方法
      */
     fun View.onClick(method: () -> Unit): View {
@@ -330,10 +311,10 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     }
 
     /**
-     *
      *扩展视图可见性
      */
     fun View.setVisible(visible: Boolean) {
         this.visibility = if (visible) View.VISIBLE else View.GONE
     }
+
 }

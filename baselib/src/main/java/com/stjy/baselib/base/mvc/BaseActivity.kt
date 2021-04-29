@@ -95,7 +95,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选一个作为基准进行适配)
-     *
      * @return `true` 为按照宽度适配, `false` 为按照高度适配
      */
     override fun isBaseOnWidth(): Boolean {
@@ -108,7 +107,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
      * 如果 [.isBaseOnWidth] 返回 `true`, [.getSizeInDp] 则应该返回设计图的总宽度
      * 如果 [.isBaseOnWidth] 返回 `false`, [.getSizeInDp] 则应该返回设计图的总高度
      * 如果您不需要自定义设计图上的设计尺寸, 想继续使用在 AndroidManifest 中填写的设计图尺寸, [.getSizeInDp] 则返回 `0`
-     *
      * @return
      */
     override fun getSizeInDp(): Float {
@@ -117,7 +115,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * Activity是否屏幕竖向显示
-     *
      * @return true：竖向 flase：横向
      */
     val isPortraitScreen: Boolean
@@ -125,14 +122,12 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 是否订阅Bus事件
-     *
      * @return
      */
     open fun isRegisterEvent(): Boolean = false
 
     /**
      * 打开新的Activity
-     *
      * @param toActivity 新Activity
      * @param isFinish   是否关闭当前Activity
      */
@@ -201,7 +196,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 设置头部标题
-     *
      * @param title
      */
     fun setBarTitle(title: CharSequence?) {
@@ -210,7 +204,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 设置右边的文字和颜色
-     *
      * @return
      */
     fun setBarTitle(title: CharSequence?, @ColorInt colorInt: Int) {
@@ -220,7 +213,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 设置右边的文字
-     *
      * @return
      */
     fun setBarRightText(subTitle: CharSequence?) {
@@ -229,7 +221,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 设置右边的文字和颜色
-     *
      * @return
      */
     fun setBarRightText(subTitle: CharSequence?, @ColorInt colorInt: Int) {
@@ -239,7 +230,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 设置右边的文字的点击监听
-     *
      * @param listener
      */
     fun setOnClickRightTextListener(listener: View.OnClickListener?) {
@@ -250,8 +240,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * this Activity of tool bar.
-     * 获取头部.
-     *
+     * 获取头部
      * @return support.v7.widget.Toolbar.
      */
     val toolbar: Toolbar?
@@ -263,7 +252,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 请求权限
-     *
      * @param permissions
      */
     @SuppressLint("CheckResult")
@@ -308,7 +296,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     /**
      * 是否显示后退按钮,默认显示,可在子类重写该方法.
-     *
      * @return
      */
     open fun isShowBacking(): Boolean = true
