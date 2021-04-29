@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
 import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.ktx.immersionBar
 import com.stjy.baselib.R
 import com.stjy.baselib.utils.EventBusUtils
 import com.stjy.baselib.utils.RxLifecycleUtils
@@ -52,8 +53,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
             EventBusUtils.register(this)
         }
         mStateView = StateView.inject(this, true)
-        //初始化沉浸式
-        initImmersionBar()
+        initImmersionBar()//初始化沉浸式
         initToolBar()
         initView()
         initListener()
@@ -64,12 +64,14 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
      * 初始化沉浸式
      * Init immersion bar.
      */
-    protected open fun initImmersionBar() {
-        //设置共同沉浸式样式
-        ImmersionBar.with(this)
-                .statusBarColor(R.color.colorPrimary)     //状态栏颜色，不写默认透明色
-                .statusBarDarkFont(true,0.2f) //自动状态栏字体变色，必须指定状态栏颜色才可以自动变色哦
-                .init()
+    open fun initImmersionBar() {
+        immersionBar {
+            statusBarColor(R.color.white)
+            navigationBarColor(R.color.white)
+            statusBarDarkFont(true)
+            navigationBarDarkIcon(true)
+            fitsSystemWindows(true)
+        }
     }
 
     override fun onDestroy() {
@@ -326,12 +328,12 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
     protected abstract fun initView()
 
     /**
-     * 初始化数据
-     */
-    protected abstract fun initData()
-
-    /**
      * 初始化监听器
      */
     protected abstract fun initListener()
+
+    /**
+     * 初始化数据
+     */
+    protected abstract fun initData()
 }

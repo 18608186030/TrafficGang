@@ -17,6 +17,7 @@ import com.blankj.utilcode.util.ActivityUtils
 import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.components.SimpleImmersionOwner
 import com.gyf.immersionbar.components.SimpleImmersionProxy
+import com.gyf.immersionbar.ktx.immersionBar
 import com.stjy.baselib.R
 import com.stjy.baselib.utils.EventBusUtils
 import com.stjy.baselib.utils.RxLifecycleUtils
@@ -63,6 +64,7 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
         if (isRegisterEvent()) {
             EventBusUtils.register(this)
         }
+        initImmersionBar()//初始化沉浸式
         initToolBar()
         initView(mView)
         initListener()
@@ -89,11 +91,13 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
      * Init immersion bar.
      */
     override fun initImmersionBar() {
-        //设置共同沉浸式样式
-        ImmersionBar.with(this)
-                .statusBarColor(R.color.colorPrimary)     //状态栏颜色，不写默认透明色
-                .statusBarDarkFont(true,0.2f) //自动状态栏字体变色，必须指定状态栏颜色才可以自动变色哦
-                .init()
+        immersionBar {
+            statusBarColor(R.color.white)
+            navigationBarColor(R.color.white)
+            statusBarDarkFont(true)
+            navigationBarDarkIcon(true)
+            fitsSystemWindows(true)
+        }
     }
 
     /**
@@ -243,7 +247,7 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
                                 cornerRadius: Int? = null,
                                 LoadingViewSize: Int? = null,
                                 dimAmount: Float? = null) {
-        mActivity?.startLoadingDialog(content,
+        mActivity.startLoadingDialog(content,
                 contentTextColor,
                 contentTextSize,
                 cancelable,
@@ -258,15 +262,15 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     }
 
     open fun stopLoadingDialog() {
-        mActivity?.stopLoadingDialog()
+        mActivity.stopLoadingDialog()
     }
 
     fun startLoading() {
-        mStateView?.showLoading()
+        mStateView.showLoading()
     }
 
     fun stopLoading() {
-        mStateView?.showContent()
+        mStateView.showContent()
     }
 
     override fun onClick(v: View) {}
@@ -278,7 +282,7 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
      */
     @SuppressLint("CheckResult")
     fun requestPermission(vararg permissions: String, success: (() -> Unit)? = null, failed: (() -> Unit)? = null) {
-        mActivity?.requestPermission(*permissions, success = success, failed = failed)
+        mActivity.requestPermission(*permissions, success = success, failed = failed)
     }
 
     /**

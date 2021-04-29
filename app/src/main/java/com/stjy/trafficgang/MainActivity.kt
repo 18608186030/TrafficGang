@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.gyf.immersionbar.ktx.immersionBar
 import com.stjy.baselib.base.mvc.BaseActivity
 import com.stjy.baselib.ui.adapter.FragmentSubAdapter
 import com.stjy.baselib.utils.ARouterHub
@@ -35,21 +36,23 @@ class MainActivity : BaseActivity() {
         vp_content.offscreenPageLimit = fragments.size
         bottom.setViewPager(vp_content, itemIcon, object : BottomView.BottomPageChangeListener {
             override fun onBottomPageChangeListener(position: Int) {
+
             }
         })
-
-        //startService(Intent(this, JobHandleService::class.java))
     }
 
     override fun initData() {
 
     }
 
-    override fun initImmersionBar() {
-        super.initImmersionBar()
-    }
-
     override fun initListener() {
 
+    }
+
+    override fun initImmersionBar() {
+        super.initImmersionBar()
+        immersionBar {
+            fitsSystemWindows(false)
+        }
     }
 }

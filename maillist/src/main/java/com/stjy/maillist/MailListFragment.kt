@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.GsonUtils
 import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.ktx.immersionBar
 import com.stjy.baselib.base.mvc.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.maillist.adpater.MailListAdapter
@@ -75,9 +76,9 @@ class MailListFragment : BaseFragment() {
 
     override fun initImmersionBar() {
         super.initImmersionBar()
-        ImmersionBar.with(this)
-                .statusBarColor(R.color.blue)
-                .init()
+        immersionBar {
+            statusBarColor(R.color.blue)
+        }
     }
 
     override fun isShowBacking(): Boolean = false
