@@ -1,6 +1,7 @@
 package com.stjy.baselib.base.mvc
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Configuration
@@ -9,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.CheckResult
 import androidx.annotation.DrawableRes
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.alibaba.android.arouter.launcher.ARouter
@@ -22,8 +25,14 @@ import com.stjy.baselib.R
 import com.stjy.baselib.utils.EventBusUtils
 import com.stjy.baselib.utils.RxLifecycleUtils
 import com.stjy.baselib.wigiet.stateview.StateView
+import com.trello.rxlifecycle2.LifecycleProvider
 import com.trello.rxlifecycle2.LifecycleTransformer
+import com.trello.rxlifecycle2.RxLifecycle
+import com.trello.rxlifecycle2.android.FragmentEvent
+import com.trello.rxlifecycle2.android.RxLifecycleAndroid
+import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.subjects.BehaviorSubject
 import me.yokeyword.fragmentation.SupportFragment
 
 
@@ -32,7 +41,8 @@ import me.yokeyword.fragmentation.SupportFragment
  * @CreateTime: 2020/7/4
  * @Describe: BaseFragment基类
  */
-abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnClickListener {
+abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnClickListener , LifecycleProvider<FragmentEvent> {
+    private val lifecycleSubject = BehaviorSubject.create<FragmentEvent>()
     private var mSimpleImmersionProxy=SimpleImmersionProxy(this)//ImmersionBar代理类
     lateinit var mActivity: BaseActivity
     private var mView: View? = null
@@ -41,13 +51,20 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     private var mBarTitle: TextView? = null
     private var mBarRight: TextView? = null
 
+    override fun onAttach(activity: Activity) {
+        super.onAttach(activity)
+        lifecycleSubject.onNext(FragmentEvent.ATTACH)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycleSubject.onNext(FragmentEvent.CREATE)
         ARouter.getInstance().inject(this)
         mActivity = activity as BaseActivity
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        lifecycleSubject.onNext(FragmentEvent.CREATE_VIEW)
         mView = with(inflater.inflate(getLayoutID(), container, false)) {
             mStateView = StateView.inject(this)
             this
@@ -68,50 +85,64 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
         initData()
     }
 
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        mSimpleImmersionProxy.isUserVisibleHint = isVisibleToUser
+    override fun onStart() {
+        super.onStart()
+        lifecycleSubject.onNext(FragmentEvent.START)
     }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        mSimpleImmersionProxy.onHiddenChanged(hidden)
+    override fun onResume() {
+        super.onResume()
+        lifecycleSubject.onNext(FragmentEvent.RESUME)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
-        super.onConfigurationChanged(newConfig)
-        mSimpleImmersionProxy.onConfigurationChanged(newConfig)
+    override fun onPause() {
+        lifecycleSubject.onNext(FragmentEvent.PAUSE)
+        super.onPause()
+        stopLoading()
     }
 
-    /**
-     * 初始化沉浸式代码
-     * Init immersion bar.
-     */
-    override fun initImmersionBar() {
-        immersionBar {
-            statusBarColor(R.color.white)
-            navigationBarColor(R.color.white)
-            statusBarDarkFont(true)
-            navigationBarDarkIcon(true)
-            fitsSystemWindows(true)
-        }
+    override fun onStop() {
+        lifecycleSubject.onNext(FragmentEvent.STOP)
+        super.onStop()
     }
-
-    /**
-     * 是否可以实现沉浸式，当为true的时候才可以执行initImmersionBar方法
-     * Immersion bar enabled boolean.
-     * @return the boolean
-     */
-    override fun immersionBarEnabled() = true
 
     override fun onDestroyView() {
         super.onDestroyView()
+        lifecycleSubject.onNext(FragmentEvent.DESTROY_VIEW)
         mSimpleImmersionProxy.onDestroy()
         if (isRegisterEvent()) {
             EventBusUtils.unregister(this)
         }
         mActivity.mLoadingDialog?.dismissing()
         mDisposablePool.clear()
+    }
+
+    override fun onDestroy() {
+        lifecycleSubject.onNext(FragmentEvent.DESTROY)
+        super.onDestroy()
+    }
+
+    override fun onDetach() {
+        lifecycleSubject.onNext(FragmentEvent.DETACH)
+        super.onDetach()
+    }
+
+    @NonNull
+    @CheckResult
+    override fun lifecycle(): Observable<FragmentEvent> {
+        return lifecycleSubject.hide()
+    }
+
+    @NonNull
+    @CheckResult
+    override fun <T : Any> bindUntilEvent(event: FragmentEvent): LifecycleTransformer<T> {
+        return RxLifecycle.bindUntilEvent(lifecycleSubject, event)
+    }
+
+    @NonNull
+    @CheckResult
+    override fun <T> bindToLifecycle(): LifecycleTransformer<T> {
+        return RxLifecycleAndroid.bindFragment(lifecycleSubject)
     }
 
     /**
@@ -264,15 +295,6 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     override fun onClick(v: View) {}
 
     /**
-     * 请求权限
-     * @param permissions
-     */
-    @SuppressLint("CheckResult")
-    fun requestPermission(vararg permissions: String, success: (() -> Unit)? = null, failed: (() -> Unit)? = null) {
-        mActivity.requestPermission(*permissions, success = success, failed = failed)
-    }
-
-    /**
      * 布局的LayoutID
      * @return LayoutID
      */
@@ -315,6 +337,51 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
      */
     fun View.setVisible(visible: Boolean) {
         this.visibility = if (visible) View.VISIBLE else View.GONE
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        mSimpleImmersionProxy.isUserVisibleHint = isVisibleToUser
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        mSimpleImmersionProxy.onHiddenChanged(hidden)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        mSimpleImmersionProxy.onConfigurationChanged(newConfig)
+    }
+
+    /**
+     * 是否可以实现沉浸式，当为true的时候才可以执行initImmersionBar方法
+     * Immersion bar enabled boolean.
+     * @return the boolean
+     */
+    override fun immersionBarEnabled() = true
+
+    /**
+     * 初始化沉浸式代码
+     * Init immersion bar.
+     */
+    override fun initImmersionBar() {
+        immersionBar {
+            statusBarColor(R.color.white)
+            navigationBarColor(R.color.white)
+            statusBarDarkFont(true)
+            navigationBarDarkIcon(true)
+            fitsSystemWindows(true)
+        }
+    }
+
+    /**
+     * 请求权限
+     * @param permissions
+     */
+    @SuppressLint("CheckResult")
+    fun requestPermission(vararg permissions: String, success: (() -> Unit)? = null, failed: (() -> Unit)? = null) {
+        mActivity.requestPermission(*permissions, success = success, failed = failed)
     }
 
 }

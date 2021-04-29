@@ -6,9 +6,7 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.annotation.ColorInt
-import androidx.annotation.DrawableRes
-import androidx.annotation.LayoutRes
+import androidx.annotation.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.alibaba.android.arouter.launcher.ARouter
@@ -21,8 +19,13 @@ import com.stjy.baselib.wigiet.loading.LoadingDialog
 import com.stjy.baselib.wigiet.stateview.StateView
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
+import com.trello.rxlifecycle2.LifecycleProvider
 import com.trello.rxlifecycle2.LifecycleTransformer
+import com.trello.rxlifecycle2.RxLifecycle
+import com.trello.rxlifecycle2.android.ActivityEvent
+import com.trello.rxlifecycle2.android.RxLifecycleAndroid
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.subjects.BehaviorSubject
 import me.jessyan.autosize.internal.CustomAdapt
 import me.yokeyword.fragmentation.SupportActivity
 
@@ -31,7 +34,8 @@ import me.yokeyword.fragmentation.SupportActivity
  * @CreateTime: 2020/7/4
  * @Describe: Activity基类
  */
-abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListener {
+abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListener , LifecycleProvider<ActivityEvent> {
+    private val lifecycleSubject = BehaviorSubject.create<ActivityEvent>()
     private lateinit var rxPermissions: RxPermissions
     var mLoadingDialog: LoadingDialog? = null
     var mStateView: StateView? = null
@@ -41,6 +45,7 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycleSubject.onNext(ActivityEvent.CREATE)
         rxPermissions = RxPermissions(this)
         ARouter.getInstance().inject(this)
         setPortraitScreen()
@@ -59,28 +64,51 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         initData()
     }
 
-    /**
-     * 初始化沉浸式
-     * Init immersion bar.
-     */
-    open fun initImmersionBar() {
-        immersionBar {
-            statusBarColor(R.color.white)
-            navigationBarColor(R.color.white)
-            statusBarDarkFont(true)
-            navigationBarDarkIcon(true)
-            fitsSystemWindows(true)
-        }
+    @CallSuper
+    override fun onStart() {
+        super.onStart()
+        lifecycleSubject.onNext(ActivityEvent.START)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleSubject.onNext(ActivityEvent.RESUME)
+    }
+
+    @CallSuper
+    override fun onPause() {
+        super.onPause()
+        lifecycleSubject.onNext(ActivityEvent.PAUSE)
+    }
+
+    @CallSuper
+    override fun onStop() {
+        super.onStop()
+        lifecycleSubject.onNext(ActivityEvent.STOP)
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        lifecycleSubject.onNext(ActivityEvent.DESTROY)
         mDisposablePool.clear()
         if (isRegisterEvent()) {
             EventBusUtils.unregister(this)
         }
         mLoadingDialog?.dismiss()
     }
+
+    @NonNull
+    @CheckResult
+    override fun lifecycle() = lifecycleSubject.hide()
+
+    @NonNull
+    @CheckResult
+    override fun <T : Any> bindUntilEvent(event: ActivityEvent): LifecycleTransformer<T> = RxLifecycle.bindUntilEvent(lifecycleSubject, event)
+
+    @NonNull
+    @CheckResult
+    override fun <T> bindToLifecycle(): LifecycleTransformer<T> = RxLifecycleAndroid.bindActivity(lifecycleSubject)
+
 
     /**
      * 设置屏幕方向
@@ -316,4 +344,18 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
      * 初始化数据
      */
     protected abstract fun initData()
+
+    /**
+     * 初始化沉浸式
+     * Init immersion bar.
+     */
+    open fun initImmersionBar() {
+        immersionBar {
+            statusBarColor(R.color.white)
+            navigationBarColor(R.color.white)
+            statusBarDarkFont(true)
+            navigationBarDarkIcon(true)
+            fitsSystemWindows(true)
+        }
+    }
 }
