@@ -9,6 +9,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.SizeUtils
 import com.chad.library.adapter.base.BaseViewHolder
+import com.gyf.immersionbar.ktx.immersionBar
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.RefreshState
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
@@ -39,8 +40,9 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
 
     override fun initView() {
         setBarTitle("MVVM框架使用案例")
-        mStateView?.showEmpty()
-        mViewModel?.getListData(1)
+
+        mStateView?.showRetry("刷新")
+        mViewModel.getListData(1)
         refreshLayout.setRefreshFooter(ClassicsFooter(this))
                 .setRefreshHeader(MaterialHeader(this).setColorSchemeResources(R.color.colorAccent))
                 .setEnableRefresh(false)
@@ -48,7 +50,7 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
         //.autoRefresh()
         adapter = MvpDemoListAdapter()
         adapter.initStaueView(this, refreshLayout)
-        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = adapter
         recyclerview.addItemDecoration(HorizontalDividerItemDecoration.Builder(this)
                 .colorResId(R.color.colorPrimary)
@@ -63,7 +65,7 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
         mViewModel.getListData(pageNum)
         mViewModel.touguPageData.observe(this, Observer {
             if (it != null) {
-                it?.other_list?.let { it1 ->
+                it.other_list?.let { it1 ->
                     if (it1.isNotEmpty()) {
                         it1.forEach { it2 ->
                             adapter.addData(it2)
@@ -76,7 +78,7 @@ class MvvmDemoActivity : BaseMVVMActivity<MvvmDemoViewModel>(), OnLoadMoreListen
                 }
             } else {
                 changeState()
-                if (adapter.data?.isEmpty()) {
+                if (adapter.data.isEmpty()) {
                     adapter.showRetryStateView(btnClick = View.OnClickListener {
                         pageNum = 1
                         adapter.data.clear()

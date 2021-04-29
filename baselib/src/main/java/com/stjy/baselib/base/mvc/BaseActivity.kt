@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
-import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.ktx.immersionBar
 import com.stjy.baselib.R
 import com.stjy.baselib.utils.EventBusUtils
@@ -153,12 +152,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
         mBarRight = findViewById(R.id.bar_right)
         //判断是否有Toolbar,并默认显示返回按钮
         toolbar?.let {
-            //设置共同沉浸式样式
-            ImmersionBar.with(this)
-                    .titleBar(R.id.toolbar)
-                    .statusBarColor(R.color.colorPrimary)     //状态栏颜色，不写默认透明色
-                    .statusBarDarkFont(true, 0.2f) //自动状态栏字体变色，必须指定状态栏颜色才可以自动变色哦
-                    .init()
             it.setBackgroundResource(R.drawable.shap_toolbar_bg)
             if (isShowBacking()) {
                 setNavigationIcon(R.mipmap.ic_black)

@@ -42,7 +42,7 @@ class MvpDemoActivity : BaseMVPActivity<MvpDemoActivity?, PresenterMvpDemo?>(), 
                 .autoRefresh()
         adapter = MvpDemoListAdapter()
         adapter.initStaueView(this,refreshLayout)
-        recyclerview.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = adapter
     }
 
@@ -54,7 +54,7 @@ class MvpDemoActivity : BaseMVPActivity<MvpDemoActivity?, PresenterMvpDemo?>(), 
 
     fun getListDataSuccess(data: ZIXunAllListResp) {
         if (!data.other_list.isNullOrEmpty()) {
-            data?.other_list?.forEach {
+            data.other_list?.forEach {
                 adapter.addData(it)
             }
             pageNum++
@@ -66,7 +66,7 @@ class MvpDemoActivity : BaseMVPActivity<MvpDemoActivity?, PresenterMvpDemo?>(), 
 
     fun getListDataError(e: ApiException) {
         changeState()
-        if (adapter.data?.isEmpty()){
+        if (adapter.data.isEmpty()){
             adapter.showRetryStateView(btnClick=View.OnClickListener {
                 mPresenter?.getListData(pageNum)
             })

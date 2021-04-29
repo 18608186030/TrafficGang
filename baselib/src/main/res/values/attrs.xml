@@ -4,7 +4,6 @@
     <item name="root_id" type="id" />
     <declare-styleable name="StateView">
         <attr name="emptyResource" format="reference" />
-        <attr name="retryResource" format="reference" />
         <attr name="loadingResource" format="reference" />
     </declare-styleable>
 

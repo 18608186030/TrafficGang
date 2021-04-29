@@ -23,16 +23,19 @@ import android.widget.*
 import com.coorchice.library.SuperTextView
 import com.stjy.baselib.R
 
+/**
+ * @Author: superman
+ * @CreateTime: 2020/12/30
+ * @Describe: 状态页面工具 封装
+ */
 class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
-    @IntDef(EMPTY, RETRY, LOADING)
+    @IntDef(RETRY, LOADING)
     @kotlin.annotation.Retention(AnnotationRetention.SOURCE)
     annotation class ViewType
 
-    private var mEmptyResource: Int
     private var mRetryResource: Int
     private var mLoadingResource: Int
-    private var mEmptyView: View? = null
-    private var mRetryView: View? = null
+    private var mErrorView: View? = null
     private var mLoadingView: View? = null
 
     private var inflater: LayoutInflater? = null
@@ -43,13 +46,9 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.StateView)
-        mEmptyResource = a.getResourceId(R.styleable.StateView_emptyResource, 0)
-        mRetryResource = a.getResourceId(R.styleable.StateView_retryResource, 0)
+        mRetryResource = a.getResourceId(R.styleable.StateView_emptyResource, 0)
         mLoadingResource = a.getResourceId(R.styleable.StateView_loadingResource, 0)
         a.recycle()
-        if (mEmptyResource == 0) {
-            mEmptyResource = R.layout.stateview_empty
-        }
         if (mRetryResource == 0) {
             mRetryResource = R.layout.stateview_retry
         }
@@ -72,9 +71,9 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     override fun dispatchDraw(canvas: Canvas) {}
+
     override fun setVisibility(visibility: Int) {
-        setVisibility(mEmptyView, visibility)
-        setVisibility(mRetryView, visibility)
+        setVisibility(mErrorView, visibility)
         setVisibility(mLoadingView, visibility)
     }
 
@@ -96,21 +95,6 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     /**
-     * 显示空数据视图
-     * @param emptyTitle 标题
-     * @param emptyDrawableResId 顶部图片
-     * @return mEmptyView
-     */
-    fun showEmpty(emptyTitle: String? = null, emptyDrawableResId: Int? = null): View? {
-        mEmptyView = mEmptyView ?: inflate(mEmptyResource, EMPTY)
-        mEmptyView?.findViewById<ImageView>(R.id.iv_image)?.setImageResource(emptyDrawableResId ?: R.mipmap.ic_stateview_empty)
-        mEmptyView?.findViewById<TextView>(R.id.tv_title)?.text = emptyTitle ?: "暂无数据"
-        mEmptyView?.findViewById<SuperTextView>(R.id.btn_retry)?.visibility = GONE
-        showView(mEmptyView)
-        return mEmptyView
-    }
-
-    /**
      * 显示重试加载视图
      *
      * @param retryTitle 标题
@@ -120,14 +104,16 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
      * @return mRetryView
      */
     fun showRetry(retryTitle: String? = null, retryDrawableResId: Int? = null, retryBtnText: String? = null, mRetryClickListener: OnClickListener? = null): View? {
-        mRetryView = mRetryView ?: inflate(mRetryResource, RETRY)
-        //Glide.with(context).asGif().load(R.mipmap.ic_stateview_nonetwork).into(ivImage)
-        mRetryView?.findViewById<ImageView>(R.id.iv_image)?.setImageResource(retryDrawableResId ?: R.mipmap.ic_stateview_nonetwork)
-        mRetryView?.findViewById<TextView>(R.id.tv_title)?.text = retryTitle ?: "似乎出了点问题..."
-        mRetryView?.findViewById<SuperTextView>(R.id.btn_retry)?.text = retryBtnText ?: "重新加载"
-        mRetryView?.findViewById<SuperTextView>(R.id.btn_retry)?.setOnClickListener(mRetryClickListener)
-        showView(mRetryView)
-        return mRetryView
+        return mErrorView ?: with(inflate(mRetryResource, RETRY)) {
+            mErrorView = this
+            this.findViewById<ImageView>(R.id.iv_image)?.setImageResource(retryDrawableResId
+                    ?: R.mipmap.ic_stateview_empty)
+            this.findViewById<TextView>(R.id.tv_title)?.text = retryTitle ?: "似乎出了点问题..."
+            this.findViewById<SuperTextView>(R.id.btn_retry)?.text = retryBtnText ?: "重新加载"
+            this.findViewById<SuperTextView>(R.id.btn_retry)?.setOnClickListener(mRetryClickListener)
+            showView(this)
+            this
+        }
     }
 
     /**
@@ -137,7 +123,8 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
      */
     fun showLoading(): View {
         return mLoadingView ?: with(inflate(mLoadingResource, LOADING)) {
-            showView(mLoadingView)
+            mLoadingView = this
+            showView(this)
             this
         }
     }
@@ -155,16 +142,10 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
      */
     private fun hideViews(showView: View?) {
         when {
-            mEmptyView === showView -> {
-                setVisibility(mLoadingView, GONE)
-                setVisibility(mRetryView, GONE)
-            }
             mLoadingView === showView -> {
-                setVisibility(mEmptyView, GONE)
-                setVisibility(mRetryView, GONE)
+                setVisibility(mErrorView, GONE)
             }
             else -> {
-                setVisibility(mEmptyView, GONE)
                 setVisibility(mLoadingView, GONE)
             }
         }
@@ -202,9 +183,8 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
      */
     fun setAnimatorProvider(provider: AnimatorProvider?) {
         mProvider = provider
-        reset(mEmptyView)
         reset(mLoadingView)
-        reset(mRetryView)
+        reset(mErrorView)
     }
 
     /**
@@ -226,8 +206,7 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         val viewParent = parent
         return if (viewParent != null && viewParent is ViewGroup) {
             if (layoutResource != 0) {
-                val factory: LayoutInflater
-                factory = inflater ?: LayoutInflater.from(context)
+                val factory: LayoutInflater = inflater ?: LayoutInflater.from(context)
                 val view = factory.inflate(layoutResource, viewParent, false)
                 val index = viewParent.indexOfChild(this)
                 // 防止还能触摸底下的 View
@@ -252,7 +231,7 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
                 } else {
                     viewParent.addView(view, index)
                 }
-                if (mLoadingView != null && mRetryView != null && mEmptyView != null) {
+                if (mLoadingView != null && mErrorView != null) {
                     viewParent.removeViewInLayout(this)
                 }
                 mInflateListener?.onInflate(viewType, view)
@@ -309,7 +288,6 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     companion object {
-        const val EMPTY = 0x00000000
         const val RETRY = 0x00000001
         const val LOADING = 0x00000002
 
@@ -434,11 +412,10 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         }
 
         /**
-         * 注入到 View 中
-         *
          * @param view         instanceof ViewGroup
          * @param hasActionBar 是否有 actionbar/toolbar
          * @return StateView
+         * @Describe StateView  注入到 View 中
          */
         @JvmOverloads
         fun inject(view: View, hasActionBar: Boolean = false): StateView {
