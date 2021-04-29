@@ -109,7 +109,6 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
     @CheckResult
     override fun <T> bindToLifecycle(): LifecycleTransformer<T> = RxLifecycleAndroid.bindActivity(lifecycleSubject)
 
-
     /**
      * 设置屏幕方向
      */

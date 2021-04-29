@@ -48,11 +48,4 @@ class MainActivity : BaseActivity() {
     override fun initListener() {
 
     }
-
-    override fun initImmersionBar() {
-        super.initImmersionBar()
-        immersionBar {
-            fitsSystemWindows(false)
-        }
-    }
 }
