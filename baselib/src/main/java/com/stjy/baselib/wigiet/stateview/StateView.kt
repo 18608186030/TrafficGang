@@ -5,12 +5,6 @@ import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
-import androidx.annotation.IntDef
-import androidx.annotation.LayoutRes
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.NestedScrollingChild
-import androidx.core.view.NestedScrollingParent
-import androidx.core.view.ScrollingView
 import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.TypedValue
@@ -20,6 +14,12 @@ import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
 import android.view.WindowManager
 import android.widget.*
+import androidx.annotation.IntDef
+import androidx.annotation.LayoutRes
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.NestedScrollingChild
+import androidx.core.view.NestedScrollingParent
+import androidx.core.view.ScrollingView
 import com.coorchice.library.SuperTextView
 import com.stjy.baselib.R
 
@@ -448,6 +448,58 @@ class StateView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
                 })
             }
             return stateView
+        }
+    }
+
+    /**
+     * @author Nukc.
+     */
+    interface AnimatorProvider {
+        fun showAnimation(view: View?): Animator?
+        fun hideAnimation(view: View?): Animator?
+    }
+
+    internal object Injector {
+        fun changeChildrenConstraints(viewParent: ViewGroup?, root: FrameLayout, injectViewId: Int) {
+            if (viewParent is ConstraintLayout) {
+                val rootId = R.id.root_id
+                root.id = rootId
+                val rootGroup = viewParent
+                var i = 0
+                val count = rootGroup.childCount
+                while (i < count) {
+                    val child = rootGroup.getChildAt(i)
+                    val layoutParams = child.layoutParams as ConstraintLayout.LayoutParams
+                    if (layoutParams.circleConstraint == injectViewId) {
+                        layoutParams.circleConstraint = rootId
+                    } else {
+                        if (layoutParams.leftToLeft == injectViewId) {
+                            layoutParams.leftToLeft = rootId
+                        } else if (layoutParams.leftToRight == injectViewId) {
+                            layoutParams.leftToRight = rootId
+                        }
+                        if (layoutParams.rightToLeft == injectViewId) {
+                            layoutParams.rightToLeft = rootId
+                        } else if (layoutParams.rightToRight == injectViewId) {
+                            layoutParams.rightToRight = rootId
+                        }
+                        if (layoutParams.topToTop == injectViewId) {
+                            layoutParams.topToTop = rootId
+                        } else if (layoutParams.topToBottom == injectViewId) {
+                            layoutParams.topToBottom = rootId
+                        }
+                        if (layoutParams.bottomToTop == injectViewId) {
+                            layoutParams.bottomToTop = rootId
+                        } else if (layoutParams.bottomToBottom == injectViewId) {
+                            layoutParams.bottomToBottom = rootId
+                        }
+                        if (layoutParams.baselineToBaseline == injectViewId) {
+                            layoutParams.baselineToBaseline = rootId
+                        }
+                    }
+                    i++
+                }
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ import android.view.MotionEvent
  * 自定义一个不能左右滑动的ViewPager
  * @author Beyond
  */
-class NoScrollViewPager : androidx.viewpager.widget.ViewPager {
+class NoScrollViewPager : ViewPager {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
