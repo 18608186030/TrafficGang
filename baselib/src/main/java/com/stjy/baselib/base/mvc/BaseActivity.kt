@@ -44,8 +44,8 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
     private var mBarRight: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         lifecycleSubject.onNext(ActivityEvent.CREATE)
+        super.onCreate(savedInstanceState)
         rxPermissions = RxPermissions(this)
         ARouter.getInstance().inject(this)
         setPortraitScreen()
@@ -66,30 +66,30 @@ abstract class BaseActivity : SupportActivity(), CustomAdapt, View.OnClickListen
 
     @CallSuper
     override fun onStart() {
-        super.onStart()
         lifecycleSubject.onNext(ActivityEvent.START)
+        super.onStart()
     }
 
     override fun onResume() {
-        super.onResume()
         lifecycleSubject.onNext(ActivityEvent.RESUME)
+        super.onResume()
     }
 
     @CallSuper
     override fun onPause() {
-        super.onPause()
         lifecycleSubject.onNext(ActivityEvent.PAUSE)
+        super.onPause()
     }
 
     @CallSuper
     override fun onStop() {
-        super.onStop()
         lifecycleSubject.onNext(ActivityEvent.STOP)
+        super.onStop()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         lifecycleSubject.onNext(ActivityEvent.DESTROY)
+        super.onDestroy()
         mDisposablePool.clear()
         if (isRegisterEvent()) {
             EventBusUtils.unregister(this)

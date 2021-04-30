@@ -52,13 +52,13 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     private var mBarRight: TextView? = null
 
     override fun onAttach(activity: Activity) {
-        super.onAttach(activity)
         lifecycleSubject.onNext(FragmentEvent.ATTACH)
+        super.onAttach(activity)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         lifecycleSubject.onNext(FragmentEvent.CREATE)
+        super.onCreate(savedInstanceState)
         ARouter.getInstance().inject(this)
         mActivity = activity as BaseActivity
     }
@@ -86,13 +86,13 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     }
 
     override fun onStart() {
-        super.onStart()
         lifecycleSubject.onNext(FragmentEvent.START)
+        super.onStart()
     }
 
     override fun onResume() {
-        super.onResume()
         lifecycleSubject.onNext(FragmentEvent.RESUME)
+        super.onResume()
     }
 
     override fun onPause() {
@@ -107,8 +107,8 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         lifecycleSubject.onNext(FragmentEvent.DESTROY_VIEW)
+        super.onDestroyView()
         mSimpleImmersionProxy.onDestroy()
         if (isRegisterEvent()) {
             EventBusUtils.unregister(this)
@@ -349,7 +349,7 @@ abstract class BaseFragment : SupportFragment(), SimpleImmersionOwner, View.OnCl
         mSimpleImmersionProxy.onHiddenChanged(hidden)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         mSimpleImmersionProxy.onConfigurationChanged(newConfig)
     }
