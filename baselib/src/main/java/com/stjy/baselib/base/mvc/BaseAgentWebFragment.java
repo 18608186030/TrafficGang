@@ -8,9 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ValueCallback;
@@ -36,6 +33,10 @@ import com.stjy.baselib.utils.WBH5FaceVerifySDK;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 /**
  * @Author: superman
@@ -312,7 +313,7 @@ public abstract class BaseAgentWebFragment extends BaseFragment {
             WBH5FaceVerifySDK.getInstance().setWebViewSettings(bridgeWebView, getContext());
             bridgeWebView.registerHandler("CJSJSBridge_OpenIMPage_ToNative", (data, function) -> {
                 ToastUtils.showLong(data);
-//                function.onCallBack(data);
+                //function.onCallBack(data);
             });
 
             syncCookie();

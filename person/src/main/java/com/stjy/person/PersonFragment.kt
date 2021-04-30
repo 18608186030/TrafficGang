@@ -3,8 +3,6 @@ package com.stjy.person
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.gyf.immersionbar.ImmersionBar
-import com.gyf.immersionbar.ktx.immersionBar
 import com.stjy.baselib.base.mvc.BaseFragment
 import com.stjy.baselib.ui.activity.WebViewActivity
 import com.stjy.baselib.utils.ARouterHub
@@ -54,12 +52,4 @@ class PersonFragment : BaseFragment() {
         }
     }
 
-    override fun initImmersionBar() {
-        super.initImmersionBar()
-        immersionBar {
-            statusBarColor(R.color.yellow)
-        }
-    }
-
-    override fun isShowBacking(): Boolean = false
 }

@@ -2,9 +2,6 @@ package com.stjy.work.fragment
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.blankj.utilcode.util.BarUtils
-import com.gyf.immersionbar.ImmersionBar
-import com.gyf.immersionbar.ktx.immersionBar
 import com.stjy.baselib.base.mvvm.BaseMVVMFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.work.R
@@ -19,7 +16,7 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
 
     override fun initView(contentView: View?) {
         //mViewModel.getListData(1)
-        mStateView?.showRetry(mRetryClickListener= View.OnClickListener {
+        mStateView.showRetry(mRetryClickListener= View.OnClickListener {
             startLoadingDialog()
         })
     }
@@ -31,13 +28,4 @@ class WorkFragment : BaseMVVMFragment<WorkViewModel>() {
     override fun initListener() {
 
     }
-
-    override fun initImmersionBar() {
-        super.initImmersionBar()
-        immersionBar {
-            statusBarColor(R.color.red)
-        }
-    }
-
-    override fun isShowBacking(): Boolean = false
 }

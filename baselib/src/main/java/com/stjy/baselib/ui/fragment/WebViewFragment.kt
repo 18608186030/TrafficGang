@@ -86,7 +86,7 @@ class WebViewFragment : BaseAgentWebFragment() {
         @JvmStatic
         fun newInstance(url: String = "", title: String = "", showToobar: Boolean = true, showShare: Boolean = true, showWebUrlTitle: Boolean = true): WebViewFragment {
             return ARouter.getInstance()
-                    .build("${ARouterHub.BASELIB_WEBVIEW_FRAGMENT}")
+                    .build(ARouterHub.BASELIB_WEBVIEW_FRAGMENT)
                     .withString(URL, url)
                     .withString(TITILE, title)
                     .withBoolean(SHOWTOOBAR, showToobar)

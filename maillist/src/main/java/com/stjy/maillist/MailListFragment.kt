@@ -5,8 +5,6 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.GsonUtils
-import com.gyf.immersionbar.ImmersionBar
-import com.gyf.immersionbar.ktx.immersionBar
 import com.stjy.baselib.base.mvc.BaseFragment
 import com.stjy.baselib.utils.ARouterHub
 import com.stjy.maillist.adpater.MailListAdapter
@@ -22,9 +20,9 @@ class MailListFragment : BaseFragment() {
         setBarTitle("通讯录")
         recyclerview.layoutManager = LinearLayoutManager(mActivity)
         //recyclerview.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
-        var adapter = MailListAdapter(ArrayList())
+        val adapter = MailListAdapter(ArrayList())
         recyclerview.adapter = adapter
-        var a = """
+        val a = """
             {
                 "list":[
                     {
@@ -53,16 +51,14 @@ class MailListFragment : BaseFragment() {
             }
         """
 
-        var mailListRes = GsonUtils.fromJson<MailListResp>(a, MailListResp::class.java)
+        val mailListRes = GsonUtils.fromJson<MailListResp>(a, MailListResp::class.java)
         adapter.setNewData(adapter.generateData((mailListRes.list)))
         adapter.setOnItemClickListener { adapter, view, position ->
-            run {
-                var itme = adapter.data[position] as SecondListBean
-                ARouter.getInstance()
-                        .build(ARouterHub.MAILLIST_SEARCHMAILLIST_ACTIVITY)
-                        .withString("title", itme.title)
-                        .navigation(mActivity)
-            }
+            val itme = adapter.data[position] as SecondListBean
+            ARouter.getInstance()
+                    .build(ARouterHub.MAILLIST_SEARCHMAILLIST_ACTIVITY)
+                    .withString("title", itme.title)
+                    .navigation(mActivity)
         }
     }
 
@@ -74,12 +70,4 @@ class MailListFragment : BaseFragment() {
 
     }
 
-    override fun initImmersionBar() {
-        super.initImmersionBar()
-        immersionBar {
-            statusBarColor(R.color.blue)
-        }
-    }
-
-    override fun isShowBacking(): Boolean = false
 }
